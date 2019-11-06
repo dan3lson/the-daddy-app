@@ -2,7 +2,8 @@ class User < ApplicationRecord
   include Clearance::User
 
   # Relationships
-  has_many :babies
+  has_many :babies,   dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # Validations
 	validates :email,      presence: true, uniqueness: { case_sensitive: false }
