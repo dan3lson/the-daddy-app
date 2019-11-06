@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  # Relationships
+  has_many :babies
+
   # Validations
 	validates :email,      presence: true, uniqueness: { case_sensitive: false }
 	validates :password,   presence: true
