@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_134931) do
+ActiveRecord::Schema.define(version: 2019_11_06_142239) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "babies", force: :cascade do |t|
+  create_table "babies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "gender", null: false
     t.datetime "birthdate", null: false
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_babies_on_user_id"
@@ -28,15 +29,15 @@ ActiveRecord::Schema.define(version: 2019_11_06_134931) do
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.integer "status", default: 0, null: false
-    t.bigint "user_id", null: false
-    t.bigint "parent_id"
+    t.uuid "user_id", null: false
+    t.uuid "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
