@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
   # Relationships
   belongs_to :user
+  belongs_to :topic
   has_many   :replies, class_name:  :Comment,
                        foreign_key: :parent_id,
                        dependent:   :destroy

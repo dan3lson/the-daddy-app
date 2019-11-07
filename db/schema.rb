@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_142239) do
+ActiveRecord::Schema.define(version: 2019_11_07_142728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,8 +33,16 @@ ActiveRecord::Schema.define(version: 2019_11_06_142239) do
     t.uuid "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "topic_id", null: false
     t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["topic_id"], name: "index_comments_on_topic_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -53,5 +61,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_142239) do
   end
 
   add_foreign_key "babies", "users"
+  add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
 end
