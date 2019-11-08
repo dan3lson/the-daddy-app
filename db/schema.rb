@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_142728) do
   enable_extension "plpgsql"
 
   create_table "babies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
+    t.string "first_name", null: false
     t.integer "gender", null: false
     t.datetime "birthdate", null: false
     t.uuid "user_id", null: false
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2019_11_07_142728) do
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", null: false
     t.string "first_name", null: false
-    t.string "last_name", null: false
     t.string "city", null: false
     t.boolean "admin", default: false, null: false
     t.string "encrypted_password", limit: 128, null: false

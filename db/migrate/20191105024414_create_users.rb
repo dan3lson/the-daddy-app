@@ -3,7 +3,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
     create_table :users, id: :uuid do |t|
       t.string  :email,                          null: false
       t.string  :first_name,                     null: false
-      t.string  :last_name,                      null: false
       t.string  :city,                           null: false
       t.boolean :admin,                          null: false, default: false
       t.string  :encrypted_password, limit: 128, null: false
