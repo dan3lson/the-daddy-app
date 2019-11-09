@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_142728) do
     t.index ["user_id"], name: "index_babies_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "body", null: false
     t.integer "status", default: 0, null: false
     t.uuid "user_id", null: false
