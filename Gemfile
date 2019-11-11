@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bulma-rails', '~> 0.8.0'
 gem 'clearance'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'jbuilder', '~> 2.7'
