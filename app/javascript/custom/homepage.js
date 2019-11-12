@@ -21,8 +21,8 @@ $(document).ready(function(){
 	function changeText(string) {
 		const $changingText = $("section.hero .title.is-1 div");
 
-		$changingText.fadeOut(function() {
-			$changingText.fadeIn();
+		$changingText.fadeOut("slow", function() {
+			$changingText.fadeIn("slow");
 			$changingText.text(string);
 		});
 	}

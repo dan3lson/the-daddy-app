@@ -1,3 +1,12 @@
+section#benefits {
+	text-align: center;
+
+	figure {
+		margin: auto;
+		width: 167px;
+	}
+}
+
 @include tablet {
 	section.hero {
 		.subtitle.is-3 {
@@ -10,9 +19,17 @@
 	}
 
 	section#benefits {
+		figure {
+			width: 240px;
+		}
+
 		.reverse-columns {
 			flex: row;
 			flex-direction: row-reverse;
+		}
+
+		.subtitle.is-4 {
+			font-size: 32px;
 		}
 	}
 }
