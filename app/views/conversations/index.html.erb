@@ -1,0 +1,12 @@
+<section class="tabs container">
+  <ul>
+    <li class="is-active"><a>All</a></li>
+    <% @topics.each do |topic| %>
+      <li><a><%= topic.name.capitalize %></a></li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="comments container">
+  <%= render 'comments/root', root_comments: @root_comments %>
+</section>

@@ -30,3 +30,12 @@
 yarn-debug.log*
 .yarn-integrity
 /node_modules
+
+# IDE stuff
+.atom/*
+.idea/*
+.generators
+.rakeTasks
+
+# OSX stuff
+*.DS_Store

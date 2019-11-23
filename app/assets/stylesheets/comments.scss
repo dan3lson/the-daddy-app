@@ -1,0 +1,13 @@
+section.comments {
+  article.media {
+    border-top: none;
+
+    &.has-background-white-ter {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .replies {
+    padding-left: 16px;
+  }
+}

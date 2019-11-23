@@ -1,0 +1,30 @@
+<article class="media"
+         data-root-id="<%= comment.id %>">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= comment.user.first_name %></strong>
+        <br>
+        <small><%= comment.user.baby_names %></small>
+      </p>
+      <p>
+        <%= comment.body %>
+        <br>
+        <small>
+          <a>Reply</a> ·
+          <span>
+            <%= link_to "Comments (#{comment.replies.size})",
+                        reply_path(comment),
+                        class: 'comment-href', remote: true %> ·
+          </span>
+          <%= time_ago_in_words(comment.created_at) %> ago
+        </small>
+      </p>
+    </div>
+  </div>
+</article>

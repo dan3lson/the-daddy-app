@@ -11,6 +11,20 @@ class Comment < ApplicationRecord
   validates :body,   presence: true
   validates :status, presence: true
 
-  # Enum
+  # Enums
   enum status: { active: 0, inactive: 1 }
+
+  # Scopes
+  scope :root, -> { where(parent: nil) }
+
+  # == Root?
+  #
+  # Check if comment is
+  # a reply.
+  #
+  # @return Boolean
+  #
+  def reply?
+    !parent.nil?
+  end
 end
