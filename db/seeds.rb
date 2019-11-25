@@ -13,7 +13,7 @@ end
 User.destroy_all
 danelson_sr = User.create!(
 	email:      'danelson.rosa.sr@gmail.com',
-	password:   'dan3lsonS3nior!',
+	password:   'password',
 	first_name: 'Danelson',
 	city:       'Bronx'
 )

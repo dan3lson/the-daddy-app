@@ -1,19 +1,51 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <%= form.label :email, class: 'label' %>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <%= form.text_field :email, type: 'email', class: 'input' %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <%= form.label :first_name, class: 'label' %>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <%= form.text_field :first_name, class: 'input' %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="text-field">
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <%= form.label :city, class: 'label' %>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <%= form.text_field :city, class: 'input' %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="text-field">
-  <%= form.label :city %>
-  <%= form.text_field :city %>
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <%= form.label :password, class: 'label' %>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <%= form.password_field :password, class: 'input' %>
+      </div>
+    </div>
+  </div>
 </div>
