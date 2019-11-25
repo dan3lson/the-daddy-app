@@ -31,10 +31,10 @@
 				<div class="buttons">
 					<% if signed_in? %>
 						<%= link_to 'Go to App', conversations_path, class: "button is-primary" %>
-						<%= link_to 'Sign out', sign_out_path, method: :delete, class: "button" %>
+						<%= link_to 'Sign out', sign_out_path, method: :delete, class: "button is-primary is-outlined" %>
 					<% else %>
 						<%= link_to 'Sign up', sign_up_path, class: "button is-primary" %>
-						<%= link_to 'Sign in', sign_in_path, class: "button is-light" %>
+						<%= link_to 'Sign in', sign_in_path, class: "button is-primary is-outlined" %>
 					<% end %>
 				</div>
 			</div>
