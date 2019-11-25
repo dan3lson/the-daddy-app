@@ -1,4 +1,11 @@
 .sign-in,
 .sign-up {
   padding: 1.4rem;
+
+  form {
+    ul {
+      padding-inline-start: 46px;
+      list-style: unset;
+    }
+  }
 }
