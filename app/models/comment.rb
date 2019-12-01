@@ -17,14 +17,13 @@ class Comment < ApplicationRecord
   # Scopes
   scope :root, -> { where(parent: nil) }
 
-  # == Root?
+  # == Replies?
   #
-  # Check if comment is
-  # a reply.
+  # See if replies exist.
   #
   # @return Boolean
   #
-  def reply?
-    !parent.nil?
+  def replies?
+    !replies.empty?
   end
 end

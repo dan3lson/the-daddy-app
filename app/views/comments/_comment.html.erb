@@ -12,19 +12,22 @@
         <br>
         <small><%= comment.user.baby_names %></small>
       </p>
-      <p>
-        <%= comment.body %>
-        <br>
-        <small>
-          <a>Reply</a> ·
-          <span>
-            <%= link_to "Comments (#{comment.replies.size})",
-                        reply_path(comment),
-                        class: 'comment-href', remote: true %> ·
-          </span>
-          <%= time_ago_in_words(comment.created_at) %> ago
-        </small>
-      </p>
+        <p>
+          <%= comment.body %>
+          <% if comment.replies? %>
+            <br>
+            <small>
+              <span>
+                <%= link_to "Comments (#{comment.replies.size})",
+                            comment_replies_path(comment),
+                            class: 'comment-href', remote: true %> ·
+              </span>
+              <%= time_ago_in_words(comment.created_at) %> ago
+            </small>
+          <% end %>
+        </p>
     </div>
   </div>
 </article>
+
+<%= render 'comments/reply_form', comment: comment %>

@@ -1,0 +1,22 @@
+<article class="media">
+  <figure class="media-left">
+    <p class="avatar-block"></p>
+  </figure>
+
+  <div class="media-content">
+    <%= form_for [comment, Comment.new],
+                 url: comment_replies_path(comment),
+                 remote: true do |form| %>
+
+      <%= render 'shared/form_errors', object: Comment.new %>
+
+      <div class="field is-grouped">
+        <p class="control is-expanded">
+          <%= form.text_field :body,
+                              class: 'input',
+                              placeholder: "Reply to #{comment.user.first_name}" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</article>

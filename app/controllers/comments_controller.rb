@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-class ConversationsController < ApplicationController
+class CommentsController < ApplicationController
   def index
     @root_comments = Comment.root
     @topics = Topic.all
+    @new_comment = Comment.new
   end
 end

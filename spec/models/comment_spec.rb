@@ -26,15 +26,15 @@ RSpec.describe Comment, type: :model do
     end
   end
 
-  describe '#reply?' do
-    it 'should not have a parent' do
+  describe '#replies?' do
+    it 'should not have replies' do
       comment = create(:comment)
-      expect(comment).to_not be_reply
+      expect(comment).to_not be_replies
     end
 
-    it 'should have a parent' do
-      comment = create(:comment_with_replies).replies.first
-      expect(comment).to be_reply
+    it 'should have replies' do
+      comment = create(:comment_with_replies)
+      expect(comment).to be_replies
     end
   end
 end

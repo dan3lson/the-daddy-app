@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   #
   constraints Clearance::Constraints::SignedIn.new do
     # Comments
-    root to: 'conversations#index', as: :signed_in_root
-    resources :conversations, only: %i[index]
-    resources :replies, only: [:show]
+    root to: 'comments#index', as: :signed_in_root
+    resources :comments, only: %i[index new] do
+      resources :replies, only: %i[index create]
+    end
   end
 
   # Sessions
