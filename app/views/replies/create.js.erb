@@ -1,22 +1,38 @@
-var parentRootID = "<%= @parent_comment.id %>";
-var saved = "<%= @saved %>" === "true";
-var $parentRootComment = $("section.comments").find(`[data-root-id='${parentRootID}']`);
-var $parentRootCommentBox = $parentRootComment.parent();
-var $field = $parentRootCommentBox.find(".field");
+var $commentsDiv = $(".comments");
+var parentID = "<%= @parent_comment.id %>";
+var newCommentSaved = "<%= @saved %>" === "true";
+var $parentComment = $commentsDiv.find(`[data-comment-id='${parentID}']`);
+var $replyForm = $parentComment.next();
+var $field = $replyForm.find(".field");
 var $input = $field.find(".input");
-var $help = $parentRootCommentBox.find(".help");
-$input.removeClass("is-danger").removeClass("is-success");
-$help.remove();
 
-if (saved) {
+resetForms();
+
+newCommentSaved ? showSuccess() : showErrors();
+
+function resetInput($input) {
+    return $input.val("");
+}
+
+function resetForms() {
+    var $inputs = $commentsDiv.find(".input");
+    var $helpTexts = $commentsDiv.find(".help");
+
+    $inputs.removeClass("is-danger").removeClass("is-success");
+    $helpTexts.remove();
+}
+
+function showSuccess() {
     var $helpSuccess = $('<p/>', { "class": "help is-success" });
     $helpSuccess.text("Thanks for your comment");
     $helpSuccess.insertAfter($field);
-    $input.val("");
-} else {
+    resetInput($input);
+}
+
+function showErrors() {
     var errors = "<%= @errors %>";
     var $helpDanger = $('<p/>', { "class": "help is-danger" });
     $input.addClass("is-danger");
-    $helpDanger.text('Please fix the following errors: ' + errors);
+    $helpDanger.text("Uh-oh: " + errors);
     $helpDanger.insertAfter($field);
 }

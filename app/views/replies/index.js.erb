@@ -1,6 +1,6 @@
 var replies = "<%= j render(partial: 'replies/index', locals: { replies: @replies }) %>";
 var rootID = "<%= @comment.id %>"
-var $rootComment = $("section.comments").find(`[data-root-id='${rootID}']`);
+var $rootComment = $("section.comments").find(`[data-comment-id='${rootID}']`);
 var $rootCommentBox = $rootComment.parent();
 var $commentsLink = $rootComment.find('.comment-href');
 var $commentsLinkContainer = $commentsLink.parent();
