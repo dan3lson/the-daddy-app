@@ -15,7 +15,8 @@ class Comment < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   # Scopes
-  scope :root, -> { where(parent: nil) }
+  scope :root,   -> { where(parent: nil) }
+  scope :latest, -> { order(created_at: :desc) }
 
   def replies?
     !replies.empty?

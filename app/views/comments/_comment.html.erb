@@ -1,38 +1,35 @@
-<article class="media" data-comment-id="<%= comment.id %>">
+<% unless comment.root? %>
+  <hr>
+<% end %>
+
+<article class="media" data-comment-id="<%= comment.id %>"'>
   <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-    </p>
+    <p class="avatar-block"></p>
   </figure>
   <div class="media-content">
     <div class="content">
       <p>
         <strong><%= comment.user.first_name %></strong>
-        <br>
-        <small><%= comment.user.baby_names %></small>
+        <small class="has-text-grey-light">
+          <%= comment.user.baby_names %>
+        </small>
+        <%= render "comments/meta", comment: comment %>
       </p>
-      <p>
-        <% if comment.reply? %>
-          <p>
-            <small>replying to @<%= comment.parent.user.first_name %></small>
-          </p>
-        <% end %>
+      <div>
         <%= comment.body %>
 
-        <!-- TODO: show replies directly underneath parent by updating the show js.erb file -->
-        <!-- and making sure the div.replies gets added within the article element -->
         <% if comment.replies? %>
-          <br>
-          <small>
-            <span>
-              <%= link_to "Comments (#{comment.replies.size})",
-                          comment_replies_path(comment),
-                          class: 'comment-href', remote: true %> ·
-            </span>
-            <%= time_ago_in_words(comment.created_at) %> ago
-          </small>
+          <p>
+            <small>
+              <span>
+                <%= link_to "Comments (#{comment.replies.size})",
+                            comment_replies_path(comment),
+                            class: 'comment-href', remote: true %>
+              </span>
+            </small>
+          </p>
         <% end %>
-      </p>
+      </div>
     </div>
   </div>
 </article>
