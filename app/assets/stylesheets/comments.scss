@@ -1,4 +1,4 @@
-section.comments {
+.comments {
   article.media {
     border-top: none;
 
@@ -14,6 +14,6 @@ section.comments {
   }
 
   .replies {
-    padding-left: 16px;
+    margin-bottom: 1rem;
   }
 }

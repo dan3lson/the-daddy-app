@@ -1,10 +1,11 @@
 var replies = "<%= j render(partial: 'replies/index', locals: { replies: @replies }) %>";
 var rootID = "<%= @comment.id %>"
 var $rootComment = $("section.comments").find(`[data-comment-id='${rootID}']`);
+var $replyBox = $rootComment.next();
 var $rootCommentBox = $rootComment.parent();
 var $commentsLink = $rootComment.find('.comment-href');
 var $commentsLinkContainer = $commentsLink.parent();
 var $repliesDiv = $('<div/>', { "class": "replies" });
-$repliesDiv.appendTo($rootCommentBox);
+$repliesDiv.insertAfter($replyBox);
 $commentsLinkContainer.remove();
 $repliesDiv.hide().append(replies).fadeIn("slow");

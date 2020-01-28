@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
   def index
     @comment = Comment.find(params[:comment_id])
-    @replies = @comment.replies
+    @replies = @comment.replies.latest
   end
 
   def create
@@ -9,7 +9,7 @@ class RepliesController < ApplicationController
     @new_comment = current_user.comments.new(reply_params)
     @new_comment.parent = @parent_comment
     @new_comment.topic = @parent_comment.topic
-    @saved = @new_comment.save ? true : false
+    @saved = @new_comment.save
     @errors = @new_comment.errors.full_messages.join(';') unless @saved
   end
 

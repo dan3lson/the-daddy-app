@@ -13,8 +13,8 @@ end
 User.destroy_all
 danelson_sr = User.create!(
   email:      'danelson.rosa.sr@gmail.com',
-  password:   'password', 
-  first_name: 'Danelson', 
+  password:   'password',
+  first_name: 'Danelson',
   city:       'Bronx'
 )
 _danelson_jr = Baby.create!(
