@@ -1,0 +1,36 @@
+var $commentsDiv = $("#create-comment");
+var newCommentSaved = "<%= @saved %>" === "true";
+var $form = $commentsDiv.find("form");
+var $field = $form.find(".field");
+var $input = $field.find(".input");
+
+resetForms();
+
+newCommentSaved ? showSuccess() : showErrors();
+
+function resetInput($input) {
+    return $input.val("");
+}
+
+function resetForms() {
+    var $inputs = $commentsDiv.find(".input");
+    var $helpTexts = $commentsDiv.find(".help");
+
+    $inputs.removeClass("is-danger").removeClass("is-success");
+    $helpTexts.remove();
+}
+
+function showSuccess() {
+    var $helpSuccess = $('<p/>', { "class": "help is-success" });
+    $helpSuccess.text("Thanks for your comment");
+    $helpSuccess.insertAfter($field);
+    resetInput($input);
+}
+
+function showErrors() {
+    var errors = "<%= @errors %>";
+    var $helpDanger = $('<p/>', { "class": "help is-danger" });
+    $input.addClass("is-danger");
+    $helpDanger.text("Uh-oh: " + errors);
+    $helpDanger.insertAfter($field);
+}

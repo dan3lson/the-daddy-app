@@ -7,12 +7,11 @@ Rails.application.routes.draw do
     get '/sign_up' => 'clearance/users#new', as: 'sign_up'
   end
 
-  # == Authenticated Views
-  #
+  # Authenticated Views
   constraints Clearance::Constraints::SignedIn.new do
     # Comments
     root to: 'comments#index', as: :signed_in_root
-    resources :comments, only: %i[index new] do
+    resources :comments, only: %i[index create] do
       resources :replies, only: %i[index create]
     end
   end
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
   # Sessions
   resources :passwords, controller: 'clearance/passwords', only: %i[create new]
   resource :session, controller: 'clearance/sessions', only: [:create]
+  delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
 
   # Users
   resources :users, only: %i[new create] do
@@ -28,9 +28,6 @@ Rails.application.routes.draw do
              only: %i[create edit update]
   end
 
-  delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
-
-  # == Static Pages
-  #
+  # Static Pages
   get '/about' => 'pages#about'
 end

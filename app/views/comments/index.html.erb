@@ -1,10 +1,5 @@
-<section class="tabs container">
-  <ul>
-    <li class="is-active"><a>All</a></li>
-    <% @topics.each do |topic| %>
-      <li><a><%= topic.name.capitalize %></a></li>
-    <% end %>
-  </ul>
+<section id="create-comment" class="container has-background-grey-lighter">
+  <%= render "comments/create_form", comment: @comment %>
 </section>
 
 <section class="comments container">
