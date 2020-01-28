@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Seed Helpers
 #
 def new_sentence
@@ -40,12 +42,6 @@ _danelson_jr = Baby.create!(
      )
   end
 end
-
-# == Topics
-#
-Topic.destroy_all
-topics = %w[sleep purchases food relationships money]
-topics.each { |name| Topic.create!(name: name) }
 
 # == Comments
 #

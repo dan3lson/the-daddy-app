@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   it { should belong_to(:user) }
-  it { should belong_to(:topic) }
+  it { should belong_to(:topic).optional }
   it { should belong_to(:parent).optional }
   it { should have_many(:replies).dependent(:destroy) }
   it { should validate_presence_of(:body) }
+  it { should validate_length_of(:body).is_at_least(3) }
   it { should validate_presence_of(:status) }
   it { should define_enum_for(:status).with_values(%i[active inactive]) }
 

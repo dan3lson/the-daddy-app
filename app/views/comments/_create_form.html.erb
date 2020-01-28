@@ -1,0 +1,12 @@
+<%= form_for comment, remote: true do |form| %>
+	<%= render 'shared/form_errors', object: @comment %>
+
+	<div class="field is-grouped">
+		<p><strong>How's it going?</strong></p>
+		<p class="control is-expanded">
+			<%= form.text_field :body,
+													class: 'input',
+													placeholder: "My litle man just crawled!!" %>
+		</p>
+	</div>
+<% end %>
