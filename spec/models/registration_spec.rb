@@ -8,21 +8,9 @@ RSpec.describe Registration do
   it { should validate_presence_of(:babies) }
 
   describe '#register' do
-		describe 'when a daddy unsuccessfully registers (invalid daddy data)' do
+		describe 'when a daddy unsuccessfully registers (missing daddy data)' do
 			it 'prevents registration' do
-				attrs = {
-					email: 'danelson.rosa.sr@gmail.com',
-					password: 'password',
-					first_name: '',
-					city: '',
-					babies: [
-						{
-							first_name: 'Junior',
-							gender: :male,
-							birthdate: '2019/07/21'
-						}
-					]
-				}
+        attrs = attributes_for(:registration, city: '', email: nil)
 
 				Registration.new(attrs).register
 
@@ -31,49 +19,10 @@ RSpec.describe Registration do
 			end
 		end
 
-		describe 'when a daddy fails registeration (invalid baby data)' do
+		describe 'when a daddy fails registeration (missing baby data)' do
 			it 'prevents registration' do
-				attrs = {
-					email: 'danelson.rosa.sr@gmail.com',
-					password: 'password',
-					first_name: 'Danelson',
-					city: 'New York',
-					babies: [
-						{
-							first_name: '',
-							gender: :male,
-							birthdate: ''
-						}
-					]
-				}
-
-				Registration.new(attrs).register
-
-        expect(User.count).to eq(0)
-        expect(Baby.count).to eq(0)
-			end
-		end
-
-		describe 'when a daddy fails registeration (invalid baby data (partial))' do
-			it 'prevents registration' do
-				attrs = {
-					email: 'bigdaddyd8688@yahoo.com',
-					password: 'password',
-					first_name: 'Danelson',
-					city: 'New York',
-					babies: [
-						{
-							first_name: 'Danelson',
-							gender: nil,
-							birthdate: '2019/07/21'
-						},
-						{
-							first_name: 'Mariella',
-							gender: '',
-							birthdate: nil
-						}
-					]
-				}
+				babies = [{ first_name: '', gender: :male, birthdate: nil }]
+        attrs = attributes_for(:registration, babies: babies)
 
 				Registration.new(attrs).register
 
@@ -84,19 +33,7 @@ RSpec.describe Registration do
 
 		describe 'when a daddy successfully registers with one baby' do
 			it 'creates a new user and one baby record' do
-				attrs = {
-					email: 'danelson.rosa.sr@gmail.com',
-					password: 'password',
-					first_name: 'Danelson',
-					city: 'New York',
-					babies: [
-						{
-							first_name: 'Junior',
-							gender: :male,
-							birthdate: '2019/07/21'
-						}
-					]
-				}
+        attrs = attributes_for(:registration)
 
 				Registration.new(attrs).register
 
@@ -115,24 +52,7 @@ RSpec.describe Registration do
 
 		describe 'when a daddy successfully registers with two babies' do
 			it 'creates a new user and one baby record' do
-				attrs = {
-					email: 'danelson.rosa.sr@gmail.com',
-				  password: 'password',
-				  first_name: 'Danelson',
-				  city: 'New York',
-					babies: [
-						{
-							first_name: 'Junior',
-							gender: :male,
-							birthdate: '2019/07/21'
-						},
-						{
-							first_name: 'Mariella',
-							gender: :female,
-							birthdate: '2021/07/02'
-						}
-					]
-				}
+				attrs = attributes_for(:registration, :multiple_babies)
 
 				Registration.new(attrs).register
 
