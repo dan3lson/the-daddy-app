@@ -8,6 +8,7 @@ class Registration
 
 	validates :first_name, presence: true
 	validates :email, presence: true
+	validate  :unique_email?
 	validates :password, presence: true
 	validates :city, presence: true
 	validates :babies, presence: true
@@ -19,19 +20,26 @@ class Registration
 		ActiveRecord::Base.transaction do
 			daddy = create_daddy!
 			create_babies!(daddy)
+			daddy
 		end
-		true
 	end
 
 	private
+
+	def unique_email?
+		return unless User.exists?(email: email)
+
+		errors.add(:email, 'has already been taken')
+	end
 
 	def complete_babies_info?
 		return if babies.nil?
 
 		babies.each do |baby|
-			next unless baby.values.any?(&:blank?)
-
-			errors.add(:babies, 'baby info incomplete')
+			if baby.last.values.any?(&:blank?)
+			  errors.add(:babies, 'info is incomplete')
+				return
+			end
 		end
 	end
 
@@ -47,9 +55,9 @@ class Registration
 	def create_babies!(daddy)
 		babies.each do |baby|
 			daddy.babies.create!(
-				first_name: baby[:first_name],
-				gender: baby[:gender],
-				birthdate: baby[:birthdate]
+				first_name: baby.last['first_name'],
+				gender: baby.last['gender'],
+				birthdate: baby.last['birthdate']
 			)
 		end
 	end
