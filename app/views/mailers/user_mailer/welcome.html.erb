@@ -1,0 +1,29 @@
+<div class="content-container">
+  <div class="content">
+    <%= image_tag 'emails/banner.png',
+                  alt: 'Congrats, and Welcome to the Daddy App' %>
+    <p>Hey <%= @daddy.first_name %>,</p>
+    <p>
+      Congratulations on your baby <%= @daddy.babies.first.humanize_gender %>
+      and welcome to The Daddy App!
+    </p>
+    <p>
+      As a first-time Daddy with a 7-month old, it's great to
+      have a place where fathers can just talk about the ups and downs of
+      fatherhood.
+    </p>
+    <p>
+      Share your experiences and get advice on topics like money, relationships,
+      feeding, and more.
+    </p>
+    <p>
+      All the best with <%= @daddy.baby_names %> and don't forget to
+    </p>
+    <button>JOIN THE CONVERSATION</button>
+    <p>
+      Danelson
+      <br>
+      Daddy to DJ, 7-months old
+    </p>
+  </div>
+</div>
