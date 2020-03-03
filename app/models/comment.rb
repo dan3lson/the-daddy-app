@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Model to facilitate conversations.
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :topic,   optional: true

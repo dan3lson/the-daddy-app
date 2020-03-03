@@ -31,4 +31,9 @@ Rails.application.routes.draw do
 
   # Static Pages
   get '/about' => 'pages#about'
+
+  # Job Scheduler
+  require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
