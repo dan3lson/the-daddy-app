@@ -20,6 +20,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+gem 'wisper', '2.0.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

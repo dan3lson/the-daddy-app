@@ -7,7 +7,11 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = Registration.new(registration_params)
+
+    @registration.subscribe(RegistrationListener.new)
+
     @daddy = @registration.register
+
     if @daddy
       sign_in @daddy
       redirect_to signed_in_root_path
