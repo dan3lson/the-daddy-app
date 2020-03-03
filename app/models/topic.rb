@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
+# Model to categorize comments
 class Topic < ApplicationRecord
-	has_many :comments, dependent: :destroy
+  # Relationships
+  has_many :comments, dependent: :destroy
 
-	validates :name, presence: true, uniqueness: { case_sensitive: false }
+  # Validations
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 end

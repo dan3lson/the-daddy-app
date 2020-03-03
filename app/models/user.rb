@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-# Model to represent a father.
+# Model to represent a father
 class User < ApplicationRecord
   include Clearance::User
 
-  has_many :babies,   dependent: :destroy
+  # Relationships
+  has_many :babies, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   # Validations
@@ -13,14 +14,14 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :city, presence: true
 
-  def baby_names 
+  def baby_names
     names = babies.pluck(:first_name)
     num_babies = names.size
 
     case num_babies
     when 0 then ''
-    when 1 then	names.first
-    when 2 then	names.join(' and ')
+    when 1 then names.first
+    when 2 then names.join(' and ')
     else
       names.to_sentence
     end
