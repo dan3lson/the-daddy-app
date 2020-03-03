@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   constraints Clearance::Constraints::SignedOut.new do
     root to: 'pages#homepage'
     get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
-    get '/sign_up' => 'clearance/users#new', as: 'sign_up'
+    get '/sign_up' => 'registrations#new', as: 'sign_up'
+    resources :registrations, only: %i[new create]
   end
 
   # Authenticated Views
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
 
   # Users
-  resources :users, only: %i[new create] do
+  resources :users, only: [] do
     resource :password,
              controller: 'clearance/passwords',
              only: %i[create edit update]

@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class UsersController < Clearance::UsersController
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      sign_in @user
+  def update
+    if current_user.update(user_params)
       redirect_to signed_in_root_path
     else
-      render template: 'users/new'
+      render template: 'users/update' # TODO: change redirection template
     end
   end
 

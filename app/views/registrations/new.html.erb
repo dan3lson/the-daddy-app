@@ -1,9 +1,9 @@
 <div id="clearance" class="sign-up">
   <h3 class="title is-3"><%= t(".title") %></h3>
 
-  <%= form_for @user do |form| %>
-    <%= render 'shared/form_errors', object: @user %>
-    <%= render partial: '/users/form', object: form %>
+  <%= form_for @registration, url: registrations_path do |form| %>
+    <%= render 'shared/form_errors', object: @registration %>
+    <%= render partial: 'registrations/form', object: form %>
 
     <div class="buttons is-right">
       <%= form.submit 'Sign up', class: 'button is-primary' %>

@@ -2,7 +2,6 @@
 
 # Model to facilitate conversations.
 class Comment < ApplicationRecord
-  # Relationships
   belongs_to :user
   belongs_to :topic,   optional: true
   belongs_to :parent,  class_name:  :Comment, optional: true
@@ -10,14 +9,11 @@ class Comment < ApplicationRecord
                        foreign_key: :parent_id,
                        dependent:   :destroy
 
-  # Validations
   validates :body,   presence: true, length: { minimum: 3 }
   validates :status, presence: true
 
-  # Enums
   enum status: { active: 0, inactive: 1 }
 
-  # Scopes
   scope :root,   -> { where(parent: nil) }
   scope :latest, -> { order(created_at: :desc) }
 

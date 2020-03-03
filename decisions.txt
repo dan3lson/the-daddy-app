@@ -1,0 +1,6 @@
+01/28/2020
+
+- A Daddy's initial will appear next to their name if they don't upload a baby
+picture
+- Topics won't be selected by a user and instead saved from periodic background
+jobs or used with a general search

@@ -4,7 +4,6 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  # Relationships
   has_many :babies,   dependent: :destroy
   has_many :comments, dependent: :destroy
 

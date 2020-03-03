@@ -4,14 +4,16 @@
 
 <article class="media" data-comment-id="<%= comment.id %>"'>
   <figure class="media-left">
-    <p class="avatar-block"></p>
+    <div class="avatar-block">
+      <div><%= first_initial(comment.user) %></div>
+    </div>
   </figure>
   <div class="media-content">
     <div class="content">
       <p>
         <strong><%= comment.user.first_name %></strong>
         <small class="has-text-grey-light">
-          <%= comment.user.baby_names %>
+          <%= baby_names(comment.user) %>
         </small>
         <%= render "comments/meta", comment: comment %>
       </p>

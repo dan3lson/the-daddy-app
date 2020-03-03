@@ -49,3 +49,50 @@
     </div>
   </div>
 </div>
+
+<h1 class="title is-4">Add your babies</h1>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <%= label_tag "First name", nil, class: 'label' %>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <%= text_field_tag "registration[babies][0][first_name]",
+            "",
+            class: 'input' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <%= label_tag "Gender", nil, class: 'label' %>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <%= text_field_tag "registration[babies][0][gender]",
+            "",
+            class: 'input' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <%= label_tag "Birthdate", nil, class: 'label' %>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <%= date_field_tag "registration[babies][0][birthdate]",
+            "",
+            class: 'input' %>
+      </div>
+    </div>
+  </div>
+</div>

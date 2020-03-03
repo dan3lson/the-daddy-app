@@ -46,13 +46,11 @@ end
 # == Comments
 #
 User.count.times do
-  topic = Topic.all.sample
   body = [new_sentence, new_question].sample
-  comment = Comment.create!(body: body, topic: topic, user: User.all.sample)
+  comment = Comment.create!(body: body, user: User.all.sample)
   rand(10).times do
     comment.replies.create!(
       body: new_sentence,
-      topic: comment.topic,
       user: User.all.sample
     )
   end

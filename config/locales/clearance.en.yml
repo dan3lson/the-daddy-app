@@ -57,7 +57,7 @@ en:
       sign_up: Sign up
     new:
       title: Sign in
-  users:
+  registrations:
     new:
       sign_in: Sign in
       title: Sign up
