@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Model to facilitate conversations.
 class Comment < ApplicationRecord
   # Relationships
   belongs_to :user
