@@ -5,10 +5,10 @@ class UserMailer < ApplicationMailer
   layout 'mailer'
   default template_path: "mailers/#{name.underscore}"
 
-  def welcome(daddy)
-    @daddy = daddy
+  def welcome(email)
+    @email = email
 
-    mail(to: @daddy.email, subject: 'Congrats!, and Welcome to the Daddy App')
+    mail(to: @email, subject: 'Congrats!, and Welcome to the Daddy App')
   end
 
   def invite(inviter:, invitee:)

@@ -20,12 +20,12 @@ class Registration
 
     daddy = build_daddy
 
-    ActiveRecord::Base.transaction do
-      daddy.save!
+    if daddy.save
       create_babies!(daddy)
+      broadcast(:successful_registration, daddy.id)
+    else
+      broadcast(:unsuccessful_registration, daddy)
     end
-
-    broadcast(:registration_successful, daddy.id)
 
     daddy
   end

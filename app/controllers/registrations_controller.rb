@@ -7,17 +7,18 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = Registration.new(registration_params)
+    @registration.subscribe(Listeners::MailerNotifier.new)
 
-    @registration.subscribe(RegistrationListener.new)
-
-    @daddy = @registration.register
-
-    if @daddy
+    @registration.on(:successful_registration) do
       sign_in @daddy
+
       redirect_to signed_in_root_path
-    else
+    end
+    @registration.on(:unsuccessful_registration) do
       render template: 'registrations/new'
     end
+
+    @daddy = @registration.register
   end
 
   private
