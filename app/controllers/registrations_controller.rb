@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# RegistrationsController
 class RegistrationsController < ApplicationController
   def new
     @registration = Registration.new
@@ -7,18 +8,17 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = Registration.new(registration_params)
-    @registration.subscribe(Listeners::MailerNotifier.new)
 
-    @registration.on(:successful_registration) do
+    @registration.subscribe(MailerListener.new)
+    @registration.subscribe(InviteListener.new)
+
+    if @daddy = @registration.register
       sign_in @daddy
 
       redirect_to signed_in_root_path
-    end
-    @registration.on(:unsuccessful_registration) do
+    else
       render template: 'registrations/new'
     end
-
-    @daddy = @registration.register
   end
 
   private

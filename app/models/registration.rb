@@ -22,9 +22,9 @@ class Registration
 
     if daddy.save
       create_babies!(daddy)
+
       broadcast(:successful_registration, daddy.id)
-    else
-      broadcast(:unsuccessful_registration, daddy)
+      broadcast(:complete_invite, daddy.email)
     end
 
     daddy
@@ -42,10 +42,12 @@ class Registration
     return if babies.nil?
 
     babies.each do |baby|
-      if baby.last.values.any?(&:blank?)
-        errors.add(:babies, 'info is incomplete')
-        return
-      end
+      baby_attrs = baby.last
+      next unless baby_attrs.values.any?(&:blank?)
+
+      errors.add(:babies, 'info is incomplete')
+
+      return
     end
   end
 

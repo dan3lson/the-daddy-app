@@ -11,9 +11,7 @@ module TheDaddyApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    Rails.autoloaders.logger = method(:puts)
     routes.default_url_options[:host] = ENV['BASE_URL']
     routes.default_url_options[:protocol] = ENV['PROTOCOL']
-
   end
 end

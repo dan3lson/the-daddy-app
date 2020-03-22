@@ -12,6 +12,6 @@ module UserHelper
 	end
 
 	def first_initial(user)
-		user.first_name[0]
+		user.first_name[0].upcase
 	end
 end

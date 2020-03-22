@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# UsersController
 class UsersController < Clearance::UsersController
   def update
     if current_user.update(user_params)

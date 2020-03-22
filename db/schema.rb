@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_145035) do
+ActiveRecord::Schema.define(version: 2020_03_12_152155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2020_03_02_145035) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "invites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", null: false
+    t.integer "status", default: 0, null: false
+    t.uuid "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_invites_on_email", unique: true
+    t.index ["user_id"], name: "index_invites_on_user_id"
+  end
+
   create_table "topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -62,4 +72,5 @@ ActiveRecord::Schema.define(version: 2020_03_02_145035) do
   add_foreign_key "babies", "users"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
+  add_foreign_key "invites", "users"
 end

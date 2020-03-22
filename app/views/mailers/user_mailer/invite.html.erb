@@ -2,9 +2,10 @@
   <div class="content">
     <%= image_tag 'emails/invite.png',
                   alt: 'Special invitation to join The Daddy App' %>
-    <p>Hey <%= @invitee %>,</p>
+    <p>Hey <%= @invitee_email %>,</p>
     <p>
-      <%= @inviter %> has invited you to join The Daddy App!
+      A friend <%= "(#{@inviter_email})" if @inviter_email %> thought you
+      might want to join the conversations on The Daddy App!
     </p>
     <p>
       It's an online community where fathers meet over the ups and downs of
