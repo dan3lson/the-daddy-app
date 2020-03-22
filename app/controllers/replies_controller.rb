@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# RepliesController
 class RepliesController < ApplicationController
   def index
     @comment = Comment.find(params[:comment_id])
@@ -6,11 +9,18 @@ class RepliesController < ApplicationController
 
   def create
     @parent_comment = Comment.find(params[:comment_id])
-    @new_comment = current_user.comments.new(reply_params)
-    @new_comment.parent = @parent_comment
-    @new_comment.topic = @parent_comment.topic
-    @saved = @new_comment.save
-    @errors = @new_comment.errors.full_messages.join(';') unless @saved
+    options = reply_params.dup.merge({ parent_id: @parent_comment.id })
+
+    reply =
+      CreateReply.new(current_user, options)
+        .subscribe(MailerListener.new)
+        .post
+
+    if reply.persisted?
+      @saved = true
+    else
+      @errors = reply.errors.full_messages.join(';')
+    end
   end
 
   private

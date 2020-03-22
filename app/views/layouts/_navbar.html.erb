@@ -18,23 +18,40 @@
 
 	<div id="navbarBasicExample" class="navbar-menu">
 		<div class="navbar-end">
-			<a class="navbar-item">
-				Home
-			</a>
-			<a class="navbar-item">
-				About
-			</a>
-			<a class="navbar-item">
-				Contact
-			</a>
+      <%= link_to 'Home',
+                  signed_in_root_path,
+                  class: 'navbar-item',
+                  title: 'Home' %>
+      <%= link_to 'About',
+                  '#',
+                  class: 'navbar-item',
+                  title: 'About' %>
+      <%= link_to 'Contact',
+                  '#',
+                  class: 'navbar-item',
+                  title: 'Contact' %>
 			<div class="navbar-item">
 				<div class="buttons">
+          <%= link_to 'Invite Others',
+                      new_invite_path,
+                      class: 'button is-primary',
+                      title: 'Invite Others' %>
+
 					<% if signed_in? %>
-						<%= link_to 'Invite Others', comments_path, class: "button is-primary" %>
-						<%= link_to 'Sign out', sign_out_path, method: :delete, class: "button is-primary is-outlined" %>
+						<%= link_to 'Sign out',
+                        sign_out_path,
+                        method: :delete,
+                        class: "button is-primary is-outlined",
+                        title: 'Sign out' %>
 					<% else %>
-						<%= link_to 'Sign up', sign_up_path, class: "button is-primary" %>
-						<%= link_to 'Sign in', sign_in_path, class: "button is-primary is-outlined" %>
+						<%= link_to 'Sign up',
+                        sign_up_path,
+                        class: "button is-primary",
+                        title: 'Sign up' %>
+						<%= link_to 'Sign in',
+                        sign_in_path,
+                        class: "button is-primary is-outlined",
+                        title: 'Sign in' %>
 					<% end %>
 				</div>
 			</div>

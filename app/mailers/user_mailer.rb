@@ -5,20 +5,21 @@ class UserMailer < ApplicationMailer
   layout 'mailer'
   default template_path: "mailers/#{name.underscore}"
 
-  def welcome(daddy)
-    @daddy = daddy
+  def welcome(email)
+    @email = email
 
-    mail(to: @daddy.email, subject: 'Congrats!, and Welcome to the Daddy App')
+    mail(to: @email, subject: 'Congrats!, and Welcome to the Daddy App')
   end
 
-  def invite(inviter:, invitee:)
-    @inviter = inviter
-    @invitee = invitee
+  def invite(inviter_email: nil, invitee_email:)
+    @inviter_email = inviter_email
+    @invitee_email = invitee_email
 
-    mail(to: @invitee, subject: "You've Been Invited to The Daddy App!")
+    mail(to: @invitee_email, subject: "You've Been Invited to The Daddy App!")
   end
 
-  def reply(comment)
+  def reply(comment_id)
+    comment = Comment.find(comment_id)
     @daddy = comment.parent.user
 
     mail(

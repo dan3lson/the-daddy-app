@@ -29,6 +29,9 @@ Rails.application.routes.draw do
              only: %i[create edit update]
   end
 
+  # Invites
+  resources :invites, only: %i[new create]
+
   # Static Pages
   get '/about' => 'pages#about'
 
