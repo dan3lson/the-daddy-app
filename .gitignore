@@ -43,3 +43,6 @@ yarn-debug.log*
 
 # OSX stuff
 *.DS_Store
+
+# redis
+dump.rdb
