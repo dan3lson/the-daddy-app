@@ -5,7 +5,10 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def invite
-    UserMailer.invite(inviter: 'inviter@gmail.com', invitee: 'guest@gmail.com')
+    UserMailer.invite(
+      inviter_email: 'inviter@gmail.com',
+      invitee_email: 'guest@gmail.com'
+    )
   end
 
   def reply

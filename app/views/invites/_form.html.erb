@@ -1,0 +1,14 @@
+<%= form_for invite do |form| %>
+  <%= render 'shared/form_errors', object: invite %>
+
+  <div class="field">
+    <label for="body" class="label">
+      Guest email
+    </label>
+    <div class="control is-expanded">
+      <%= form.text_field :email,
+                          class: 'input',
+                          placeholder: "someone@youknow.com" %>
+    </div>
+  </div>
+<% end %>

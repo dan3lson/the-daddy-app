@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # Relationships
   has_many :babies, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :invites, dependent: :destroy
 
   # Validations
   validates :email, presence: true, uniqueness: { case_sensitive: false }
