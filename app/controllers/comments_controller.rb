@@ -9,12 +9,12 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @saved = @comment.save
-    @errors = @comment.errors.full_messages.join(';').html_safe unless @saved
+    @errors = @comment.errors.full_messages.join('; ').html_safe unless @saved
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :image)
   end
 end

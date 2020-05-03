@@ -3,12 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'active_storage_validations'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bulma-rails', '~> 0.8.0'
 gem 'clearance'
 gem 'dotenv-rails'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
+gem 'mini_magick'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'premailer-rails'
 gem 'puma', '~> 3.11'

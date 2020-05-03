@@ -9,6 +9,11 @@ RSpec.describe Comment, type: :model do
   it { should validate_length_of(:body).is_at_least(3) }
   it { should validate_presence_of(:status) }
   it { should define_enum_for(:status).with_values(%i[active inactive]) }
+  it do
+    should validate_content_type_of(:image).
+      allowing('image/png', 'jpg', 'jpeg', 'image/jpeg', 'image/gif')
+  end
+  it { should validate_size_of(:image).less_than_or_equal_to(4.megabytes) }
 
   describe '.root' do
     it 'should be empty' do
