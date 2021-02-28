@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.7.1'
 
 gem 'active_storage_validations'
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -28,7 +28,7 @@ gem 'wisper', '2.0.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 4.0.2'
 end
 
 group :development do
