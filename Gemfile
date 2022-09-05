@@ -5,7 +5,6 @@ ruby '2.7.4'
 
 gem 'active_storage_validations'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'bulma-rails', '~> 0.8.0'
 gem 'clearance'
 gem 'dotenv-rails'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
