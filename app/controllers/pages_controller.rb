@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
-	def homepage
+	def homepage; end
+
+	def join
+		render layout: "join"
 	end
 end

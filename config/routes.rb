@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   constraints Clearance::Constraints::SignedOut.new do
     root to: 'pages#homepage'
+    get 'join', to: "pages#join"
     get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
     get '/sign_up' => 'registrations#new', as: 'sign_up'
     resources :registrations, only: %i[new create]
