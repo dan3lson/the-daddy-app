@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Waitlist Emails</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Daddy type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @waitlist_users.each do |waitlist_user| %>
+      <tr>
+        <td><%= waitlist_user.email %></td>
+        <td><%= waitlist_user.daddy_type %></td>
+        <td><%= link_to 'Show', waitlist_user %></td>
+        <td><%= link_to 'Edit', edit_waitlist_user_path(waitlist_user) %></td>
+        <td><%= link_to 'Destroy', waitlist_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Waitlist Email', new_waitlist_user_path %>

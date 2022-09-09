@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @waitlist_user.email %>
+</p>
+
+<p>
+  <strong>Daddy type:</strong>
+  <%= @waitlist_user.daddy_type %>
+</p>
+
+<%= link_to 'Edit', edit_waitlist_user_path(@waitlist_user) %> |
+<%= link_to 'Back', waitlist_users_path %>

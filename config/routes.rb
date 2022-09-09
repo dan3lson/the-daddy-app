@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # TODO: restrict access to create when signed out and everything when
+  # signed in.
+  resources :waitlist_users
   constraints Clearance::Constraints::SignedOut.new do
     root to: 'pages#homepage'
     get 'join', to: "pages#join"
+    get 'joined', to: "pages#joined", as: :joined
+    # TODO: temporarily comment out so no one can create an account. When it's
+    # time to launch, create a special sign-up page which pre-fills the email
+    # field in the registration form and maybe add a custom "we've been waiting
+    # for you" message, :).
     get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
     get '/sign_up' => 'registrations#new', as: 'sign_up'
     resources :registrations, only: %i[new create]

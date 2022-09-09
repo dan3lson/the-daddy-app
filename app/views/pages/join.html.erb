@@ -10,20 +10,18 @@
     </div>
 
     <div class="col-md-10 mx-auto col-lg-5">
-      <form class="p-4 p-md-5 border rounded-3 bg-light">
+      <%= form_with model: @waitlist_user, local: true, class: "p-4 p-md-5 border rounded-3 bg-light" do |form| %>
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+          <%= form.text_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com", required: true %>
+          <%= form.label :email, "Email address", for: "floatingInput" %>
         </div>
         <div class="form-floating mb-3">
-          <select class="form-select form-select mb-3 form-control" aria-label=".form-select-lg example">
-            <option selected>Open this select menu</option>
-            <option value="1">First-timer</option>
-            <option value="2">Seasoned</option>
-            <option value="3">Stepdad</option>
-            <option value="4">Adopter</option>
-          </select>
+          <!-- TODO: Add info icon which shows a popup to answer "what if more than one applies?" -->
+          <%= select(:waitlist_user, :daddy_type, options_for_select(WaitlistUser.daddy_types), {include_blank: "Select..."}, {class: "form-select form-select mb-3 form-control", "aria-label": ".form-select-lg", required: true}) %>
           <label for="floatingInput">Type of Daddy</label>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">
           Join the Waitlist
@@ -32,9 +30,9 @@
         <small class="text-muted">
           By joining, you'll be entered in a free raffle.
           Many will enter, few will win -- boost your chances
-          when you refer other daddys.
+          when you refer other daddies.
         </small>
-      </form>
+      <% end %>
     </div>
   </div>
 </div>
