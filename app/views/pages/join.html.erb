@@ -9,35 +9,13 @@
       </p>
     </div>
 
-    <div class="col-md-10 mx-auto col-lg-5">
-      <%= form_with model: @waitlist_user, local: true, class: "p-4 p-md-5 border rounded-3 bg-light" do |form| %>
-        <div class="form-floating mb-3">
-          <%= form.text_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com", required: true %>
-          <%= form.label :email, "Email address", for: "floatingInput" %>
-        </div>
-        <div class="form-floating mb-3">
-          <!-- TODO: Add info icon which shows a popup to answer "what if more than one applies?" -->
-          <%= select(:waitlist_user, :daddy_type, options_for_select(WaitlistUser.daddy_types), {include_blank: "Select..."}, {class: "form-select form-select mb-3 form-control", "aria-label": ".form-select-lg", required: true}) %>
-          <label for="floatingInput">Type of Daddy</label>
-          <div class="invalid-feedback">
-            Please choose a username.
-          </div>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
-          Join the Waitlist
-        </button>
-        <hr class="my-4">
-        <small class="text-muted">
-          By joining, you'll be entered in a free raffle.
-          Many will enter, few will win -- boost your chances
-          when you refer other daddies.
-        </small>
-      <% end %>
+    <div class="col-md-10 mx-auto col-lg-6 p-4 p-md-4 border rounded-3 bg-light join-waitlist">
+      <%= render "join_waitlist_form", referral_code: @referral_code, waitlist_user: @waitlist_user %>
     </div>
   </div>
 </div>
 
-<div class="container col-xxl-8 px-4 py-5">
+<div class="container col-xxl-8 px-4 py-5 why-join">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-10 col-sm-8 col-lg-5">
       <%= img('newborn-sleep.svg', 'Sleepy newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>

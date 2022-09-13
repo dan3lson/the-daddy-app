@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WaitlistUsersController < ApplicationController
   before_action :set_waitlist_user, only: %i[ show edit update destroy ]
 
@@ -16,19 +18,11 @@ class WaitlistUsersController < ApplicationController
   end
 
   def create
-    @waitlist_user = WaitlistUser.new(waitlist_user_params)
-
-    if WaitlistUser.exists?(email: @waitlist_user.email)
-      # TODO: add referral code in url to retrieve in PagesController#joined
-      redirect_to joined_path(@waitlist_user)
-    else
-      if @waitlist_user.save
-        redirect_to joined_path(@waitlist_user)
-      else
-        render :new, status: :unprocessable_entity
-      end
-    end
-
+    @waitlist_user = CreateWaitlistUser.call(
+      email:         waitlist_user_params[:email],
+      daddy_type:    waitlist_user_params[:daddy_type],
+      referral_code: waitlist_user_params[:referral_code].presence
+    )
   end
 
   def update
@@ -59,6 +53,6 @@ class WaitlistUsersController < ApplicationController
   end
 
   def waitlist_user_params
-    params.require(:waitlist_user).permit(:email, :daddy_type)
+    params.require(:waitlist_user).permit(:daddy_type, :email, :referral_code)
   end
 end

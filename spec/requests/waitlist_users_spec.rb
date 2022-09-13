@@ -80,6 +80,10 @@ RSpec.describe "/waitlist_users", type: :request do
         expect(response).to be_successful
       end
     end
+
+    context "with a referral code for a new user"
+    context "with a referral code for an existing user"
+    context "without a referral code"
   end
 
   describe "PATCH /update" do

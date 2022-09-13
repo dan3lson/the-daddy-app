@@ -93,10 +93,14 @@ ActiveRecord::Schema.define(version: 2022_09_07_031132) do
   create_table "waitlist_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", null: false
     t.string "daddy_type", null: false
+    t.string "referral_code", null: false
+    t.uuid "referrer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["daddy_type"], name: "index_waitlist_users_on_daddy_type"
     t.index ["email"], name: "index_waitlist_users_on_email", unique: true
+    t.index ["referral_code"], name: "index_waitlist_users_on_referral_code", unique: true
+    t.index ["referrer_id"], name: "index_waitlist_users_on_referrer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

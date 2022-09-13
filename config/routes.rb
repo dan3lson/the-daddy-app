@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   constraints Clearance::Constraints::SignedOut.new do
     root to: 'pages#homepage'
     get 'join', to: "pages#join"
-    get 'joined', to: "pages#joined", as: :joined
     # TODO: temporarily comment out so no one can create an account. When it's
     # time to launch, create a special sign-up page which pre-fills the email
     # field in the registration form and maybe add a custom "we've been waiting

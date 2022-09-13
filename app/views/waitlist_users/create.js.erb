@@ -1,0 +1,9 @@
+var $container = $(".join-waitlist");
+var $footer = $(".footer");
+var $whyJoinSection = $(".why-join");
+var joinedPartial = "<%= j render(partial: 'joined', locals: { waitlist_user: @waitlist_user }) %>";
+
+$container.empty();
+$whyJoinSection.hide();
+$footer.hide();
+$container.hide().html(joinedPartial).fadeIn(400);
