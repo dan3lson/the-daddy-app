@@ -5,7 +5,7 @@
   </div>
   <div class="form-floating mb-3">
     <!-- TODO: Add info icon which shows a popup to answer "what if more than one applies?" -->
-    <%= select(:waitlist_user, :daddy_type, options_for_select(WaitlistUser.daddy_types), {include_blank: "Select..."}, {class: "form-select form-select mb-3 form-control", "aria-label": ".form-select-lg", required: true}) %>
+    <%= select(:waitlist_user, :daddy_type, options_for_select(WaitlistUser.daddy_types), {include_blank: "Choose one..."}, {class: "form-select form-select mb-3 form-control", "aria-label": ".form-select-lg", required: true}) %>
     <label for="floatingInput">Type of Daddy</label>
     <div class="invalid-feedback">
       Please choose a username.
