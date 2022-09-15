@@ -11,15 +11,15 @@ $(document).ready(function(){
 			if (index == verbs().length) {
 				index = 0;
 			}
-		}, 2000);
+		}, 2100);
 	}
 
 	function verbs() {
-		return ['Laugh', 'Cry', 'Vent', 'Relax', 'Worry', 'Chat'];
+		return ['laugh', 'cry', 'vent', 'relax', 'worry', 'escape', 'chat'];
 	}
 
 	function changeText(string) {
-		const $changingText = $("section.hero .title.is-1 div");
+		const $changingText = $(".space-for-daddies-text em");
 
 		$changingText.fadeOut("slow", function() {
 			$changingText.fadeIn("slow");
