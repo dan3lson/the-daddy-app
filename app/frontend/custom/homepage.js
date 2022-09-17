@@ -15,15 +15,15 @@ $(document).ready(function(){
 	}
 
 	function verbs() {
-		return ['laugh', 'cry', 'vent', 'relax', 'worry', 'escape', 'chat'];
+		return ['laugh', 'cry', 'vent', 'relax', 'worry', 'escape', 'dream', 'chat'];
 	}
 
 	function changeText(string) {
-		const $changingText = $(".space-for-daddies-text em");
+		const $changingText = $(".space-for-daddies-text mark");
 
 		$changingText.fadeOut("slow", function() {
 			$changingText.fadeIn("slow");
-			$changingText.text(string);
+			$changingText.text(string + ".");
 		});
 	}
 
