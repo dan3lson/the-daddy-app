@@ -1,7 +1,10 @@
 # frozen_string_literal
 
-# Invite model to represent invitations.
+# TODO: rename model to Referral
 class Invite < ApplicationRecord
+  # TODO: make polymorphic so it can belong to a User, WaitlistUser, or Guest.
+  # Guest would be like a null object.
+  # TODO: add unique code so URL can be generated -- look into Munchkin app
   belongs_to :user, optional: true
 
   validates :email,  presence: true, uniqueness: {
