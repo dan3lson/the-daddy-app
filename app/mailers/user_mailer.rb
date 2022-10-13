@@ -18,6 +18,14 @@ class UserMailer < ApplicationMailer
     mail(to: @invitee_email, subject: "You've Been Invited to The Daddy App!")
   end
 
+  def waitlist_user_joined(email:, first_name:, referral_code:)
+    @email         = email
+    @first_name    = first_name
+    @referral_code = referral_code
+
+    mail(to: @email, subject: "You're On The Waitlist!")
+  end
+
   def reply(comment_id)
     comment = Comment.find(comment_id)
     @daddy = comment.parent.user

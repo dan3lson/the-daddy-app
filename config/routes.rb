@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # signed in.
   resources :waitlist_users
   constraints Clearance::Constraints::SignedOut.new do
-    root to: 'pages#homepage'
+    root to: 'pages#join'
     get 'join', to: "pages#join"
     # TODO: temporarily comment out so no one can create an account. When it's
     # time to launch, create a special sign-up page which pre-fills the email

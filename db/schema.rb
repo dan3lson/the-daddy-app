@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_07_031132) do
+ActiveRecord::Schema.define(version: 2022_10_12_121708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2022_09_07_031132) do
     t.uuid "referrer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name", null: false
     t.index ["daddy_type"], name: "index_waitlist_users_on_daddy_type"
     t.index ["email"], name: "index_waitlist_users_on_email", unique: true
     t.index ["referral_code"], name: "index_waitlist_users_on_referral_code", unique: true

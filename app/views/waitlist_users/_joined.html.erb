@@ -1,10 +1,12 @@
 <p>
-  <span class="fs-3">🎉</span> Thanks for joining the waitlist &mdash; we're excited for this
-  community to exist really soon.
+  <span class="fs-3">🎉</span> Thanks for joining the waitlist, <%= first_name %>!
+  We're excited for this
+  community to exist really soon and will send you an invite when we go live.
 </p>
 <p>
-  <span class="fs-3">🎟</span> You've automatically been entered in our free raffle!
-  We'll announce the winners on the day we officially launch.
+  <span class="fs-3">🎟</span> You've automatically been entered in this month's
+  free raffle! We'll announce the three lucky winners on the day we officially
+  launch.
 </p>
 <p>
   <!-- TODO: Jazz up this referral section -->
@@ -13,11 +15,11 @@
     model, which has status, you can add a step for the referee to accept the referrer's
     referral.
   -->
-  <span class="fs-3">👥</span> Increase your chances of winning by referring other daddies! Copy
-  and share your referral link below via text, email,
-  social media, or even a carrier pigeon. When your daddy-friends join the
-  waitlist, they get X and you get Y.
+  <span class="fs-3">👥</span> Increase your chances of winning by referring
+  other daddies! Copy and share your referral link below via text, email,
+  social media, or even carrier pigeon. When your daddy-friends join the
+  waitlist, they get their first entry into the raffle and you get another!
 </p>
 <p class="fs-5">
-  <%= join_url(referral_code: waitlist_user.referral_code) %>
+  <%= join_url(referral_code: referral_code) %>
 </p>

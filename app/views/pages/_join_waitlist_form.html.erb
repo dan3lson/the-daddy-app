@@ -1,6 +1,10 @@
 <%= form_with model: waitlist_user, local: false do |form| %>
   <div class="form-floating mb-3">
-    <%= form.text_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com", required: true %>
+    <%= form.text_field :first_name, class: "form-control", id: "floatingFirstName", placeholder: "First name", required: true %>
+    <%= form.label :first_name, "First name", for: "floatingInput" %>
+  </div>
+  <div class="form-floating mb-3">
+    <%= form.text_field :email, class: "form-control", id: "floatingEmail", placeholder: "name@example.com", required: true %>
     <%= form.label :email, "Email address", for: "floatingInput" %>
   </div>
   <div class="form-floating mb-3">
@@ -8,19 +12,19 @@
     <%= select(:waitlist_user, :daddy_type, options_for_select(WaitlistUser.daddy_types), {include_blank: "Choose one..."}, {class: "form-select form-select mb-3 form-control", "aria-label": ".form-select-lg", required: true}) %>
     <label for="floatingInput">Type of Daddy</label>
     <div class="invalid-feedback">
-      Please choose a username.
+      Please choose which type of daddy you are.
     </div>
   </div>
-  <div>
-    <%= form.hidden_field(:referral_code, value: referral_code) %>
+  <div class="form-floating mb-3">
+    <%= form.text_field :referral_code,
+                        class: "form-control #{referral_code_readonly_class(referral_code)}",
+                        value: referral_code_value(referral_code),
+                        readonly: referral_code_readonly?(referral_code),
+                        id: "floatingReferralCode",
+                        placeholder: "s0meCod3" %>
+    <%= form.label :referral_code, "Referral Code (Optional)", for: "floatingReferralCode" %>
   </div>
   <button class="w-100 btn btn-lg btn-primary" type="submit">
     Join the Waitlist
   </button>
-  <hr class="my-4">
-  <small class="text-muted">
-    By joining, you'll be entered in a free raffle.
-    Many will enter, few will win -- boost your chances
-    when you refer other daddies.
-  </small>
 <% end %>

@@ -6,6 +6,7 @@ class WaitlistUser < ApplicationRecord
 
   validates :daddy_type, presence: true
   validates :email,      presence: true
+  validates :first_name, presence: true
 
   enum daddy_type: Lib::Constants::DADDY_TYPES
 

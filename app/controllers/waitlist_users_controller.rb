@@ -18,11 +18,8 @@ class WaitlistUsersController < ApplicationController
   end
 
   def create
-    @waitlist_user = CreateWaitlistUser.call(
-      email:         waitlist_user_params[:email],
-      daddy_type:    waitlist_user_params[:daddy_type],
-      referral_code: waitlist_user_params[:referral_code].presence
-    )
+    # TODO: error handling and early break from this service
+    @waitlist_user = CreateWaitlistUser.new(create_params).subscribe(MailerListener.new).call
   end
 
   def update
@@ -52,7 +49,14 @@ class WaitlistUsersController < ApplicationController
     @waitlist_user = WaitlistUser.find(params[:id])
   end
 
+  def create_params
+    waitlist_user_params
+      .slice(:daddy_type, :email, :first_name, :referral_code)
+      .to_h
+      .symbolize_keys
+  end
+
   def waitlist_user_params
-    params.require(:waitlist_user).permit(:daddy_type, :email, :referral_code)
+    params.require(:waitlist_user).permit(:daddy_type, :email, :first_name, :referral_code)
   end
 end

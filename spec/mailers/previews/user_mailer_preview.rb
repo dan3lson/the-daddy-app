@@ -14,4 +14,12 @@ class UserMailerPreview < ActionMailer::Preview
   def reply
     UserMailer.reply(Comment.first)
   end
+
+  def waitlist_user_joined
+    UserMailer.waitlist_user_joined(
+      email:         "some_excited_daddy@email.com",
+      first_name:    "Danelson Sr.",
+      referral_code: "s0meCod3"
+    )
+  end
 end

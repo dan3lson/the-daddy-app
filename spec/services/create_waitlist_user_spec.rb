@@ -8,6 +8,7 @@ RSpec.describe CreateWaitlistUser do
       described_class.call(
         email:         email,
         daddy_type:    "juggler",
+        first_name:    "Danelson Sr.",
         referral_code: referral_code
       )
     end
