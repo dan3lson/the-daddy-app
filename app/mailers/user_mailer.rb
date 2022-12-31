@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
   default template_path: "mailers/#{name.underscore}"
 
   def welcome(email)
-    @email = email
+    @daddy = User.find_by(email: email)
 
     mail(to: @email, subject: 'Congrats!, and Welcome to the Daddy App')
   end

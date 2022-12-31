@@ -1,7 +1,7 @@
 <div class="content-container">
   <div class="content">
-    <%= image_tag 'emails/invite.png',
-                  alt: 'Special invitation to join The Daddy App' %>
+    <%= image_pack_tag "emails/invite.png",
+                  alt: "Special invitation to join The Daddy App" %>
     <p>Hey <%= @invitee_email %>,</p>
     <p>
       A friend <%= "(#{@inviter_email})" if @inviter_email %> thought you
@@ -22,7 +22,7 @@
     <p>
       Danelson
       <br>
-      Daddy to DJ, 3 years old &amp; Zuri, 3 months old
+      Daddy to DJ, 3.5 years old &amp; Zuri, 7 months old
     </p>
   </div>
 </div>
