@@ -22,3 +22,4 @@ import "../stylesheets/application"
 require("custom/homepage")
 require("custom/navbar")
 require("custom/comment_form")
+require.context('../images', true)
