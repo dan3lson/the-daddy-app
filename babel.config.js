@@ -47,7 +47,12 @@ module.exports = function(api) {
           loose: true
         }
       ],
-      ["@babel/plugin-proposal-private-methods", { "loose": true }],
+      [
+        require('@babel/plugin-proposal-private-methods').default,
+        {
+          loose: true
+        }
+      ],
       [
         require('@babel/plugin-proposal-object-rest-spread').default,
         {
