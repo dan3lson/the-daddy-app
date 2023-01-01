@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function() {
 	loopText();
 
 	function loopText() {
@@ -11,23 +11,19 @@ $(document).ready(function(){
 			if (index == verbs().length) {
 				index = 0;
 			}
-		}, 2100);
+		}, 1500);
 	}
 
 	function verbs() {
-		return ['laugh', 'cry', 'vent', 'relax', 'worry', 'escape', 'dream', 'chat'];
+		return ['laugh', 'vent', 'relax', 'cry', 'worry', 'escape', 'dream', 'chat'];
 	}
 
 	function changeText(string) {
 		const $changingText = $(".space-for-daddies-text mark");
 
-		$changingText.fadeOut("slow", function() {
-			$changingText.fadeIn("slow");
+		$changingText.fadeOut(1500, function() {
+			$changingText.fadeIn(1500);
 			$changingText.text(string + ".");
 		});
-	}
-
-	function random_item(items) {
-		return items[Math.floor(Math.random()*items.length)];
 	}
 });
