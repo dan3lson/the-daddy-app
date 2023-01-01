@@ -15,7 +15,17 @@ $(function() {
 	}
 
 	function verbs() {
-		return ['laugh', 'vent', 'relax', 'cry', 'worry', 'escape', 'dream', 'chat'];
+		return [
+			'laugh',
+			'vent',
+			'relax',
+			'cry',
+			'worry',
+			'learn',
+			'escape',
+			'dream',
+			'chat'
+		];
 	}
 
 	function changeText(string) {
