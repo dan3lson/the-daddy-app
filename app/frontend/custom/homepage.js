@@ -23,7 +23,7 @@ $(function() {
 
 		$changingText.fadeOut(1500, function() {
 			$changingText.fadeIn(1500);
-			$changingText.text(string + ".");
+			$changingText.text(string);
 		});
 	}
 });
