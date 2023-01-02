@@ -24,6 +24,7 @@ $(function() {
 			'learn',
 			'escape',
 			'dream',
+			'inspire',
 			'chat'
 		];
 	}
