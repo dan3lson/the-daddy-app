@@ -11,8 +11,13 @@ class WaitlistUser < ApplicationRecord
   enum daddy_type: Lib::Constants::DADDY_TYPES
 
   before_create :set_referral_code
+  before_save :downcase_email
 
   private
+
+  def downcase_email
+    self.email = email.downcase
+  end
 
   def set_referral_code
     loop do
