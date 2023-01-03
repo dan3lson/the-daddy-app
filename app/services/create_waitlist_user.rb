@@ -6,10 +6,10 @@ class CreateWaitlistUser < ApplicationService
   attr_reader :email, :daddy_type, :first_name, :referral_code
 
   def initialize(email:, daddy_type:, first_name:, referral_code:)
-    @email         = email
+    @email         = email.downcase
     @daddy_type    = daddy_type
-    @first_name    = first_name
-    @referral_code = referral_code
+    @first_name    = first_name.strip
+    @referral_code = referral_code.strip
   end
 
   def call
