@@ -15,7 +15,9 @@ class WaitlistUserDashboard < Administrate::BaseDashboard
     referral_code: Field::String,
     referrals: Field::HasMany,
     referrer: Field::BelongsTo,
-    created_at: Field::DateTime,
+    created_at: Field::DateTime.with_options(
+      format: "%a, %e %b %Y %H:%M %p"
+    ),
     updated_at: Field::DateTime,
   }.freeze
 
@@ -25,11 +27,11 @@ class WaitlistUserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    id
     first_name
     daddy_type
     email
     referral_code
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
