@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Lib
   module Constants
     DADDY_TYPES = {
@@ -5,6 +7,7 @@ module Lib
       "The Juggler":     "juggler",
       "The Stepdad":     "stepdad",
       "The Adopter":     "adopter",
+      "The Fosterer":    "fosterer",
       "Other":           "other",
     }
   end
