@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   # TODO: restrict access to create when signed out and everything when
   # signed in.
+
   resources :waitlist_users
+
   constraints Clearance::Constraints::SignedOut.new do
     root to: 'pages#join'
     get 'join', to: "pages#join"
@@ -18,6 +20,17 @@ Rails.application.routes.draw do
 
   # Authenticated Views
   constraints Clearance::Constraints::SignedIn.new do
+    namespace :admin do
+      resources :babies
+      resources :comments
+      resources :invites
+      resources :topics
+      resources :users
+      resources :waitlist_users
+
+      root to: "waitlist_users#index"
+    end
+
     # Comments
     root to: 'comments#index', as: :signed_in_root
     resources :comments, only: %i[index create] do
