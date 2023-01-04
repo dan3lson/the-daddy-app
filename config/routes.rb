@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     # field in the registration form and maybe add a custom "we've been waiting
     # for you" message, :).
     get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
-    get '/sign_up' => 'registrations#new', as: 'sign_up'
-    resources :registrations, only: %i[new create]
   end
 
   # Authenticated Views
@@ -29,6 +27,21 @@ Rails.application.routes.draw do
       resources :waitlist_users
 
       root to: "waitlist_users#index"
+
+      # Job Scheduler
+      require 'sidekiq/web'
+      require 'sidekiq-scheduler/web'
+      mount Sidekiq::Web => '/sidekiq'
+
+      # Temporary sign-in restriction
+      get '/sign_up' => 'registrations#new', as: 'sign_up'
+      resources :registrations, only: %i[new create]
+
+      # Invites
+      resources :invites, only: %i[new create]
+
+      # Static Pages
+      get '/about' => 'pages#about'
     end
 
     # Comments
@@ -49,15 +62,4 @@ Rails.application.routes.draw do
              controller: 'clearance/passwords',
              only: %i[create edit update]
   end
-
-  # Invites
-  resources :invites, only: %i[new create]
-
-  # Static Pages
-  get '/about' => 'pages#about'
-
-  # Job Scheduler
-  require 'sidekiq/web'
-  require 'sidekiq-scheduler/web'
-  mount Sidekiq::Web => '/sidekiq'
 end
