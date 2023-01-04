@@ -3,8 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.6'
 
-gem 'administrate'
 gem 'active_storage_validations'
+gem 'administrate'
+gem 'ahoy_matey'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'clearance'
 gem "dartsass-rails", "~> 0.4.0"
