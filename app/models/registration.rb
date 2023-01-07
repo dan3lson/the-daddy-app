@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Sign up a Daddy and their children.
+# This custom model signs up a daddy and their children.
 class Registration
   include ActiveModel::Model
   include Wisper::Publisher
@@ -46,8 +46,6 @@ class Registration
       next unless baby_attrs.values.any?(&:blank?)
 
       errors.add(:babies, "info is incomplete")
-
-      return
     end
   end
 
