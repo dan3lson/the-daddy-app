@@ -11,7 +11,9 @@ class RegistrationsController < ApplicationController
     @registration.subscribe(MailerListener.new)
     @registration.subscribe(InviteListener.new)
 
-    if @daddy = @registration.register
+    @daddy = @registration.register
+
+    if @daddy
       sign_in @daddy
 
       redirect_to signed_in_root_path
