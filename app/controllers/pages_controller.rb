@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  def about
+  end
+
+  def contact_us
+  end
+
   def homepage
+    render layout: "layouts/application_homepage"
   end
 
   # TODO: Move into its own resource,

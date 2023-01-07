@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  layout "layouts/application_signed_in"
+
   def index
     @root_comments = Comment.root.latest
     @comment = Comment.new
