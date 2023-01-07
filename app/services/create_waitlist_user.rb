@@ -6,9 +6,9 @@ class CreateWaitlistUser < ApplicationService
   attr_reader :email, :daddy_type, :first_name, :referral_code
 
   def initialize(email:, daddy_type:, first_name:, referral_code:)
-    @email         = email.downcase
-    @daddy_type    = daddy_type
-    @first_name    = first_name.strip
+    @email = email.downcase
+    @daddy_type = daddy_type
+    @first_name = first_name.strip
     @referral_code = referral_code.strip
   end
 
@@ -28,7 +28,7 @@ class CreateWaitlistUser < ApplicationService
       .first_or_initialize do |waitlist_user|
         waitlist_user.daddy_type = daddy_type
         waitlist_user.first_name = first_name
-        waitlist_user.referrer   = referrer
+        waitlist_user.referrer = referrer
       end
   end
 

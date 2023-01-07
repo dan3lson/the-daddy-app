@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
-# General emails for the user
 class UserMailer < ApplicationMailer
-  layout 'mailer'
+  layout "mailer"
   default template_path: "mailers/#{name.underscore}"
 
   def welcome(email)
     @daddy = User.find_by(email: email)
 
-    mail(to: @email, subject: 'Congrats!, and Welcome to the Daddy App')
+    mail(to: @email, subject: "Congrats!, and Welcome to the Daddy App")
   end
 
-  def invite(inviter_email: nil, invitee_email:)
+  def invite(invitee_email:, inviter_email: nil)
     @inviter_email = inviter_email
     @invitee_email = invitee_email
 
@@ -19,8 +18,8 @@ class UserMailer < ApplicationMailer
   end
 
   def waitlist_user_joined(email:, first_name:, referral_code:)
-    @email         = email
-    @first_name    = first_name
+    @email = email
+    @first_name = first_name
     @referral_code = referral_code
 
     mail(to: @email, subject: "You're On The Waitlist!")
@@ -32,7 +31,7 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @daddy.email,
-      subject: 'Someone replied to your comment on The Daddy App'
+      subject: "Someone replied to your comment on The Daddy App"
     )
   end
 end

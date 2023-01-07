@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Registration do
   it { should validate_presence_of(:email) }
@@ -7,9 +7,9 @@ RSpec.describe Registration do
   it { should validate_presence_of(:city) }
   it { should validate_presence_of(:babies) }
 
-  describe '#register' do
-    describe 'when a daddy unsuccessfully registers (missing daddy data)' do
-      it 'prevents registration' do
+  describe "#register" do
+    describe "when a daddy unsuccessfully registers (missing daddy data)" do
+      it "prevents registration" do
         attrs = attributes_for(:invalid_daddy_registration)
 
         Registration.new(attrs).register
@@ -19,8 +19,8 @@ RSpec.describe Registration do
       end
     end
 
-    describe 'when a daddy fails registration (missing baby data)' do
-      it 'prevents registration' do
+    describe "when a daddy fails registration (missing baby data)" do
+      it "prevents registration" do
         attrs = attributes_for(:invalid_baby_registration)
 
         Registration.new(attrs).register
@@ -30,45 +30,45 @@ RSpec.describe Registration do
       end
     end
 
-    describe 'when a daddy successfully registers with one baby' do
-      it 'creates a new user and one baby record' do
+    describe "when a daddy successfully registers with one baby" do
+      it "creates a new user and one baby record" do
         attrs = attributes_for(:registration).stringify_keys
 
-				Registration.new(attrs).register
+        Registration.new(attrs).register
 
-        danelson = User.find_by(first_name: attrs['first_name'])
+        danelson = User.find_by(first_name: attrs["first_name"])
         child = danelson.babies.find_by(
-          first_name: attrs['babies']['0']['first_name']
+          first_name: attrs["babies"]["0"]["first_name"]
         )
 
         expect(User.count).to eq(1)
         expect(Baby.count).to eq(1)
         expect(danelson.babies.count).to eq(1)
-        expect(child.first_name).to eq('Junior')
+        expect(child.first_name).to eq("Junior")
         expect(child.daddy).to eq(danelson)
       end
     end
 
-    describe 'when a daddy successfully registers with two babies' do
-      it 'creates a new user and one baby record' do
+    describe "when a daddy successfully registers with two babies" do
+      it "creates a new user and one baby record" do
         attrs = attributes_for(:registration, :multiple_babies).stringify_keys
 
         Registration.new(attrs).register
 
-        danelson = User.find_by(first_name: attrs['first_name'])
+        danelson = User.find_by(first_name: attrs["first_name"])
         child1 = danelson.babies.find_by(
-          first_name: attrs['babies']['0']['first_name']
+          first_name: attrs["babies"]["0"]["first_name"]
         )
         child2 = danelson.babies.find_by(
-          first_name: attrs['babies']['1']['first_name']
+          first_name: attrs["babies"]["1"]["first_name"]
         )
 
         expect(User.count).to eq(1)
         expect(Baby.count).to eq(2)
         expect(danelson.babies.count).to eq(2)
-        expect(child1.first_name).to eq('Junior')
+        expect(child1.first_name).to eq("Junior")
         expect(child1.daddy).to eq(danelson)
-        expect(child2.first_name).to eq('Mariella')
+        expect(child2.first_name).to eq("Mariella")
         expect(child2.daddy).to eq(danelson)
       end
     end

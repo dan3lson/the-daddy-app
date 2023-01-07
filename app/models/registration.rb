@@ -9,11 +9,11 @@ class Registration
 
   validates :first_name, presence: true
   validates :email, presence: true
-  validate  :unique_email?
+  validate :unique_email?
   validates :password, presence: true
   validates :city, presence: true
   validates :babies, presence: true
-  validate  :complete_babies_info?
+  validate :complete_babies_info?
 
   def register
     return false unless valid?
@@ -35,7 +35,7 @@ class Registration
   def unique_email?
     return unless User.exists?(email: email)
 
-    errors.add(:email, 'has already been taken')
+    errors.add(:email, "has already been taken")
   end
 
   def complete_babies_info?
@@ -45,7 +45,7 @@ class Registration
       baby_attrs = baby.last
       next unless baby_attrs.values.any?(&:blank?)
 
-      errors.add(:babies, 'info is incomplete')
+      errors.add(:babies, "info is incomplete")
 
       return
     end
@@ -63,9 +63,9 @@ class Registration
   def create_babies!(daddy)
     babies.each do |baby|
       daddy.babies.create!(
-        first_name: baby.last['first_name'],
-        gender: baby.last['gender'],
-        birthdate: baby.last['birthdate']
+        first_name: baby.last["first_name"],
+        gender: baby.last["gender"],
+        birthdate: baby.last["birthdate"]
       )
     end
   end

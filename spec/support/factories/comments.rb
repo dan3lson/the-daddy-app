@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    body { Faker::Lorem.sentences(number: rand(1..5)).join(' ') }
+    body { Faker::Lorem.sentences(number: rand(1..5)).join(" ") }
 
     user
 
@@ -15,7 +15,7 @@ FactoryBot.define do
     end
 
     factory :invalid_reply do
-      body { '' }
+      body { "" }
 
       user { nil }
     end

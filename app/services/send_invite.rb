@@ -12,7 +12,7 @@ class SendInvite
 
   attr_reader :user, :guest_email
 
-  def initialize(user: nil, guest_email:)
+  def initialize(guest_email:, user: nil)
     @user = user
     @guest_email = guest_email
   end

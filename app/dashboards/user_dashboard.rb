@@ -20,7 +20,7 @@ class UserDashboard < Administrate::BaseDashboard
     invites: Field::HasMany,
     remember_token: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

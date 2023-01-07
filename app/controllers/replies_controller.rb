@@ -9,7 +9,7 @@ class RepliesController < ApplicationController
 
   def create
     @parent_comment = Comment.find(params[:comment_id])
-    options = reply_params.dup.merge({ parent_id: @parent_comment.id })
+    options = reply_params.dup.merge({parent_id: @parent_comment.id})
 
     reply =
       CreateReply.new(current_user, options)
@@ -19,7 +19,7 @@ class RepliesController < ApplicationController
     if reply.persisted?
       @saved = true
     else
-      @errors = reply.errors.full_messages.join(';')
+      @errors = reply.errors.full_messages.join(";")
     end
   end
 

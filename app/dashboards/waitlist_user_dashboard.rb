@@ -18,7 +18,7 @@ class WaitlistUserDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime.with_options(
       format: "%a, %e %b %Y %H:%M %p"
     ),
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
