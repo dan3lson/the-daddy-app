@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CreateWaitlistUser do
-  describe '#call' do
+  describe "#call" do
     subject(:call) do
       described_class.call(
-        email:         email,
-        daddy_type:    "juggler",
-        first_name:    "Danelson Sr.",
+        email: email,
+        daddy_type: "juggler",
+        first_name: "Danelson Sr.",
         referral_code: referral_code
       )
     end
 
-    let(:email)         { "some email" }
-    let(:referral_code) { nil }
+    let(:email) { "some email" }
+    let(:referral_code) { "some code" }
 
     it "creates a new WaitlistUser record" do
       expect { call }.to change(WaitlistUser, :count).by(1)

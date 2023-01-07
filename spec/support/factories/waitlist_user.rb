@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :waitlist_user do
-    first_name { 'Danelson Sr.' }
+    first_name { "Danelson Sr." }
     daddy_type { "first_timer" }
-		sequence(:email) { |i| "email+#{i}@thedaddyapp.com" }
+    sequence(:email) { |i| "email+#{i}@thedaddyapp.com" }
   end
 end

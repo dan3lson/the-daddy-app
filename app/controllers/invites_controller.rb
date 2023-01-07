@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# InvitesController
 class InvitesController < ApplicationController
   def new
     @invite = Invite.new
@@ -8,17 +7,17 @@ class InvitesController < ApplicationController
 
   def create
     @invite =
-      SendInvite.new(user: current_user, guest_email: invite_params[:email]).
-        subscribe(MailerListener.new).
-        call
+      SendInvite.new(user: current_user, guest_email: invite_params[:email])
+        .subscribe(MailerListener.new)
+        .call
 
     if @invite.persisted?
-      message = 'Thanks for inviting another daddy to join the conversation!'
+      message = "Thanks for inviting another daddy to join the conversation!"
       flash[:success] = message
 
       redirect_to new_invite_path
     else
-      @errors = @invite.errors.full_messages.join(';')
+      @errors = @invite.errors.full_messages.join(";")
 
       render :new
     end

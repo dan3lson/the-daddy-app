@@ -3,7 +3,7 @@ class CreateTopics < ActiveRecord::Migration[6.0]
     create_table :topics, id: :uuid do |t|
       t.string :name, null: false
 
-      t.timestamps    null: false
+      t.timestamps null: false
     end
   end
 end

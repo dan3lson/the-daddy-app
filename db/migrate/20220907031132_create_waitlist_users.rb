@@ -3,10 +3,10 @@
 class CreateWaitlistUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :waitlist_users, id: :uuid do |t|
-      t.string :email,         null: false
-      t.string :daddy_type,    null: false
+      t.string :email, null: false
+      t.string :daddy_type, null: false
       t.string :referral_code, null: false
-      t.references :referrer,  type: :uuid, index: true
+      t.references :referrer, type: :uuid, index: true
 
       t.timestamps
     end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# RegistrationsController
 class RegistrationsController < ApplicationController
   def new
     @registration = Registration.new
@@ -17,7 +16,7 @@ class RegistrationsController < ApplicationController
 
       redirect_to signed_in_root_path
     else
-      render template: 'registrations/new'
+      render template: "registrations/new"
     end
   end
 

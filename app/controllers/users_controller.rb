@@ -6,7 +6,7 @@ class UsersController < Clearance::UsersController
     if current_user.update(user_params)
       redirect_to signed_in_root_path
     else
-      render template: 'users/update' # TODO: change redirection template
+      render template: "users/update" # TODO: change redirection template
     end
   end
 

@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :invite do
-    sequence(:email) { |i|  "guest#{i}@email.com" }
+    sequence(:email) { |i| "guest#{i}@email.com" }
 
     user
 
