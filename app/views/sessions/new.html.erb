@@ -1,8 +1,11 @@
 <section>
-  <div class="container">
-    <div id="clearance" class="sign-in">
-      <h3 class="title is-3"><%= t(".title") %></h3>
-      <%= render partial: '/sessions/form' %>
+  <h1 class="mb-4"><%= t(".title") %></h1>
+
+  <div id="clearance">
+    <div class="row">
+      <div class="col-8 col-lg-5">
+        <%= render partial: '/sessions/form' %>
+      </div>
     </div>
   </div>
 </section>
