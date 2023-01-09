@@ -1,0 +1,29 @@
+<section id="registration-babies" class="d-none">
+  <h3>👶🏾 Step 2: Add your baby</h3>
+
+  <div class="form-floating mb-3">
+    <%= text_field_tag "registration[babies][0][first_name]", "", class: 'form-control', required: true %>
+    <%= form.label :gender, "First Name", for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= text_field_tag "registration[babies][0][gender]", "", class: 'form-control', required: true %>
+    <%= form.label :gender, "Gender", for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= date_field_tag "registration[babies][0][birthdate]", "", class: 'form-control' %>
+    <%= form.label :birthdate, "Birthdate", for: "floatingSelect" %>
+  </div>
+
+  <div class="mb-5">
+    <%= link_to "➕ Add another baby", "#", id: "registration-baby-add-another" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.submit "Let's go!", role: "button", class: "w-100 btn btn-primary btn-lg text-uppercase" %>
+  </div>
+  <div>
+    <%= link_to "Back", "#", role: "button", id: "registration-baby-back", class: "btn btn-outline-primary btn-lg w-100 text-uppercase" %>
+  </div>
+</section>
