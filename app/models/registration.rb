@@ -33,7 +33,7 @@ class Registration
   private
 
   def unique_email?
-    return unless User.exists?(email: email)
+    return unless User.exists?(email: email.strip)
 
     errors.add(:email, "has already been taken")
   end
@@ -51,17 +51,17 @@ class Registration
 
   def build_daddy
     User.new(
-      first_name: first_name,
-      email: email,
+      first_name: first_name.strip,
+      email: email.strip,
       password: password,
-      city: city
+      city: city.strip
     )
   end
 
   def create_babies!(daddy)
     babies.each do |baby|
       daddy.babies.create!(
-        first_name: baby.last["first_name"],
+        first_name: baby.last["first_name"].strip,
         gender: baby.last["gender"],
         birthdate: baby.last["birthdate"]
       )
