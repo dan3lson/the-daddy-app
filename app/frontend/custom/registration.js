@@ -113,7 +113,7 @@ $(function() {
 
 	function removeBabyLink() {
 		return $("<a/>")
-		  .addClass("registration-baby-remove-link")
+		  .addClass("registration-baby-remove-link link-danger")
 			.attr("href", "#")
 			.text("➖ Remove baby");
 	}
