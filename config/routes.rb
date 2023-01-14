@@ -24,15 +24,12 @@ Rails.application.routes.draw do
     get "/sign_up" => "registrations#new", :as => "sign_up"
     resources :registrations, only: %i[new create]
 
-    # TODO: temporarily comment out so no one can create an account. When it's
-    # time to launch, create a special sign-up page which pre-fills the email
-    # field in the registration form and maybe add a custom "we've been waiting
-    # for you" message, :).
     get "/sign_in" => "clearance/sessions#new", :as => "sign_in"
   end
 
-  # Authenticated Views
   constraints Clearance::Constraints::SignedIn.new do
+    get "/community-guidelines" => "pages#community_guidelines"
+
     namespace :admin do
       resources :babies
       resources :comments

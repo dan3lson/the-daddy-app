@@ -4,6 +4,10 @@ class PagesController < ApplicationController
   def about
   end
 
+  def community_guidelines
+    render layout: "layouts/application_signed_in"
+  end
+
   def contact_us
   end
 

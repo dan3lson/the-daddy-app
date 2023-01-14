@@ -3,12 +3,16 @@
   <%= render "layouts/head" %>
   <body>
     <div class="container">
-      <%= render "layouts/navbar_signed_in" %>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <%= render "layouts/navbar_signed_in" %>
 
-      <%= render "layouts/alerts" %>
+          <%= render "layouts/alerts" %>
+
+          <%= yield %>
+        </div>
+      </div>
     </div>
-
-    <%= yield %>
 
     <%= render "layouts/footer" %>
   </body>
