@@ -1,0 +1,111 @@
+<div class="fs-4">
+  <section>
+		<div class="shadow-sm mb-3">
+				<%= image_pack_tag "onboarding/welcome_to_the_app.png",
+													 class: "d-block mx-lg-auto img-fluid",
+													 loading: "lazy",
+													 alt: "Welcome to The Daddy App" %>
+			</div>
+    <p>
+		  We're excited you're here. Share your experiences and get advice from
+			other dads.
+		</p>
+		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+	</section>
+
+	<br>
+	<br>
+
+  <section>
+	  <div class="shadow-sm mb-3">
+	    <%= image_pack_tag "onboarding/chopping_it_up.png",
+			                   class: "d-block mx-lg-auto img-fluid",
+												 loading: "lazy",
+												 alt: "Dads talking" %>
+		</div>
+    <p>
+		  The <b>Home</b> page is where all the action is: talk about all the
+			fatherhood ups, downs, and everything in between.
+		</p>
+		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+	</section>
+
+	<br>
+	<br>
+
+  <section>
+	  <div class="shadow-sm mb-3">
+				<%= image_pack_tag "onboarding/love_is_love.png",
+											     class: "d-block mx-lg-auto img-fluid",
+											     loading: "lazy",
+											     alt: "Dads talking" %>
+		</div>
+    <p>
+		  The <b>Community Guidelines</b> page describes how this is a safe,
+			"good vibes only" space.
+		</p>
+		<p>
+			<%= render "pages/community_guidelines/warning" %>
+		</p>
+		<p>Be kind and respectful.</p>
+		<%= link_to "I agree; next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+	</section>
+
+	<br>
+	<br>
+
+  <section>
+	  <div class="shadow-sm mb-3">
+	    <%= image_pack_tag "onboarding/network_effect.png",
+			                   class: "d-block mx-lg-auto img-fluid",
+												 loading: "lazy",
+												 alt: "A community as strong as your referrals" %>
+		</div>
+    <p>
+		  This community is only as strong and, well, useful as the dads we know and
+			invite to chop it up. Refer a few dads now:
+		</p>
+		<p>
+		  < form to submit a post >
+		</p>
+		<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg text-uppercase" %>
+		<%= link_to "Send Invites", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+	</section>
+
+	<br>
+	<br>
+
+  <section>
+		<div class="shadow-sm mb-3">
+				<%= image_pack_tag "onboarding/rewards.png",
+													 class: "d-block mx-lg-auto img-fluid",
+													 loading: "lazy",
+													 alt: "Welcome to The Daddy App" %>
+			</div>
+    <p>
+		  The <b>Monthly Raffle</b> page details how you'll have the chance to win a
+			little something-something every month. To be eligible, join some
+			conversations and/or refer other dads.
+		</p>
+		<%= link_to "Next", "#" %>
+	</section>
+
+	<br>
+	<br>
+
+  <section>
+		<div class="shadow-sm mb-3">
+				<%= image_pack_tag "onboarding/say_hello.png",
+													 class: "d-block mx-lg-auto img-fluid",
+													 loading: "lazy",
+													 alt: "Welcome to The Daddy App" %>
+			</div>
+    <p>
+		  Let's dive right in: introduce yourself below.
+		</p>
+    <p>
+		  < form to submit a post >
+		</p>
+		<%= link_to "Share", "#" %>
+	</section>
+</div>

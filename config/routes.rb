@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   constraints Clearance::Constraints::SignedIn.new do
     get "/community-guidelines" => "pages#community_guidelines"
+    get "/onboarding" => "pages#onboarding"
 
     namespace :admin do
       resources :babies

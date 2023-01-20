@@ -23,4 +23,8 @@ class PagesController < ApplicationController
 
     render layout: "join"
   end
+
+  def onboarding
+    render layout: "layouts/application_signed_in"
+  end
 end
