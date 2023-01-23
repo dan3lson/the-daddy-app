@@ -28,8 +28,22 @@ Rails.application.routes.draw do
   end
 
   constraints Clearance::Constraints::SignedIn.new do
+    root to: "comments#index", as: :signed_in_root
+
     get "/community-guidelines" => "pages#community_guidelines"
     get "/onboarding" => "pages#onboarding"
+
+    resource :onboarding, only: [] do
+      resources :invites, only: %i[create], controller: "onboarding/invites"
+    end
+
+    # Invites
+    resources :invites, only: %i[new create]
+
+    # Comments
+    resources :comments, only: %i[index create] do
+      resources :replies, only: %i[index create]
+    end
 
     namespace :admin do
       resources :babies
@@ -45,19 +59,6 @@ Rails.application.routes.draw do
       require "sidekiq/web"
       require "sidekiq-scheduler/web"
       mount Sidekiq::Web => "/sidekiq"
-
-      # Temporary sign-in restriction
-      #
-      #
-
-      # Invites
-      resources :invites, only: %i[new create]
-    end
-
-    # Comments
-    root to: "comments#index", as: :signed_in_root
-    resources :comments, only: %i[index create] do
-      resources :replies, only: %i[index create]
     end
   end
 end

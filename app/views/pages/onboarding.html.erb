@@ -1,4 +1,4 @@
-<div class="fs-4">
+<div class="fs-4" id="onboarding-container">
   <section>
 		<div class="shadow-sm mb-3">
 				<%= image_pack_tag "onboarding/welcome_to_the_app.png",
@@ -10,13 +10,10 @@
 		  We're excited you're here. Share your experiences and get advice from
 			other dads.
 		</p>
-		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
 	</section>
 
-	<br>
-	<br>
-
-  <section>
+  <section class="d-none">
 	  <div class="shadow-sm mb-3">
 	    <%= image_pack_tag "onboarding/chopping_it_up.png",
 			                   class: "d-block mx-lg-auto img-fluid",
@@ -27,13 +24,10 @@
 		  The <b>Home</b> page is where all the action is: talk about all the
 			fatherhood ups, downs, and everything in between.
 		</p>
-		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
 	</section>
 
-	<br>
-	<br>
-
-  <section>
+  <section class="d-none">
 	  <div class="shadow-sm mb-3">
 				<%= image_pack_tag "onboarding/love_is_love.png",
 											     class: "d-block mx-lg-auto img-fluid",
@@ -41,20 +35,17 @@
 											     alt: "Dads talking" %>
 		</div>
     <p>
-		  The <b>Community Guidelines</b> page describes how this is a safe,
-			"good vibes only" space.
+		  This is a safe, "good vibes only" space. The <b>Community Guidelines</b>
+			page describes this further.
 		</p>
 		<p>
 			<%= render "pages/community_guidelines/warning" %>
 		</p>
 		<p>Be kind and respectful.</p>
-		<%= link_to "I agree; next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+		<%= link_to "I agree; next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
 	</section>
 
-	<br>
-	<br>
-
-  <section>
+  <section class="d-none" data-section-name="referrals">
 	  <div class="shadow-sm mb-3">
 	    <%= image_pack_tag "onboarding/network_effect.png",
 			                   class: "d-block mx-lg-auto img-fluid",
@@ -63,19 +54,32 @@
 		</div>
     <p>
 		  This community is only as strong and, well, useful as the dads we know and
-			invite to chop it up. Refer a few dads now:
+			invite to chop it up.
 		</p>
-		<p>
-		  < form to submit a post >
+    <p>
+			Refer a few dads now:
 		</p>
-		<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg text-uppercase" %>
-		<%= link_to "Send Invites", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+		<div>
+		  <%= form_with scope: :invite, url: onboarding_invites_path, local: false do |form| %>
+			  <% 3.times do |index| %>
+					<div class="form-floating mb-3">
+						<%= form.text_field :email,
+						                    class: "form-control",
+																id: "floatingEmail",
+																placeholder: "Email",
+																name: "invite[emails][#{index}]",
+																required: false %>
+						<%= form.label :email, "Email", for: "floatingInput" %>
+					</div>
+				<% end %>
+
+				<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg text-uppercase onboarding-next-btn" %>
+				<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
+			<% end %>
+		</div>
 	</section>
 
-	<br>
-	<br>
-
-  <section>
+  <section class="d-none">
 		<div class="shadow-sm mb-3">
 				<%= image_pack_tag "onboarding/rewards.png",
 													 class: "d-block mx-lg-auto img-fluid",
@@ -83,17 +87,14 @@
 													 alt: "Welcome to The Daddy App" %>
 			</div>
     <p>
-		  The <b>Monthly Raffle</b> page details how you'll have the chance to win a
-			little something-something every month. To be eligible, join some
+		  Check out the <b>Monthly Raffle</b> page for details on how to potentially
+		  win a little something-something every month. To be eligible, join some
 			conversations and/or refer other dads.
 		</p>
-		<%= link_to "Next", "#" %>
+		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
 	</section>
 
-	<br>
-	<br>
-
-  <section>
+  <section class="d-none">
 		<div class="shadow-sm mb-3">
 				<%= image_pack_tag "onboarding/say_hello.png",
 													 class: "d-block mx-lg-auto img-fluid",
@@ -106,6 +107,6 @@
     <p>
 		  < form to submit a post >
 		</p>
-		<%= link_to "Share", "#" %>
+		<%= link_to "Submit first post!", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
 	</section>
 </div>

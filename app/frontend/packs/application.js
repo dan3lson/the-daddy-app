@@ -20,7 +20,8 @@ const imagePath = (name) => images(name, true)
 import "bootstrap"
 import "../stylesheets/application"
 
+require("custom/comment_form")
 require("custom/homepage")
 require("custom/navbar")
-require("custom/comment_form")
+require("custom/onboarding")
 require("custom/registration")

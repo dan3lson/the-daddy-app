@@ -1,0 +1,6 @@
+const $onboardingContainer = $("#onboarding-container");
+const $referralSection = $("section[data-section-name='referrals']");
+
+$referralSection.addClass("d-none");
+$referralSection.next().removeClass("d-none");
+$referralSection.next().hide().fadeIn();

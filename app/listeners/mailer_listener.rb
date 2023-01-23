@@ -24,4 +24,8 @@ class MailerListener
       referral_code: waitlist_user.referral_code
     ).deliver_later
   end
+
+  def alert(alert)
+    AdminMailer.alert(alert.to_h).deliver_later
+  end
 end

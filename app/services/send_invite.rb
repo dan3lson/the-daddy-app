@@ -1,35 +1,31 @@
 # frozen_string_literal: true
 
-# SendInvite emails a guest to join the daddy app.
+# Emails a guest to join the app.
 class SendInvite
   include Wisper::Publisher
 
-  def call
-    send_invite
-  end
+  attr_reader :email, :user
 
-  private
-
-  attr_reader :user, :guest_email
-
-  def initialize(guest_email:, user: nil)
+  def initialize(email:, user: nil)
+    @email = email&.strip
     @user = user
-    @guest_email = guest_email
   end
 
-  def send_invite
-    invite = build_invite
+  def call
+    invite = Invite.create!(email: email, user: user)
 
-    broadcast(:successful_invite, user, guest_email) if invite.save
-
-    invite
-  end
-
-  def build_invite
-    invite = Invite.new
-    invite.email = guest_email
-    invite.user = user
+    broadcast(:successful_invite, user, invite.email)
 
     invite
+  rescue ActiveRecord::RecordInvalid => e
+    broadcast(
+      :alert,
+      OpenStruct.new(
+        additional_data: {invited_email: email},
+        current_user_id: user.id,
+        message: e.message,
+        type: :error
+      )
+    )
   end
 end
