@@ -59,26 +59,25 @@
     <p class="fs-4">
 			Refer a few dads now:
 		</p>
-		<div>
-		  <%= form_with scope: :invite, url: onboarding_invites_path, local: false do |form| %>
-			  <div class="bg-light p-3 mb-3">
-					<% 3.times do |index| %>
-						<div class="form-floating mb-3">
-							<%= form.text_field :email,
-																	class: "form-control",
-																	id: "floatingEmail",
-																	placeholder: "Email",
-																	name: "invite[emails][#{index}]",
-																	required: false %>
-							<%= form.label :email, "Email ##{index + 1}", for: "floatingInput" %>
-					  </div>
-			    <% end %>
-				</div>
 
-				<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg text-uppercase onboarding-next-btn" %>
-				<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
-			<% end %>
-		</div>
+		<%= form_with scope: :invite, url: onboarding_invites_path, local: false do |form| %>
+			<div class="bg-light p-3 mb-3">
+				<% 3.times do |index| %>
+					<div class="form-floating mb-3">
+						<%= form.text_field :email,
+																class: "form-control",
+																id: "floatingEmail",
+																placeholder: "Email",
+																name: "invite[emails][#{index}]",
+																required: false %>
+						<%= form.label :email, "Email ##{index + 1}", for: "floatingInput" %>
+					</div>
+				<% end %>
+			</div>
+
+			<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg text-uppercase onboarding-next-btn" %>
+			<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
+		<% end %>
 	</section>
 
   <section class="fs-4 d-none">
