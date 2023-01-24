@@ -1,16 +1,22 @@
 <div id="onboarding-container">
   <section class="fs-4">
 		<div class="shadow-sm mb-3">
-				<%= image_pack_tag "onboarding/welcome_to_the_app.png",
-													 class: "d-block mx-lg-auto img-fluid",
-													 loading: "lazy",
-													 alt: "Welcome to The Daddy App" %>
-			</div>
+			<%= image_pack_tag "onboarding/welcome_to_the_app.png",
+												 class: "d-block mx-lg-auto img-fluid",
+												 loading: "lazy",
+												 alt: "Welcome to The Daddy App" %>
+		</div>
     <p>
-		  We're excited you're here. Share your experiences and get advice from
+		  We're excited you're here!
+		</p>
+    <p>
+		  Share your experiences and get advice from
 			other dads.
 		</p>
-		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+
+		<div class="d-grid justify-content-md-end">
+		  <%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+		</div>
 	</section>
 
   <section class="fs-4 d-none">
@@ -20,11 +26,15 @@
 												 loading: "lazy",
 												 alt: "Dads talking" %>
 		</div>
+
     <p>
 		  The <b>Home</b> page is where all the action is: talk about all the
 			fatherhood ups, downs, and everything in between.
 		</p>
-		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+
+		<div class="d-grid justify-content-md-end">
+		  <%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+		</div>
 	</section>
 
   <section class="fs-4 d-none">
@@ -34,15 +44,19 @@
 											     loading: "lazy",
 											     alt: "Dads talking" %>
 		</div>
+
     <p>
-		  This is a safe, "good vibes only" space. The <b>Community Guidelines</b>
-			page describes this further.
+		  This is a safe, "good vibes only" space.
 		</p>
 		<p>
 			<%= render "pages/community_guidelines/warning" %>
 		</p>
-		<p>Be kind and respectful.</p>
-		<%= link_to "I agree; next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+		<p>Learn more on the <b>Community Guidelines</b> page.</p>
+		<p>TLDR: be kind and respectful.</p>
+
+		<div class="d-grid justify-content-md-end">
+		  <%= link_to "I agree; next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+		</div>
 	</section>
 
   <section class="d-none" data-section-name="referrals">
@@ -52,9 +66,10 @@
 												 loading: "lazy",
 												 alt: "A community as strong as your referrals" %>
 		</div>
+
     <p class="fs-4">
-		  This community is only as strong and, well, useful as the dads we know and
-			invite to chop it up.
+		  At its core, this app is only as strong and, well, useful as the dads we
+			know and invite to chop it up.
 		</p>
     <p class="fs-4">
 			Refer a few dads now:
@@ -75,8 +90,10 @@
 				<% end %>
 			</div>
 
-			<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg text-uppercase onboarding-next-btn" %>
-			<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
+				<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg me-md-2 text-uppercase onboarding-next-btn" %>
+			</div>
 		<% end %>
 	</section>
 
@@ -87,12 +104,18 @@
 													loading: "lazy",
 													alt: "Welcome to The Daddy App" %>
 		</div>
+
     <p>
 		  Check out the <b>Monthly Raffle</b> page for details on how to potentially
-		  win a little something-something every month. To be eligible, join some
-			conversations and/or refer other dads.
+		  win a little something-something every month.
 		</p>
-		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+    <p>
+			To be eligible, join some conversations and/or refer other dads.
+		</p>
+
+		<div class="d-grid justify-content-md-end">
+		  <%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
+		</div>
 	</section>
 
   <section class="d-none">
@@ -103,10 +126,9 @@
 													 alt: "Welcome to The Daddy App" %>
 		</div>
     <p class="fs-4">
-		  Let's wrap up this little tour and check out the rest of the app.
-		</p>
-    <p class="fs-4">
-			Before we do, introduce yourself below.
+      You: Take us to the app already!
+			<br>
+			Us: 😅 Okaaay. Before we do, introduce yourself:
 		</p>
 
 		<%= form_with model: @comment, url: onboarding_comments_path, local: true do |form| %>
@@ -123,8 +145,11 @@
 				</div>
 			</div>
 
-			<%= link_to "Later", signed_in_root_path, role: "button", class: "btn btn-outline-primary btn-lg text-uppercase onboarding-next-btn" %>
+		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<%= form.submit "Share first post!", class: "btn btn-primary btn-lg text-uppercase" %>
+			<%= link_to "Later", signed_in_root_path, role: "button", class: "btn btn-outline-primary btn-lg me-md-2 text-uppercase onboarding-next-btn" %>
+		</div>
+
 		<% end %>
 	</section>
 </div>
