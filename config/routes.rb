@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
     resource :onboarding, only: [] do
       resources :invites, only: %i[create], controller: "onboarding/invites"
+      resources :comments, only: %i[create], controller: "onboarding/comments"
     end
 
     # Invites

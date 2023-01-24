@@ -25,6 +25,8 @@ class PagesController < ApplicationController
   end
 
   def onboarding
+    @comment = Comment.new
+
     render layout: "layouts/application_signed_in"
   end
 end

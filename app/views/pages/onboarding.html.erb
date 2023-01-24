@@ -82,11 +82,11 @@
 
   <section class="fs-4 d-none">
 		<div class="shadow-sm mb-3">
-				<%= image_pack_tag "onboarding/rewards.png",
-													 class: "d-block mx-lg-auto img-fluid",
-													 loading: "lazy",
-													 alt: "Welcome to The Daddy App" %>
-			</div>
+			<%= image_pack_tag "onboarding/rewards.png",
+													class: "d-block mx-lg-auto img-fluid",
+													loading: "lazy",
+													alt: "Welcome to The Daddy App" %>
+		</div>
     <p>
 		  Check out the <b>Monthly Raffle</b> page for details on how to potentially
 		  win a little something-something every month. To be eligible, join some
@@ -101,13 +101,30 @@
 													 class: "d-block mx-lg-auto img-fluid",
 													 loading: "lazy",
 													 alt: "Welcome to The Daddy App" %>
+		</div>
+    <p class="fs-4">
+		  Let's wrap up this little tour and check out the rest of the app.
+		</p>
+    <p class="fs-4">
+			Before we do, introduce yourself below.
+		</p>
+
+		<%= form_with model: @comment, url: onboarding_comments_path, local: true do |form| %>
+			<div class="bg-light p-3 mb-3">
+				<div class="form-floating mb-3">
+					<%= form.text_field :body,
+															class: "form-control",
+															id: "floatingEmail",
+															placeholder: "Comment",
+															required: false %>
+					<%= form.label :comment,
+					               "e.g. What's up everybody, my name is ___ and I'm from ___...",
+												 for: "floatingInput" %>
+				</div>
 			</div>
-    <p class="fs-4">
-		  Let's dive right in: introduce yourself below.
-		</p>
-    <p class="fs-4">
-		  < form to submit a post >
-		</p>
-		<%= link_to "Submit first post!", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
+
+			<%= link_to "Later", signed_in_root_path, role: "button", class: "btn btn-outline-primary btn-lg text-uppercase onboarding-next-btn" %>
+			<%= form.submit "Share first post!", class: "btn btn-primary btn-lg text-uppercase" %>
+		<% end %>
 	</section>
 </div>
