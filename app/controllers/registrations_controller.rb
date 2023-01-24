@@ -16,7 +16,7 @@ class RegistrationsController < ApplicationController
     if @daddy
       sign_in @daddy
 
-      redirect_to signed_in_root_path
+      redirect_to onboarding_path
     else
       render template: "registrations/new"
     end
