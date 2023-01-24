@@ -1,5 +1,5 @@
-<div class="fs-4" id="onboarding-container">
-  <section>
+<div id="onboarding-container">
+  <section class="fs-4">
 		<div class="shadow-sm mb-3">
 				<%= image_pack_tag "onboarding/welcome_to_the_app.png",
 													 class: "d-block mx-lg-auto img-fluid",
@@ -13,7 +13,7 @@
 		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
 	</section>
 
-  <section class="d-none">
+  <section class="fs-4 d-none">
 	  <div class="shadow-sm mb-3">
 	    <%= image_pack_tag "onboarding/chopping_it_up.png",
 			                   class: "d-block mx-lg-auto img-fluid",
@@ -27,7 +27,7 @@
 		<%= link_to "Next", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase onboarding-next-btn" %>
 	</section>
 
-  <section class="d-none">
+  <section class="fs-4 d-none">
 	  <div class="shadow-sm mb-3">
 				<%= image_pack_tag "onboarding/love_is_love.png",
 											     class: "d-block mx-lg-auto img-fluid",
@@ -52,26 +52,28 @@
 												 loading: "lazy",
 												 alt: "A community as strong as your referrals" %>
 		</div>
-    <p>
+    <p class="fs-4">
 		  This community is only as strong and, well, useful as the dads we know and
 			invite to chop it up.
 		</p>
-    <p>
+    <p class="fs-4">
 			Refer a few dads now:
 		</p>
 		<div>
 		  <%= form_with scope: :invite, url: onboarding_invites_path, local: false do |form| %>
-			  <% 3.times do |index| %>
-					<div class="form-floating mb-3">
-						<%= form.text_field :email,
-						                    class: "form-control",
-																id: "floatingEmail",
-																placeholder: "Email",
-																name: "invite[emails][#{index}]",
-																required: false %>
-						<%= form.label :email, "Email", for: "floatingInput" %>
-					</div>
-				<% end %>
+			  <div class="bg-light p-3 mb-3">
+					<% 3.times do |index| %>
+						<div class="form-floating mb-3">
+							<%= form.text_field :email,
+																	class: "form-control",
+																	id: "floatingEmail",
+																	placeholder: "Email",
+																	name: "invite[emails][#{index}]",
+																	required: false %>
+							<%= form.label :email, "Email ##{index + 1}", for: "floatingInput" %>
+					  </div>
+			    <% end %>
+				</div>
 
 				<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg text-uppercase onboarding-next-btn" %>
 				<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
@@ -79,7 +81,7 @@
 		</div>
 	</section>
 
-  <section class="d-none">
+  <section class="fs-4 d-none">
 		<div class="shadow-sm mb-3">
 				<%= image_pack_tag "onboarding/rewards.png",
 													 class: "d-block mx-lg-auto img-fluid",
@@ -101,10 +103,10 @@
 													 loading: "lazy",
 													 alt: "Welcome to The Daddy App" %>
 			</div>
-    <p>
+    <p class="fs-4">
 		  Let's dive right in: introduce yourself below.
 		</p>
-    <p>
+    <p class="fs-4">
 		  < form to submit a post >
 		</p>
 		<%= link_to "Submit first post!", "#", role: "button", class: "btn btn-primary btn-lg text-uppercase" %>
