@@ -5,5 +5,15 @@ $(function() {
 		$section.addClass("d-none");
 		$section.next().removeClass("d-none");
 		$section.next().hide().fadeIn();
+
+		updateProgress();
 	});
+
+	function updateProgress() {
+		var currentValue = parseInt($("#onboarding-container .progress").attr("aria-valuenow"));
+		var newValue = currentValue + 16;
+
+		$("#onboarding-container .progress").attr("aria-valuenow", newValue)
+		$("#onboarding-container .progress-bar").css("width", newValue + "%");
+	}
 });

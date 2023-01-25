@@ -1,4 +1,8 @@
 <div id="onboarding-container">
+	<div class="progress mb-5" role="progressbar" aria-label="Onboarding Progress" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
+		<div class="progress-bar bg-success" style="width: 4%"></div>
+  </div>
+
   <section class="fs-4">
 		<div class="shadow-sm mb-3">
 			<%= image_pack_tag "onboarding/welcome_to_the_app.png",
@@ -147,7 +151,7 @@
 
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<%= form.submit "Share first post!", class: "btn btn-primary btn-lg text-uppercase" %>
-			<%= link_to "Later", signed_in_root_path, role: "button", class: "btn btn-outline-primary btn-lg me-md-2 text-uppercase onboarding-next-btn" %>
+			<%= link_to "Later", signed_in_root_path, role: "button", class: "btn btn-outline-primary btn-lg me-md-2 text-uppercase" %>
 		</div>
 
 		<% end %>
