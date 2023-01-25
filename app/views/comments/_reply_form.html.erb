@@ -1,22 +1,8 @@
-<article class="media">
-  <figure class="media-left">
-    <div class="avatar-block"><%= first_initial(current_user) %></div>
-  </figure>
+<%= form_for [comment, Comment.new], url: comment_replies_path(comment), remote: true do |form| %>
+  <%= render "shared/form_errors", object: Comment.new %>
 
-  <div class="media-content">
-    <%= form_for [comment, Comment.new],
-                 url: comment_replies_path(comment),
-                 remote: true do |form| %>
+  <%= form.text_field :body,
+                      class: "form-control form-control-lg",
+                      placeholder: "Reply to #{comment.user.first_name}" %>
+<% end %>
 
-      <%= render 'shared/form_errors', object: Comment.new %>
-
-      <div class="field is-grouped">
-        <p class="control is-expanded">
-          <%= form.text_field :body,
-                              class: 'input',
-                              placeholder: "Reply to #{comment.user.first_name}" %>
-        </p>
-      </div>
-    <% end %>
-  </div>
-</article>

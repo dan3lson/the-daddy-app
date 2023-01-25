@@ -1,33 +1,27 @@
 <%= form_for comment, remote: true do |form| %>
-	<%= render 'shared/form_errors', object: @comment %>
+	<%= render "shared/form_errors", object: @comment %>
 
-  <label for="body" class="label is-large">
-    How's it going with your little one?
-  </label>
-	<div class="field has-addons">
-		<div class="control is-expanded">
-			<%= form.text_field :body,
-													class: 'input',
-													placeholder: "My little man just crawled!!" %>
-		</div>
-    <div id="file-js-example" class="file has-name">
-      <label class="file-label">
-        <%= form.file_field :image, class: 'file-input' %>
-        <span class="file-cta">
-        <span class="file-icon">
-          <i class="fas fa-upload"></i>
-        </span>
-        <span class="file-label">
-          Upload a picture...
-        </span>
-      </span>
-        <span class="file-name">
-        No file selected
-      </span>
+  <%= form.label :body,
+                Lib::Constants::CREATE_COMMENT_LABEL_EXAMPLES.sample,
+                for: "body",
+                class: "fs-4 form-label" %>
+
+  <div class="row g-3 mb-3">
+    <div class="col-md-8">
+      <%= form.text_field :body,
+                          class: "form-control form-control-lg",
+                          placeholder: Lib::Constants::CREATE_COMMENT_EXAMPLES.sample %>
+    </div>
+    <div class="col-md-4">
+      <label for="formFileLg" class="form-label fs-4 visually-hidden">
+        <i class="fas fa-upload"></i>
+        Upload a picture...
       </label>
+      <%= form.file_field :image, id: "formFileLg", class: "form-control form-control-lg" %>
     </div>
   </div>
-  <div class="control">
-    <%= form.submit "Share", class: "button is-primary" %>
+
+  <div>
+    <%= form.submit "Share", class: "btn btn-primary btn-lg text-uppercase w-100" %>
   </div>
 <% end %>

@@ -2,45 +2,37 @@
   <hr>
 <% end %>
 
-<article class="media" data-comment-id="<%= comment.id %>"'>
-  <figure class="media-left">
-    <div class="avatar-block">
-      <div><%= first_initial(comment.user) %></div>
-    </div>
-  </figure>
-  <div class="media-content">
-    <div class="content">
-      <p>
-        <strong><%= comment.user.first_name %></strong>
-        <small class="has-text-grey-light">
-          <%= baby_names(comment.user) %>
-        </small>
-        <%= render "comments/meta", comment: comment %>
-      </p>
-      <div>
-        <%= comment.body %>
-        <% if comment.image.attached? %>
-          <p>
-            <%= image_tag comment.image.variant(resize_to_limit: [200, 200]),
-                          title: comment.image.filename.to_s
-                %>
-          </p>
-        <% end %>
+<div class="card mb-4" data-comment-id="<%= comment.id %>">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= comment.user.first_name %>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted mb-3">
+      👶 <%= baby_names(comment.user) %>
+      <br>
+      ⏱ <%= render "comments/meta", comment: comment %>
+    </h6>
+    <p class="card-text fs-4">
+      <% if comment.image.attached? %>
+        <p>
+          <%= image_tag comment.image.variant(resize_to_limit: [200, 200]),
+                        title: comment.image.filename.to_s
+              %>
+        </p>
+      <% end %>
 
-        <% if comment.replies? %>
-          <p>
-            <small>
-              <span>
-                <%= link_to "Comments (#{comment.replies.size})",
-                            comment_replies_path(comment),
-                            class: 'comment-href', remote: true %>
-              </span>
-            </small>
-          </p>
-        <% end %>
-      </div>
-    </div>
+      <%= comment.body %>
+    </p>
+
+    <% if comment.replies? %>
+      <%= link_to "👀 Comments (#{comment.replies.size})",
+                  comment_replies_path(comment),
+                  class: "card-link text-decoration-none comment-href", remote: true %>
+    <% end %>
+    <a href="#" class="card-link text-decoration-none">🚨 Report</a>
   </div>
-</article>
+  <div class="card-footer">
+    <%= render "comments/reply_form", comment: comment %>
+  </div>
+</div>
 
-<%= render 'comments/reply_form', comment: comment %>

@@ -9,28 +9,28 @@ resetForms();
 newCommentSaved ? showSuccess() : showErrors();
 
 function resetInput($input) {
-    return $input.val("");
+  return $input.val("");
 }
 
 function resetForms() {
-    var $inputs = $commentsDiv.find(".input");
-    var $helpTexts = $commentsDiv.find(".help");
+  var $inputs = $commentsDiv.find(".input");
+  var $helpTexts = $commentsDiv.find(".help");
 
-    $inputs.removeClass("is-danger").removeClass("is-success");
-    $helpTexts.remove();
+  $inputs.removeClass("is-danger").removeClass("is-success");
+  $helpTexts.remove();
 }
 
 function showSuccess() {
-    var $helpSuccess = $('<p/>', { "class": "help is-success" });
-    $helpSuccess.text("Thanks for your comment");
-    $helpSuccess.insertAfter($field);
-    resetInput($input);
+  var $helpSuccess = $('<p/>', { "class": "help is-success" });
+  $helpSuccess.text("Thanks for your comment");
+  $helpSuccess.insertAfter($field);
+  resetInput($input);
 }
 
 function showErrors() {
-    var errors = "<%= @errors %>";
-    var $helpDanger = $('<p/>', { "class": "help is-danger" });
-    $input.addClass("is-danger");
-    $helpDanger.text("Uh-oh: " + errors);
-    $helpDanger.insertAfter($field);
+  var errors = "<%= @errors %>";
+  var $helpDanger = $('<p/>', { "class": "help is-danger" });
+  $input.addClass("is-danger");
+  $helpDanger.text("Uh-oh: " + errors);
+  $helpDanger.insertAfter($field);
 }

@@ -1,10 +1,7 @@
-<br>
-<small>
-	<% if comment.reply? %>
-			replying to @<%= comment.parent.user.first_name %>
-			·
-			<%= time_ago_in_words(comment.created_at) %> ago
-	<% else %>
-		<%= time_ago_in_words(comment.created_at) %> ago
-	<% end %>
-</small>
+<% if comment.reply? %>
+	replying to @<%= comment.parent.user.first_name %>
+	&middot;
+	<%= time_ago_in_words(comment.created_at) %> ago
+<% else %>
+	<%= time_ago_in_words(comment.created_at) %> ago
+<% end %>
