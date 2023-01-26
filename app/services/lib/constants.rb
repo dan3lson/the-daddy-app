@@ -15,7 +15,7 @@ module Lib
     CREATE_COMMENT_EXAMPLES = [
       "My little man just crawled!!",
       "Just saying hello 👋",
-      "But why does my 8/mo daughter love pooping when I give her a bath 😩"
+      "My 8/mo pooped in the bath...again 😩"
     ].freeze
     public_constant :CREATE_COMMENT_EXAMPLES
 
