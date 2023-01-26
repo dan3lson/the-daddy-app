@@ -10,15 +10,11 @@
       <br>
       ⏱ <%= render "comments/meta", comment: comment %>
     </h6>
+    <% if comment.image.attached? %>
+      <%= image_tag comment.image.variant(resize_to_limit: [200, 200]),
+                    title: comment.image.filename.to_s %>
+    <% end %>
     <p class="card-text fs-4">
-      <% if comment.image.attached? %>
-        <p>
-          <%= image_tag comment.image.variant(resize_to_limit: [200, 200]),
-                        title: comment.image.filename.to_s
-              %>
-        </p>
-      <% end %>
-
       <%= comment.body %>
     </p>
 
