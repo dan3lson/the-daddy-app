@@ -1,11 +1,11 @@
 <div class="content-container">
   <div class="content">
-    <%= image_tag 'emails/reply.png',
-                  alt: 'Someone replied to you!' %>
+    <%= image_pack_tag "emails/reply.png", alt: "Someone replied to you!" %>
+
     <p>Hey <%= @daddy.first_name %>,</p>
     <p>
       Someone replied to your comment on The Daddy App!
     </p>
-    <button>GO TO THE CONVERSATION</button>
+    <button>See what they said</button>
   </div>
 </div>
