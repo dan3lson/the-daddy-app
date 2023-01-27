@@ -1,38 +1,42 @@
-var $commentsDiv = $(".comments");
-var parentID = "<%= @parent_comment.id %>";
+var parentCommentID = "<%= @parent_comment.id %>";
 var newCommentSaved = "<%= @saved %>" === "true";
-var $parentComment = $commentsDiv.find(`[data-comment-id='${parentID}']`);
-var $replyForm = $parentComment.next();
-var $field = $replyForm.find(".field");
-var $input = $field.find(".input");
+var $parentComment = $(".comments").find(`[data-comment-id='${parentCommentID}']`);
+var $replyForm = $parentComment.find(".card-footer form").last();
+var $input = $replyForm.find("input");
 
-resetForms();
+resetForms($parentComment);
 
 newCommentSaved ? showSuccess() : showErrors();
 
-function resetInput($input) {
-    return $input.val("");
-}
-
-function resetForms() {
-    var $inputs = $commentsDiv.find(".input");
-    var $helpTexts = $commentsDiv.find(".help");
-
-    $inputs.removeClass("is-danger").removeClass("is-success");
-    $helpTexts.remove();
+function resetForms($parentComment) {
+  $parentComment.find(".valid-feedback").remove();
+  $parentComment.find(".invalid-feedback").remove();
 }
 
 function showSuccess() {
-    var $helpSuccess = $('<p/>', { "class": "help is-success" });
-    $helpSuccess.text("Thanks for your comment");
-    $helpSuccess.insertAfter($field);
-    resetInput($input);
+  showFeedback("Successfully posted", "valid");
+
+  resetInput($input);
 }
 
 function showErrors() {
-    var errors = "<%= @errors %>";
-    var $helpDanger = $('<p/>', { "class": "help is-danger" });
-    $input.addClass("is-danger");
-    $helpDanger.text("Uh-oh: " + errors);
-    $helpDanger.insertAfter($field);
+  var errors = "<%= @errors %>";
+  var message = "Uh-oh: " + errors;
+
+  showFeedback(message, "invalid");
+}
+
+function resetInput($input) {
+  return $input.val("");
+}
+
+function showFeedback(message, valid_or_invalid) {
+  var $feedback = $(
+    "<div/>",
+    { "class": valid_or_invalid + "-feedback d-block" }
+  );
+
+  $feedback.text(message);
+  $feedback.insertAfter($input);
+  $feedback.hide().fadeIn("slow");
 }
