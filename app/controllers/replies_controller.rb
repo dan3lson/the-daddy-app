@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# RepliesController
 class RepliesController < ApplicationController
   def index
     @comment = Comment.find(params[:comment_id])
