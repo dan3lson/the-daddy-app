@@ -25,7 +25,7 @@ class Comment < ApplicationRecord
   scope :latest, -> { order(created_at: :desc) }
 
   def replies?
-    !replies.empty?
+    replies.any?
   end
 
   def root?
@@ -33,6 +33,6 @@ class Comment < ApplicationRecord
   end
 
   def reply?
-    !parent.nil?
+    !root?
   end
 end
