@@ -33,7 +33,7 @@ class Registration
   private
 
   def unique_email?
-    return unless User.exists?(email: email.strip)
+    return unless User.exists?(email: email&.strip)
 
     errors.add(:email, "has already been taken")
   end

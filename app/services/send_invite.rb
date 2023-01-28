@@ -22,7 +22,7 @@ class SendInvite
       :alert,
       OpenStruct.new(
         additional_data: {invited_email: email},
-        current_user_id: user.id,
+        current_user_id: user&.id,
         message: e.message,
         type: :error
       )

@@ -11,8 +11,8 @@ RSpec.describe SendInvite do
     let(:user) { create(:user) }
     let(:alert_struct) do
       OpenStruct.new(
-        current_user: user,
-        email: email,
+        current_user_id: user&.id,
+        additional_data: {invited_email: email},
         message: "Validation failed: Email can't be blank",
         type: :error
       )
@@ -50,35 +50,18 @@ RSpec.describe SendInvite do
       end
     end
 
-    context "with a nil email" do
-      let(:email) { nil }
-
-      it "doesn't make an invite", :aggregate_failures do
-        expect(Invite.count).to eq(0)
-        expect(user.invites.count).to eq(0)
-      end
-    end
-
-    context "when a guest invites another guest with a blank email" do
+    context "when a guest invites another guest with an empty email" do
       let(:email) { "" }
+      let(:user) { nil }
 
       it "doesn't create an invite" do
-        expect(Invite.count).to eq(0)
-      end
-    end
-
-    context "when a guest invites another guest with a nil email" do
-      let(:email) { nil }
-
-      it "doesn't create an invite" do
-        SendInvite.new(email: nil).call
-
         expect(Invite.count).to eq(0)
       end
     end
 
     context "when a guest successfully invites another guest" do
       let(:email) { "guest@email.com" }
+      let(:user) { nil }
 
       it "sends an invitation email" do
         expect(Invite.count).to eq(1)

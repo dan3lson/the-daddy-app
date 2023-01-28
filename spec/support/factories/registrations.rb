@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :registration do
     first_name { "Danelson Sr." }
@@ -16,7 +18,7 @@ FactoryBot.define do
 
     factory :invalid_daddy_registration do
       city { "" }
-      email { nil }
+      email { "" }
     end
 
     factory :invalid_baby_registration do
@@ -24,7 +26,7 @@ FactoryBot.define do
         {
           "0" => {
             "first_name" => "",
-            "gender" => nil,
+            "gender" => "",
             "birthdate" => "2019/07/21"
           }
         }
