@@ -14,6 +14,7 @@ end
 #
 User.destroy_all
 danelson_sr = User.create!(
+  admin: true,
   email: "danelson.rosa.sr@gmail.com",
   password: "password",
   first_name: "Danelson",
@@ -43,15 +44,26 @@ _danelson_jr = Baby.create!(
   end
 end
 
+# == Emojis
+#
+EMOJIS = {
+  "👍" => "thumbs-up-default",
+  "❤️" => "red-heart"
+}.freeze
+EMOJIS.each { |emoji, name| Emoji.find_or_create_by!(emoji: emoji, name: name) }
+thumbs_up_emoji = Emoji.like_emoji
+
 # == Comments
 #
-User.count.times do
+users = User.all
+users.count.times do
   body = [new_sentence, new_question].sample
-  comment = Comment.create!(body: body, user: User.all.sample)
+  comment = Comment.create!(body: body, user: users.sample)
+  comment.reactions.create!(emoji: thumbs_up_emoji, user: users.sample) if [true, false].sample
   rand(10).times do
     comment.replies.create!(
       body: new_sentence,
-      user: User.all.sample
+      user: users.sample
     )
   end
 end

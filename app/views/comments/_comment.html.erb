@@ -18,13 +18,7 @@
       <%= comment.body %>
     </p>
 
-    <a href="#" class="card-link text-decoration-none">👍 Like</a>
-    <% if comment.replies? %>
-      <%= link_to "👀 Comments (#{comment.replies.size})",
-                  comment_replies_path(comment),
-                  class: "card-link text-decoration-none comment-href", remote: true %>
-    <% end %>
-    <a href="#" class="card-link text-decoration-none">🚨 Report</a>
+    <%= render "comments/link_actions", comment: comment %>
   </div>
   <div class="card-footer">
     <%= render "comments/reply_form", comment: comment %>

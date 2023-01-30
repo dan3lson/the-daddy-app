@@ -1,7 +1,7 @@
-<section id="create-comment" class="bg-primary bg-gradient bg-opacity-10 p-3 mb-4">
+<section id="create-comment" class="bg-dark bg-gradient bg-opacity-10 p-4 mb-4">
   <%= render "comments/create_form", comment: @comment %>
 </section>
 
 <section class="comments">
-  <%= render 'comments/root_comments', root_comments: @root_comments %>
+  <%= render "comments/root_comments", root_comments: @root_comments %>
 </section>

@@ -1,0 +1,23 @@
+<% if current_user.liked_comment?(comment) %>
+  <%= link_to comment_reactions_path(comment),
+              method: :delete,
+              remote: true,
+              class: "card-link text-decoration-none bg-primary p-1 bg-opacity-10 rounded remove-reaction-link" do %>
+    👍 Like (<%= comment.likes.count %>)
+  <% end %>
+<% else %>
+  <%= link_to reactions_path(comment_id: comment.id),
+              method: :post,
+              remote: true,
+              class: "card-link text-decoration-none react-to-comment-link" do %>
+    👍 Like (<%= comment.likes.count %>)
+  <% end %>
+<% end %>
+
+<% if comment.replies? %>
+  <%= link_to "👀 Comments (#{comment.replies.size})",
+              comment_replies_path(comment),
+              class: "card-link text-decoration-none comment-href", remote: true %>
+<% end %>
+
+<a href="#" class="card-link text-decoration-none">🚨 Report</a>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
     first_name { "Danelson Sr." }
@@ -12,6 +14,12 @@ FactoryBot.define do
 
       after(:create) do |user, evaluator|
         create_list(:baby, evaluator.babies_count, daddy: user)
+      end
+    end
+
+    trait :with_liked_comment do
+      after(:create) do |user, _evaluator|
+        create(:reaction, user: user)
       end
     end
   end

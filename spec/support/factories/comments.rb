@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :comment do
     body { Faker::Lorem.sentences(number: rand(1..5)).join(" ") }
@@ -18,6 +20,24 @@ FactoryBot.define do
       body { "" }
 
       user { nil }
+    end
+
+    factory :comment_with_likes do
+      transient do
+        likes_count { 1 }
+      end
+
+      after(:create) do |comment, evaluator|
+        emoji = create(:emoji)
+
+        create_list(
+          :reaction,
+          evaluator.likes_count,
+          reactionable: comment,
+          emoji: emoji,
+          user: create(:user)
+        )
+      end
     end
   end
 end
