@@ -1,0 +1,16 @@
+var commentID = "<%= @comment.id %>";
+var $comment = $(".comments").find(`[data-comment-id='${commentID}']`);
+var $removeFlagCommentLink = $comment.find(".remove-flag-comment-link").first();
+
+$removeFlagCommentLink.replaceWith(flagCommentLink());
+
+// Replace with partial to DRY this up from links in _link_actions.html.erb
+function flagCommentLink() {
+  return $("<a/>")
+    .addClass("card-link text-decoration-none flag-comment-link")
+    .attr("href", "/comments/" + commentID + "/flags")
+    .attr("data-method", "post")
+    .attr("data-remote", "true")
+    .attr("rel", "nofollow")
+    .text("🚨 Report");
+}

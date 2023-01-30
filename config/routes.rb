@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     #
     resources :comments, only: %i[index create] do
       resources :replies, only: %i[index create]
+      resource :flags, only: %i[create destroy]
       resource :reactions, only: %i[destroy]
     end
 
@@ -65,6 +66,7 @@ Rails.application.routes.draw do
       resources :babies
       resources :comments
       resources :emojis
+      resources :flags
       resources :invites
       resources :reactions
       resources :topics

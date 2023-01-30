@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :babies, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :invites, dependent: :destroy
+  has_many :flags, dependent: :destroy
   has_many :reactions, dependent: :destroy
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
@@ -26,6 +27,10 @@ class User < ApplicationRecord
     else
       names.to_sentence
     end
+  end
+
+  def flagged_comment?(comment)
+    flags.pluck(:comment_id).include?(comment&.id)
   end
 
   def liked_comment?(comment)

@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CommentDashboard < Administrate::BaseDashboard
+class FlagDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,17 +9,10 @@ class CommentDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::String,
-    body: Field::Text,
-    image_attachment: Field::HasOne,
-    image_blob: Field::HasOne,
-    flags: Field::HasMany,
-    parent: Field::BelongsTo,
-    replies: Field::HasMany,
-    status: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
-    topic: Field::BelongsTo,
+    comment: Field::BelongsTo,
     user: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,22 +22,16 @@ class CommentDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    body
-    flags
+    comment
+    user
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    body
-    image_attachment
-    image_blob
-    parent
-    flags
-    replies
-    status
-    topic
+    comment
     user
     created_at
     updated_at
@@ -54,13 +41,7 @@ class CommentDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    body
-    image_attachment
-    image_blob
-    parent
-    replies
-    status
-    topic
+    comment
     user
   ].freeze
 
@@ -76,10 +57,10 @@ class CommentDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how comments are displayed
+  # Overwrite this method to customize how flags are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(comment)
-  #   "Comment ##{comment.id}"
+  # def display_resource(flag)
+  #   "Flag ##{flag.id}"
   # end
 end

@@ -39,5 +39,20 @@ FactoryBot.define do
         )
       end
     end
+
+    factory :comment_with_flags do
+      transient do
+        flags_count { 1 }
+      end
+
+      after(:create) do |comment, evaluator|
+        create_list(
+          :flag,
+          evaluator.flags_count,
+          comment: comment,
+          user: create(:user)
+        )
+      end
+    end
   end
 end

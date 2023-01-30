@@ -22,5 +22,11 @@ FactoryBot.define do
         create(:reaction, user: user)
       end
     end
+
+    trait :with_flagged_comment do
+      after(:create) do |user, _evaluator|
+        create(:flag, user: user)
+      end
+    end
   end
 end

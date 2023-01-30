@@ -2,10 +2,11 @@ require "rails_helper"
 
 RSpec.describe Comment, type: :model do
   describe "associations" do
-    it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:topic).optional }
+    it { is_expected.to have_many(:flags).dependent(:destroy) }
     it { is_expected.to belong_to(:parent).optional }
     it { is_expected.to have_many(:reactions).dependent(:destroy) }
+    it { is_expected.to belong_to(:topic).optional }
+    it { is_expected.to belong_to(:user) }
   end
 
   describe "validations" do

@@ -20,4 +20,16 @@
               class: "card-link text-decoration-none comment-href", remote: true %>
 <% end %>
 
-<a href="#" class="card-link text-decoration-none">🚨 Report</a>
+<% if current_user.flagged_comment?(comment) %>
+  <%= link_to "🚨 Report",
+              comment_flags_path(comment),
+              method: :delete,
+              remote: true,
+              class: "card-link text-decoration-none bg-primary p-1 bg-opacity-10 rounded remove-flag-comment-link" %>
+<% else %>
+  <%= link_to "🚨 Report",
+              comment_flags_path(comment),
+              method: :post,
+              remote: true,
+              class: "card-link text-decoration-none flag-comment-link" %>
+<% end %>

@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
   describe "associations" do
     it { should have_many(:babies).dependent(:destroy) }
     it { should have_many(:comments).dependent(:destroy) }
+    it { should have_many(:flags).dependent(:destroy) }
     it { should have_many(:invites).dependent(:destroy) }
     it { should have_many(:reactions).dependent(:destroy) }
   end
@@ -63,6 +64,24 @@ RSpec.describe User, type: :model do
       subject(:user) { create(:user) }
 
       it { is_expected.not_to be_liked_comment(create(:reaction).reactionable) }
+    end
+  end
+
+  describe "#flagged_comment?" do
+    subject(:user) { create(:user, :with_flagged_comment) }
+
+    it { is_expected.to be_flagged_comment(Comment.first) }
+
+    context "with a comment not flagged" do
+      subject(:user) { create(:user) }
+
+      it { is_expected.not_to be_flagged_comment(create(:comment)) }
+    end
+
+    context "with a comment flagged by another user" do
+      subject(:user) { create(:user) }
+
+      it { is_expected.not_to be_flagged_comment(create(:comment_with_flags)) }
     end
   end
 end

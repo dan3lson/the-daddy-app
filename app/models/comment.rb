@@ -6,6 +6,7 @@ class Comment < ApplicationRecord
   belongs_to :topic, optional: true
   belongs_to :parent, class_name: :Comment, optional: true
   has_one_attached :image
+  has_many :flags, dependent: :destroy
   has_many :replies,
     class_name: :Comment,
     foreign_key: :parent_id,
