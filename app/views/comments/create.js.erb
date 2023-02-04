@@ -1,36 +1,39 @@
-var $commentsDiv = $("#create-comment");
+var $form = $("#new_comment");
 var newCommentSaved = "<%= @saved %>" === "true";
-var $form = $commentsDiv.find("form");
-var $field = $form.find(".field");
-var $input = $field.find(".input");
+var $input = $form.find("#comment_body");
+var $comments = $(".comments");
 
 resetForms();
+newCommentSaved ? renderSuccess() : renderErrors();
 
-newCommentSaved ? showSuccess() : showErrors();
+function resetForms() {
+  var $invalidInputs = $form.find(".is-invalid");
+  var $helpTexts = $form.find(".invalid-feedback");
+
+  $invalidInputs.removeClass("is-invalid");
+  $helpTexts.remove();
+}
 
 function resetInput($input) {
   return $input.val("");
 }
 
-function resetForms() {
-  var $inputs = $commentsDiv.find(".input");
-  var $helpTexts = $commentsDiv.find(".help");
+function renderSuccess() {
+  var comment = "<%= j render(partial: 'comments/comment', locals: { comment: @comment }) %>";
+  var commentID = "<%= @comment.id %>";
+  var $commentContainer = $comments.find(`[data-comment-id='${commentID}']`);
 
-  $inputs.removeClass("is-danger").removeClass("is-success");
-  $helpTexts.remove();
-}
-
-function showSuccess() {
-  var $helpSuccess = $('<p/>', { "class": "help is-success" });
-  $helpSuccess.text("Thanks for your comment");
-  $helpSuccess.insertAfter($field);
+  $comments.prepend(comment);
+  $commentContainer.hide().fadeIn("slow");
   resetInput($input);
 }
 
-function showErrors() {
+function renderErrors() {
   var errors = "<%= @errors %>";
-  var $helpDanger = $('<p/>', { "class": "help is-danger" });
-  $input.addClass("is-danger");
+  var $helpDanger = $('<div/>', { "class": "invalid-feedback" });
+
+  $input.addClass("is-invalid");
   $helpDanger.text("Uh-oh: " + errors);
-  $helpDanger.insertAfter($field);
+  $helpDanger.insertAfter($input);
+  $helpDanger.hide().fadeIn("slow");
 }

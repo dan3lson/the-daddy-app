@@ -1,4 +1,8 @@
-
+<!--
+  We check if the comment was saved because /comments/create.js.erb has a
+	partial which gets loaded before the JS gets served.
+-->
+<% return unless comment.persisted? %>
 
 <div class="card mb-4" data-comment-id="<%= comment.id %>">
   <div class="card-body">
@@ -14,7 +18,7 @@
       <%= image_tag comment.image.variant(resize_to_limit: [200, 200]),
                     title: comment.image.filename.to_s %>
     <% end %>
-    <p class="card-text fs-4">
+    <p class="card-text fs-5">
       <%= comment.body %>
     </p>
 
