@@ -12,6 +12,7 @@ class Comment < ApplicationRecord
     foreign_key: :parent_id,
     dependent: :destroy
   has_many :reactions, as: :reactionable, dependent: :destroy
+  has_many :likes, -> { likes }, class_name: :Reaction, as: :reactionable, dependent: :destroy
 
   validates :body, presence: true, length: {minimum: 3}
   validates :status, presence: true
@@ -28,11 +29,6 @@ class Comment < ApplicationRecord
 
   def liked?
     likes.any?
-  end
-
-  # TODO: turn into something like has_many :likes, -> { likes }, class_name: :Reaction
-  def likes
-    reactions.likes
   end
 
   def replies?

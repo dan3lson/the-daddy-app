@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:flags).dependent(:destroy) }
     it { should have_many(:invites).dependent(:destroy) }
     it { should have_many(:reactions).dependent(:destroy) }
+    it { should have_many(:likes).dependent(:destroy) }
   end
 
   describe "validations" do

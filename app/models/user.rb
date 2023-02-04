@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :invites, dependent: :destroy
   has_many :flags, dependent: :destroy
   has_many :reactions, dependent: :destroy
+  has_many :likes, -> { likes }, class_name: :Reaction, dependent: :destroy
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :password, presence: true
@@ -35,10 +36,5 @@ class User < ApplicationRecord
 
   def liked_comment?(comment)
     likes.pluck(:reactionable_id).include?(comment&.id)
-  end
-
-  # TODO: turn into something like has_many :likes, -> { likes }, class_name: :Reaction
-  def likes
-    reactions.likes
   end
 end
