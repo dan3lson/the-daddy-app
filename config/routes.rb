@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       resource :flags, only: %i[create destroy]
       resource :reactions, only: %i[destroy]
     end
+    resource :question_of_the_day, only: %i[show], controller: :question_of_the_day
 
     # Reactions
     #

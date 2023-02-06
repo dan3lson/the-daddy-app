@@ -1,0 +1,8 @@
+var question = "<%= @question_of_the_day.question %>";
+var $rootCommentLabel = $("#root-comment-label");
+var $questionOfTheDayLinkContainer = $("#question-of-the-day-link-container");
+var questionOfTheDayText = "🗓 Question of the Day 👆"
+
+$rootCommentLabel.text(question);
+$rootCommentLabel.hide().fadeIn("slow");
+$questionOfTheDayLinkContainer.text(questionOfTheDayText);

@@ -10,6 +10,12 @@ def new_question
   Faker::Lorem.question
 end
 
+# == Questions of the Day
+#
+
+days = (Date.current - 2.weeks..Date.current.next_month).to_a
+days.each { |day| QuestionOfTheDay.create!(question: new_question, day: day) }
+
 # == Daddies and Babies
 #
 User.destroy_all
