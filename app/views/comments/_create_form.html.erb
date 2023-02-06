@@ -1,27 +1,11 @@
+<div class="fs-2"><%= Lib::Constants::CREATE_COMMENT_LABEL_EXAMPLES.sample %> 👀</div>
+
 <%= form_for comment, remote: true do |form| %>
-	<%= render "shared/form_errors", object: @comment %>
-
-  <%= form.label :body,
-                Lib::Constants::CREATE_COMMENT_LABEL_EXAMPLES.sample,
-                for: "body",
-                class: "fs-4 form-label" %>
-
-  <div class="row g-3 mb-3">
-    <div class="col-md-8">
-      <%= form.text_field :body,
-                          class: "form-control form-control-lg",
-                          placeholder: Lib::Constants::CREATE_COMMENT_EXAMPLES.sample %>
-    </div>
-    <div class="col-md-4">
-      <label for="formFileLg" class="form-label fs-4 visually-hidden">
-        <i class="fas fa-upload"></i>
-        Upload a picture...
-      </label>
-      <%= form.file_field :image, id: "formFileLg", class: "form-control form-control-lg" %>
-    </div>
+  <div class="mb-2">
+    <%= form.text_area :body,
+                  class: "form-control form-control-lg",
+                  placeholder: Lib::Constants::CREATE_COMMENT_EXAMPLES.sample %>
   </div>
-
-  <div>
     <%= form.submit "Share", class: "btn btn-dark btn-lg text-uppercase w-100" %>
-  </div>
+
 <% end %>
