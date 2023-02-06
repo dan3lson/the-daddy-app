@@ -1,8 +1,5 @@
 <%= form_for [comment, Comment.new], url: comment_replies_path(comment), remote: true do |form| %>
-  <%= render "shared/form_errors", object: Comment.new %>
-
   <%= form.text_field :body,
                       class: "form-control form-control-lg",
                       placeholder: "Reply to #{comment.user.first_name}" %>
 <% end %>
-
