@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_06_154503) do
+ActiveRecord::Schema.define(version: 2023_02_07_110348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -173,6 +173,16 @@ ActiveRecord::Schema.define(version: 2023_02_06_154503) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  create_table "users_question_of_the_days", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "question_of_the_day_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_of_the_day_id", "user_id"], name: "index_user_and_question_on_users_questions_of_the_day"
+    t.index ["question_of_the_day_id"], name: "index_users_question_of_the_days_on_question_of_the_day_id"
+    t.index ["user_id"], name: "index_users_question_of_the_days_on_user_id"
+  end
+
   create_table "waitlist_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", null: false
     t.string "daddy_type", null: false
@@ -196,4 +206,6 @@ ActiveRecord::Schema.define(version: 2023_02_06_154503) do
   add_foreign_key "invites", "users"
   add_foreign_key "reactions", "emojis"
   add_foreign_key "reactions", "users"
+  add_foreign_key "users_question_of_the_days", "question_of_the_days"
+  add_foreign_key "users_question_of_the_days", "users"
 end

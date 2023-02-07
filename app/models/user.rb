@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :flags, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :likes, -> { likes }, class_name: :Reaction, dependent: :destroy
+  has_many :users_question_of_the_days, dependent: :destroy
+  has_many :question_of_the_days, through: :users_question_of_the_days
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :password, presence: true

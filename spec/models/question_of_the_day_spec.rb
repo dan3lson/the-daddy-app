@@ -3,6 +3,11 @@
 require "rails_helper"
 
 RSpec.describe QuestionOfTheDay, type: :model do
+  describe "associations" do
+    it { should have_many(:users_question_of_the_days).dependent(:destroy) }
+    it { should have_many(:users) }
+  end
+
   describe "validations" do
     it { is_expected.to validate_presence_of(:day) }
     it { is_expected.to validate_presence_of(:question) }
