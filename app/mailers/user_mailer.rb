@@ -34,4 +34,15 @@ class UserMailer < ApplicationMailer
       subject: "Someone replied to your comment on The Daddy App"
     )
   end
+
+  # == One-off Emails
+  #
+  def update_waitlist_users_before_alpha_launch(waitlist_user)
+    @waitlist_user = waitlist_user
+
+    mail(
+      to: @waitlist_user.email,
+      subject: "Days Away From the First Release!"
+    )
+  end
 end
