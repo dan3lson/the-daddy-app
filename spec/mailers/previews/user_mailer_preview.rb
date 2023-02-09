@@ -22,4 +22,8 @@ class UserMailerPreview < ActionMailer::Preview
       referral_code: "s0meCod3"
     )
   end
+
+  def update_waitlist_users_before_alpha_launch
+    UserMailer.update_waitlist_users_before_alpha_launch(WaitlistUser.first)
+  end
 end
