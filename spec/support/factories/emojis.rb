@@ -13,5 +13,10 @@ FactoryBot.define do
       emoji { "❤️" }
       name { "red-heart" }
     end
+
+    trait :plus do
+      emoji { "➕" }
+      name { "plus" }
+    end
   end
 end

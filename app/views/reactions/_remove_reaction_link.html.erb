@@ -1,0 +1,7 @@
+<%= form_with model: reaction, method: :delete, local: false, html: {class: "d-inline-flex"} do |form| %>
+  <%= form.hidden_field :cta, value: cta %>
+  <%= form.hidden_field :reaction_count_method_name, value: reaction_count_method_name %>
+
+  <%= form.submit "#{cta} (#{reaction_count})",
+                  class: "btn btn-link styled-btn-card-link card-link text-decoration-none bg-primary p-1 bg-opacity-10 rounded remove-reaction-link" %>
+<% end %>

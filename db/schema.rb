@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_07_110348) do
+ActiveRecord::Schema.define(version: 2023_02_12_112646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -111,6 +111,16 @@ ActiveRecord::Schema.define(version: 2023_02_07_110348) do
     t.index ["name"], name: "index_emojis_on_name", unique: true
   end
 
+  create_table "feedbacks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "body", null: false
+    t.string "kind", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["kind"], name: "index_feedbacks_on_kind"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
   create_table "flags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "comment_id", null: false
     t.uuid "user_id", null: false
@@ -201,6 +211,7 @@ ActiveRecord::Schema.define(version: 2023_02_07_110348) do
   add_foreign_key "babies", "users"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "flags", "comments"
   add_foreign_key "flags", "users"
   add_foreign_key "invites", "users"

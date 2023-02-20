@@ -6,10 +6,12 @@ RSpec.describe User, type: :model do
   describe "associations" do
     it { should have_many(:babies).dependent(:destroy) }
     it { should have_many(:comments).dependent(:destroy) }
+    it { should have_many(:feedbacks).dependent(:destroy) }
     it { should have_many(:flags).dependent(:destroy) }
     it { should have_many(:invites).dependent(:destroy) }
     it { should have_many(:reactions).dependent(:destroy) }
     it { should have_many(:likes).dependent(:destroy) }
+    it { should have_many(:upvotes).dependent(:destroy) }
     it { should have_many(:users_question_of_the_days).dependent(:destroy) }
     it { should have_many(:question_of_the_days) }
   end
@@ -67,6 +69,29 @@ RSpec.describe User, type: :model do
       subject(:user) { create(:user) }
 
       it { is_expected.not_to be_liked_comment(create(:reaction).reactionable) }
+    end
+  end
+
+  describe "#upvoted_feedback?" do
+    subject(:user) { create(:user, :with_upvoted_feedback) }
+
+    it { is_expected.to be_upvoted_feedback(Feedback.first) }
+
+    context "with a feedback not upvoted" do
+      subject(:user) { create(:user) }
+
+      it { is_expected.not_to be_upvoted_feedback(create(:feedback)) }
+    end
+
+    context "with a feedback upvoted by another user" do
+      subject(:user) { create(:user) }
+
+      it do
+        is_expected
+          .not_to be_upvoted_feedback(
+            create(:reaction, :for_feedback).reactionable
+          )
+      end
     end
   end
 

@@ -7,9 +7,11 @@ class User < ApplicationRecord
   has_many :babies, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :invites, dependent: :destroy
+  has_many :feedbacks, dependent: :destroy
   has_many :flags, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :likes, -> { likes }, class_name: :Reaction, dependent: :destroy
+  has_many :upvotes, -> { plusses }, class_name: :Reaction, dependent: :destroy
   has_many :users_question_of_the_days, dependent: :destroy
   has_many :question_of_the_days, through: :users_question_of_the_days
 
@@ -38,5 +40,9 @@ class User < ApplicationRecord
 
   def liked_comment?(comment)
     likes.pluck(:reactionable_id).include?(comment&.id)
+  end
+
+  def upvoted_feedback?(feedback)
+    upvotes.pluck(:reactionable_id).include?(feedback&.id)
   end
 end

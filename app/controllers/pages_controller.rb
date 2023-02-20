@@ -4,10 +4,6 @@ class PagesController < ApplicationController
   def about
   end
 
-  def community_guidelines
-    render layout: "layouts/application_signed_in"
-  end
-
   def contact_us
   end
 
@@ -24,9 +20,32 @@ class PagesController < ApplicationController
     render layout: "join"
   end
 
+  # == Signed-in Pages
+  #
+
+  def community_guidelines
+    render layout: "layouts/application_signed_in"
+  end
+
   def onboarding
     @comment = Comment.new
 
+    render layout: "layouts/application_signed_in"
+  end
+
+  def faq
+    render layout: "layouts/application_signed_in"
+  end
+
+  # TODO: move this shit to the FeedbacksController#Index, tf
+  def feedback
+    @feedbacks = Feedback.latest
+    @emoji = Emoji.plus_emoji
+
+    render layout: "layouts/application_signed_in"
+  end
+
+  def support
     render layout: "layouts/application_signed_in"
   end
 end

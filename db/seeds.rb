@@ -53,10 +53,12 @@ end
 # == Emojis
 #
 EMOJIS = {
-  "👍" => "thumbs-up-default",
-  "❤️" => "red-heart"
+  "➕" => "plus",
+  "❤️" => "red-heart",
+  "👍" => "thumbs-up-default"
 }.freeze
 EMOJIS.each { |emoji, name| Emoji.find_or_create_by!(emoji: emoji, name: name) }
+plus_emoji = Emoji.plus_emoji
 thumbs_up_emoji = Emoji.like_emoji
 
 # == Comments
@@ -72,4 +74,15 @@ users.count.times do
       user: users.sample
     )
   end
+end
+
+# == Feedbacks
+#
+rand(10..20).times do |i|
+  feedback = Feedback.create!(
+    body: [new_sentence, new_question].sample,
+    kind: :feature_request,
+    user: users.sample
+  )
+  feedback.reactions.create!(emoji: plus_emoji, user: users.sample) if [true, false].sample
 end

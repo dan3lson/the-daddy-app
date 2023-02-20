@@ -9,4 +9,8 @@ class Emoji < ApplicationRecord
   def self.like_emoji
     find_or_create_by(emoji: "👍", name: "thumbs-up-default")
   end
+
+  def self.plus_emoji
+    find_or_create_by(emoji: "➕", name: "plus")
+  end
 end

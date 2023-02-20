@@ -1,0 +1,46 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+		  <%= link_to "Home", signed_in_root_path, class: "text-decoration-none" %>
+		</li>
+    <li class="breadcrumb-item">
+		  <%= link_to "Support", support_path, class: "text-decoration-none" %>
+		</li>
+    <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+  </ol>
+</nav>
+
+<section class="feedbacks-wrapper reactionable-wrapper">
+  <h1 class="mb-4">Feedback</h1>
+
+  <% @feedbacks.each do |feedback| %>
+		<div class="card mb-4" data-reactionable-id="<%= feedback.id %>">
+			<div class="card-body">
+				<h5 class="card-title">
+					<%= feedback.user.first_name %>
+				</h5>
+				<h6 class="card-subtitle mb-2 text-muted mb-3">
+					⏱ <%= time_ago_in_words(feedback.created_at) %> ago
+				</h6>
+				<p class="card-text fs-5">
+					<%= feedback.body %>
+				</p>
+
+				<% if current_user.upvoted_feedback?(feedback) %>
+					<%= render "reactions/remove_reaction_link",
+										 cta: "➕ Upvote",
+										 reaction: current_user.reactions.find_by(reactionable: feedback),
+										 reaction_count: feedback.upvotes_count,
+										 reaction_count_method_name: :upvotes_count %>
+				<% else %>
+					<%= render "reactions/add_reaction_link",
+							       cta: "➕ Upvote",
+							       reactionable: feedback,
+							       reaction_count: feedback.upvotes_count,
+							       reaction_count_method_name: :upvotes_count,
+										 emoji: "➕" %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</section>

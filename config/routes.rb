@@ -34,8 +34,15 @@ Rails.application.routes.draw do
 
     # Static Pages
     #
+    # TODO: move into its own controller so PagesController isn't mixed with
+    # signed-in and signed-out actions
+    #
     get "/community-guidelines" => "pages#community_guidelines"
     get "/onboarding" => "pages#onboarding"
+    get "/rewards" => "pages#rewards"
+    get "/support" => "pages#support"
+    get "/faq" => "pages#faq"
+    get "/feedback" => "pages#feedback"
 
     # Onboarding
     #
@@ -53,13 +60,12 @@ Rails.application.routes.draw do
     resources :comments, only: %i[index create] do
       resources :replies, only: %i[index create]
       resource :flags, only: %i[create destroy]
-      resource :reactions, only: %i[destroy]
     end
     resource :question_of_the_day, only: %i[show], controller: :question_of_the_day
 
     # Reactions
     #
-    resources :reactions, only: %i[create]
+    resources :reactions, only: %i[create destroy]
 
     # Admin
     #

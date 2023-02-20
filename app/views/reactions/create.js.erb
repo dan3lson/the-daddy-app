@@ -1,16 +1,6 @@
-var reactionableID = "<%= @comment.id %>";
-var $reactionable = $(".comments").find(`[data-comment-id='${reactionableID}']`);
-var $reactionLink = $reactionable.find(".react-to-comment-link").first();
+var reactionableID = "<%= @reactionable.id %>";
+var $reactionable = $(".reactionable-wrapper").find(`[data-reactionable-id='${reactionableID}']`);
+var $addReactionForm = $reactionable.find(".add-reaction-link").first().parent();
+var removeReactionFormPartial = "<%= j render(partial: "reactions/remove_reaction_link", locals: {reaction: @reaction, cta: @cta, reaction_count: @reaction_count, reaction_count_method_name: @reaction_count_method_name}) %>";
 
-$reactionLink.replaceWith(removeReactionLink());
-
-// Replace with partial to DRY this up from links in _link_actions.html.erb
-function removeReactionLink() {
-  return $("<a/>")
-    .addClass("card-link text-decoration-none bg-primary p-1 bg-opacity-10 rounded remove-reaction-link")
-    .attr("href", "/comments/" + reactionableID + "/reactions")
-    .attr("data-method", "delete")
-    .attr("data-remote", "true")
-    .attr("rel", "nofollow")
-    .text("👍 Like (" + "<%= @comment.likes.count %>" + ")");
-}
+$addReactionForm.replaceWith(removeReactionFormPartial);

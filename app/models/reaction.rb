@@ -13,4 +13,5 @@ class Reaction < ApplicationRecord
     }
 
   scope :likes, -> { joins(:emoji).where(emojis: {emoji: "👍"}) }
+  scope :plusses, -> { joins(:emoji).where(emojis: {emoji: "➕"}) }
 end
