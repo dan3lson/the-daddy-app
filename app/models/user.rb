@@ -18,7 +18,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :password, presence: true
   validates :first_name, presence: true
-  validates :city, presence: true
 
   # TODO: this is duplicated in a UserHelper -- delete one of them
   def children_names

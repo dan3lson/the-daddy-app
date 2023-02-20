@@ -5,13 +5,12 @@ class Registration
   include ActiveModel::Model
   include Wisper::Publisher
 
-  attr_accessor :first_name, :email, :password, :city, :children
+  attr_accessor :first_name, :email, :password, :children
 
   validates :first_name, presence: true
   validates :email, presence: true
   validate :unique_email?
   validates :password, presence: true
-  validates :city, presence: true
   validates :children, presence: true
   validate :complete_children_info?
 
@@ -53,8 +52,7 @@ class Registration
     User.new(
       first_name: first_name.strip,
       email: email.strip,
-      password: password,
-      city: city.strip
+      password: password
     )
   end
 

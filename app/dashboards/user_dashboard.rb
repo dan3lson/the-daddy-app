@@ -11,7 +11,6 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::String,
     admin: Field::Boolean,
     children: Field::HasMany,
-    city: Field::String,
     comments: Field::HasMany,
     confirmation_token: Field::String,
     email: Field::String,
@@ -32,7 +31,6 @@ class UserDashboard < Administrate::BaseDashboard
     id
     admin
     children
-    city
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -41,7 +39,6 @@ class UserDashboard < Administrate::BaseDashboard
     id
     admin
     children
-    city
     comments
     confirmation_token
     email
@@ -59,7 +56,6 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     admin
     children
-    city
     comments
     confirmation_token
     email

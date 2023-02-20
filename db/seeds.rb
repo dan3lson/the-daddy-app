@@ -23,8 +23,7 @@ danelson_sr = User.create!(
   admin: true,
   email: "danelson.rosa.sr@gmail.com",
   password: "password",
-  first_name: "Danelson",
-  city: "Bronx"
+  first_name: "Danelson"
 )
 _danelson_jr = Child.create!(
   daddy:	danelson_sr,
@@ -36,8 +35,7 @@ _danelson_jr = Child.create!(
   daddy = User.create!(
     email: Faker::Internet.unique.email,
     password: "password",
-    first_name: Faker::Name.first_name,
-    city: Faker::Address.city
+    first_name: Faker::Name.first_name
   )
   num_children = rand(10)
   num_children.times do

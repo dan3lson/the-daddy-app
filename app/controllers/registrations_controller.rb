@@ -29,7 +29,6 @@ class RegistrationsController < ApplicationController
       :email,
       :password,
       :first_name,
-      :city,
       children: [%i[first_name gender birthdate]]
     )
   end

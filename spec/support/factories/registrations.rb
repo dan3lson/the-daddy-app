@@ -3,7 +3,6 @@
 FactoryBot.define do
   factory :registration do
     first_name { "Danelson Sr." }
-    city { "Bronx" }
     password { "password" }
     sequence(:email) { |i| "email+#{i}@thedaddyapp.com" }
     children {
@@ -17,7 +16,6 @@ FactoryBot.define do
     }
 
     factory :invalid_daddy_registration do
-      city { "" }
       email { "" }
     end
 
