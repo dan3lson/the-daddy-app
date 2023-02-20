@@ -41,9 +41,9 @@ class Registration
   def complete_babies_info?
     return if babies.nil?
 
-    babies.each do |baby|
-      baby_attrs = baby.last
-      next unless baby_attrs.values.any?(&:blank?)
+    babies.each do |child|
+      child_attrs = child.last
+      next unless child_attrs.values.any?(&:blank?)
 
       errors.add(:babies, "info is incomplete")
     end
@@ -59,11 +59,11 @@ class Registration
   end
 
   def create_babies!(daddy)
-    babies.each do |baby|
+    babies.each do |child|
       daddy.babies.create!(
-        first_name: baby.last["first_name"].strip,
-        gender: baby.last["gender"],
-        birthdate: baby.last["birthdate"]
+        first_name: child.last["first_name"].strip,
+        gender: child.last["gender"],
+        birthdate: child.last["birthdate"]
       )
     end
   end

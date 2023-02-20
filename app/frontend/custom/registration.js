@@ -4,96 +4,96 @@ $(function() {
 		showStepTwo();
 	});
 
-	$("#registration-baby-back").on("click", function(e) {
+	$("#registration-child-back").on("click", function(e) {
 		e.preventDefault();
 		showStepOne();
 	});
 
-	$(".registration-baby-add-link").on("click", function(e) {
+	$(".registration-child-add-link").on("click", function(e) {
 		e.preventDefault();
-		if (!$("#baby-container-number-one-display").length) {
-			$(".registration-baby-container").first().prepend(babyContainerNumberOneDisplay());
+		if (!$("#child-wrapper-number-one-display").length) {
+			$(".registration-child-wrapper").first().prepend(childNumberOneWrapperDisplay());
 		}
-		$(".registration-added-babies")
+		$(".registration-added-children")
 			.append(
-				babyContainer()
+				childWrapper()
 					.append($("<hr>"))
 					.append(
-						babyContainerNumberDisplay(babyContainerIndex() + 1)
+						childWrapperNumberDisplay(childWrapperIndex() + 1)
 					)
 					.append(
 						formFloatingDiv()
 							.append(
-								babyInput("first_name", "text", "Baby First Name"), label("First Name")
+								childInput("first_name", "text", "Child First Name"), label("First Name")
 							)
 						)
 					.append(
 						formFloatingDiv()
 							.append(
-								babyInput("gender", "text", "Baby Gender"), label("Gender")
+								childInput("gender", "text", "Child Gender"), label("Gender")
 							)
 						)
 					.append(
 						formFloatingDiv()
 							.append(
-								babyInput("birthdate", "date", "Baby Birthdate"), label("Birthdate")
+								childInput("birthdate", "date", "Child Birthdate"), label("Birthdate")
 							)
 						)
 					.append(
-						removeBabyLink()
+						removeChildLink()
 					)
 			);
 		updateStepTwoTitle();
 	});
 
-	$(".registration-added-babies").on("click", ".registration-baby-remove-link", function(e) {
+	$(".registration-added-children").on("click", ".registration-child-remove-link", function(e) {
     e.preventDefault();
 		$(this).parent().remove();
 		updateStepTwoTitle();
-		updateBabyContainerNumberDisplays();
-		removeFirstBabyContainerNumberDisplay();
+		updateChildWrapperNumberDisplays();
+		removeFirstChildContainerNumberDisplay();
 	});
 
 	function formFloatingDiv() {
 		return $('<div/>').addClass("form-floating mb-3");
 	}
 
-	function babyContainer() {
+	function childWrapper() {
 		return $('<div/>')
-		  .addClass("registration-baby-container mb-4")
-			.attr("id", "registration_baby_container_" + babyContainerIndex());
+		  .addClass("registration-child-wrapper mb-4")
+			.attr("id", "registration_baby_container_" + childWrapperIndex());
 	}
 
-	function babyContainerNumberOneDisplay() {
+	function childNumberOneWrapperDisplay() {
 		return $('<h6/>')
-			.addClass("text-muted mb-3 baby-container-number-display")
-			.attr("id", "baby-container-number-one-display")
-			.text("Baby #1");
+			.addClass("text-muted mb-3 child-wrapper-number-display")
+			.attr("id", "child-wrapper-number-one-display")
+			.text("Child #1");
 	}
 
-	function babyContainerNumberDisplay(index) {
+	function childWrapperNumberDisplay(index) {
 		return $('<h6/>')
-		  .addClass("text-muted mb-3 baby-container-number-display")
-			.text("Baby #" + index);
+		  .addClass("text-muted mb-3 child-wrapper-number-display")
+			.text("Child #" + index);
 	}
 
-	function updateBabyContainerNumberDisplays() {
-		var $displays = $(".baby-container-number-display");
+	function updateChildWrapperNumberDisplays() {
+		var $displays = $(".child-wrapper-number-display");
 		$displays.each(function(index) {
-			$(this).text("Baby #" + (index + 1));
+			$(this).text("Child #" + (index + 1));
 		});
 	}
 
-	function removeFirstBabyContainerNumberDisplay() {
-		if(isAddingOneBaby()) {
-			$("#baby-container-number-one-display").remove();
+	function removeFirstChildContainerNumberDisplay() {
+		if(isAddingOneChild()) {
+			$("#child-wrapper-number-one-display").remove();
 		}
 	}
 
-	function babyInput(inputName, inputType, placeholder) {
+	function childInput(inputName, inputType, placeholder) {
 		return $('<input/>')
-			.attr("id", "registration_babies_" + babyContainerIndex() + "_" + inputName)
-			.attr("name", "registration[babies][" + babyContainerIndex() + "][" + inputName + "]")
+			.attr("id", "registration_babies_" + childWrapperIndex() + "_" + inputName)
+			.attr("name", "registration[babies][" + childWrapperIndex() + "][" + inputName + "]")
 			.attr("value", "")
 			.attr("type", inputType)
 			.attr("placeholder", placeholder)
@@ -101,8 +101,8 @@ $(function() {
 			.addClass("form-control")
 	}
 
-	function babyContainerIndex() {
-		return $(".registration-baby-container").length;
+	function childWrapperIndex() {
+		return $(".registration-child-wrapper").length;
 	}
 
 	function label(string) {
@@ -111,38 +111,38 @@ $(function() {
 			.text(string)
 	}
 
-	function removeBabyLink() {
+	function removeChildLink() {
 		return $("<a/>")
-		  .addClass("registration-baby-remove-link link-danger")
+		  .addClass("registration-child-remove-link link-danger")
 			.attr("href", "#")
-			.text("➖ Remove baby");
+			.text("➖ Remove child");
 	}
 
 	function showStepTwo() {
-		$("#registration-babies").removeClass("d-none");
+		$("#registration-children").removeClass("d-none");
 		$("#registration-daddy").hide();
 	}
 
 	function showStepOne() {
-		$("#registration-babies").addClass("d-none");
+		$("#registration-children").addClass("d-none");
 		$("#registration-daddy").show();
 	}
 
 	function updateStepTwoTitle() {
-		var $pluralizedElement = $("#registration-babies h3 span");
+		var $pluralizedElement = $("#registration-children h3 span");
 
-		if (isAddingMultipleBabies()) {
-			$pluralizedElement.text("babies");
+		if (isAddingMultipleChildren()) {
+			$pluralizedElement.text("children");
 		} else {
-			$pluralizedElement.text("baby");
+			$pluralizedElement.text("child");
 		}
 	}
 
-	function isAddingMultipleBabies() {
-		return babyContainerIndex() > 1;
+	function isAddingMultipleChildren() {
+		return childWrapperIndex() > 1;
 	}
 
-	function isAddingOneBaby() {
-		return babyContainerIndex() == 1;
+	function isAddingOneChild() {
+		return childWrapperIndex() == 1;
 	}
 });

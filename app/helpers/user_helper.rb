@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UserHelper
-  def baby_names(user)
+  def children_names(user)
     names = user.babies.pluck(:first_name)
     num_babies = names.size
     case num_babies

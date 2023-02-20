@@ -1,0 +1,18 @@
+<section id="registration-children" class="d-none">
+  <h3 class="mb-4 bg-light bg-gradient py-3">👶🏾 Step 2/2: Add your <span>children</span></h3>
+
+  <div class="registration-added-children">
+    <%= render "child_fields" %>
+  </div>
+
+  <div class="mb-5 add-another-child-link-wrapper">
+    <%= link_to "➕ Add another child", "#", class: "registration-child-add-link" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.submit "Let's go!", role: "button", class: "w-100 btn btn-primary btn-lg text-uppercase" %>
+  </div>
+  <div>
+    <%= link_to "Back", "#", role: "button", id: "registration-child-back", class: "btn btn-outline-primary btn-lg w-100 text-uppercase" %>
+  </div>
+</section>

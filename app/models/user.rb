@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :city, presence: true
 
   # TODO: this is duplicated in a UserHelper -- delete one of them
-  def baby_names
+  def children_names
     names = babies.pluck(:first_name)
     num_babies = names.size
 

@@ -25,12 +25,12 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:city) }
   end
 
-  describe "#baby_names" do
+  describe "#children_names" do
     context "when a daddy has one baby" do
       it "shows one name" do
         daddy = create(:daddy_with_babies)
 
-        expect(daddy.baby_names).to eq("Danelson Jr.")
+        expect(daddy.children_names).to eq("Danelson Jr.")
       end
     end
 
@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
         daddy = create(:daddy_with_babies)
         create(:baby, first_name: "Mariella", daddy: daddy)
 
-        expect(daddy.baby_names).to eq("Danelson Jr. and Mariella")
+        expect(daddy.children_names).to eq("Danelson Jr. and Mariella")
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
         create(:baby, first_name: "Mariella", daddy: daddy)
         create(:baby, first_name: "Dalivia", daddy: daddy)
 
-        expect(daddy.baby_names).to eq("Danelson Jr., Mariella, and Dalivia")
+        expect(daddy.children_names).to eq("Danelson Jr., Mariella, and Dalivia")
       end
     end
   end
