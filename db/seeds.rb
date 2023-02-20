@@ -16,7 +16,7 @@ end
 days = (Date.current - 2.weeks..Date.current.next_month).to_a
 days.each { |day| QuestionOfTheDay.create!(question: new_question, day: day) }
 
-# == Daddies and Babies
+# == Daddies and Children
 #
 User.destroy_all
 danelson_sr = User.create!(
@@ -26,7 +26,7 @@ danelson_sr = User.create!(
   first_name: "Danelson",
   city: "Bronx"
 )
-_danelson_jr = Baby.create!(
+_danelson_jr = Child.create!(
   daddy:	danelson_sr,
   first_name: "Danelson",
   gender: :male,
@@ -39,9 +39,9 @@ _danelson_jr = Baby.create!(
     first_name: Faker::Name.first_name,
     city: Faker::Address.city
   )
-  num_babies = rand(10)
-  num_babies.times do
-    Baby.create!(
+  num_children = rand(10)
+  num_children.times do
+    Child.create!(
       daddy: daddy,
       first_name: Faker::Name.first_name,
       gender: %i[male female].sample,

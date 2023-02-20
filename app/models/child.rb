@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Baby < ApplicationRecord
+class Child < ApplicationRecord
   belongs_to :daddy, class_name: :User, foreign_key: :user_id
 
   validates :first_name, presence: true

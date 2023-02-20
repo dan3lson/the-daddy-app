@@ -61,7 +61,7 @@ $(function() {
 	function childWrapper() {
 		return $('<div/>')
 		  .addClass("registration-child-wrapper mb-4")
-			.attr("id", "registration_baby_container_" + childWrapperIndex());
+			.attr("id", "registration_child_wrapper_" + childWrapperIndex());
 	}
 
 	function childNumberOneWrapperDisplay() {
@@ -92,8 +92,8 @@ $(function() {
 
 	function childInput(inputName, inputType, placeholder) {
 		return $('<input/>')
-			.attr("id", "registration_babies_" + childWrapperIndex() + "_" + inputName)
-			.attr("name", "registration[babies][" + childWrapperIndex() + "][" + inputName + "]")
+			.attr("id", "registration_children_" + childWrapperIndex() + "_" + inputName)
+			.attr("name", "registration[children][" + childWrapperIndex() + "][" + inputName + "]")
 			.attr("value", "")
 			.attr("type", inputType)
 			.attr("placeholder", placeholder)

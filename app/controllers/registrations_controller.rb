@@ -30,7 +30,7 @@ class RegistrationsController < ApplicationController
       :password,
       :first_name,
       :city,
-      babies: [%i[first_name gender birthdate]]
+      children: [%i[first_name gender birthdate]]
     )
   end
 end

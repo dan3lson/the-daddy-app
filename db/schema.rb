@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_12_112646) do
+ActiveRecord::Schema.define(version: 2023_02_20_110724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -79,14 +79,14 @@ ActiveRecord::Schema.define(version: 2023_02_12_112646) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
-  create_table "babies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "children", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
     t.integer "gender", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "birthdate", null: false
-    t.index ["user_id"], name: "index_babies_on_user_id"
+    t.index ["user_id"], name: "index_children_on_user_id"
   end
 
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(version: 2023_02_12_112646) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "babies", "users"
+  add_foreign_key "children", "users"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"

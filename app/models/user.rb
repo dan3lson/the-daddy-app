@@ -4,7 +4,7 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  has_many :babies, dependent: :destroy
+  has_many :children, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :invites, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
@@ -22,10 +22,10 @@ class User < ApplicationRecord
 
   # TODO: this is duplicated in a UserHelper -- delete one of them
   def children_names
-    names = babies.pluck(:first_name)
-    num_babies = names.size
+    names = children.pluck(:first_name)
+    num_children = names.count
 
-    case num_babies
+    case num_children
     when 0 then ""
     when 1 then names.first
     when 2 then names.join(" and ")

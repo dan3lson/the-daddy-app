@@ -6,7 +6,7 @@ FactoryBot.define do
     city { "Bronx" }
     password { "password" }
     sequence(:email) { |i| "email+#{i}@thedaddyapp.com" }
-    babies {
+    children {
       {
         "0" => {
           "first_name" => "Junior",
@@ -21,8 +21,8 @@ FactoryBot.define do
       email { "" }
     end
 
-    factory :invalid_baby_registration do
-      babies {
+    factory :invalid_child_registration do
+      children {
         {
           "0" => {
             "first_name" => "",
@@ -33,8 +33,8 @@ FactoryBot.define do
       }
     end
 
-    trait :multiple_babies do
-      babies {
+    trait :multiple_children do
+      children {
         {
           "0" => {
             "first_name" => "Junior",

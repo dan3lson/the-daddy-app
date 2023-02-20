@@ -70,7 +70,7 @@ Rails.application.routes.draw do
     # Admin
     #
     namespace :admin do
-      resources :babies
+      resources :children
       resources :comments
       resources :emojis
       resources :flags

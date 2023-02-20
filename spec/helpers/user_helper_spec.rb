@@ -4,7 +4,7 @@ RSpec.describe UserHelper, type: :helper do
   describe "#children_names" do
     context "with only one child" do
       it "shows one name" do
-        daddy = create(:daddy_with_babies)
+        daddy = create(:daddy_with_children)
 
         expect(children_names(daddy)).to eq("Danelson Jr.")
       end
@@ -12,8 +12,8 @@ RSpec.describe UserHelper, type: :helper do
 
     context "with two children" do
       it "shows two names" do
-        daddy = create(:daddy_with_babies)
-        create(:baby, first_name: "Mariella", daddy: daddy)
+        daddy = create(:daddy_with_children)
+        create(:child, first_name: "Mariella", daddy: daddy)
 
         expect(children_names(daddy)).to eq("Danelson Jr. and Mariella")
       end
@@ -21,9 +21,9 @@ RSpec.describe UserHelper, type: :helper do
 
     context "with three children" do
       it "shows three names" do
-        daddy = create(:daddy_with_babies)
-        create(:baby, first_name: "Mariella", daddy: daddy)
-        create(:baby, first_name: "Dalivia", daddy: daddy)
+        daddy = create(:daddy_with_children)
+        create(:child, first_name: "Mariella", daddy: daddy)
+        create(:child, first_name: "Dalivia", daddy: daddy)
 
         expect(children_names(daddy)).to eq("Danelson Jr., Mariella, and Dalivia")
       end

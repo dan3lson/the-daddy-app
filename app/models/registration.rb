@@ -5,15 +5,15 @@ class Registration
   include ActiveModel::Model
   include Wisper::Publisher
 
-  attr_accessor :first_name, :email, :password, :city, :babies
+  attr_accessor :first_name, :email, :password, :city, :children
 
   validates :first_name, presence: true
   validates :email, presence: true
   validate :unique_email?
   validates :password, presence: true
   validates :city, presence: true
-  validates :babies, presence: true
-  validate :complete_babies_info?
+  validates :children, presence: true
+  validate :complete_children_info?
 
   def register
     return false unless valid?
@@ -21,7 +21,7 @@ class Registration
     daddy = build_daddy
 
     if daddy.save
-      create_babies!(daddy)
+      create_children!(daddy)
 
       broadcast(:successful_registration, daddy.id)
       broadcast(:complete_invite, daddy.email)
@@ -38,14 +38,14 @@ class Registration
     errors.add(:email, "has already been taken")
   end
 
-  def complete_babies_info?
-    return if babies.nil?
+  def complete_children_info?
+    return if children.nil?
 
-    babies.each do |child|
+    children.each do |child|
       child_attrs = child.last
       next unless child_attrs.values.any?(&:blank?)
 
-      errors.add(:babies, "info is incomplete")
+      errors.add(:children, "info is incomplete")
     end
   end
 
@@ -58,9 +58,9 @@ class Registration
     )
   end
 
-  def create_babies!(daddy)
-    babies.each do |child|
-      daddy.babies.create!(
+  def create_children!(daddy)
+    children.each do |child|
+      daddy.children.create!(
         first_name: child.last["first_name"].strip,
         gender: child.last["gender"],
         birthdate: child.last["birthdate"]

@@ -10,7 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::String,
     admin: Field::Boolean,
-    babies: Field::HasMany,
+    children: Field::HasMany,
     city: Field::String,
     comments: Field::HasMany,
     confirmation_token: Field::String,
@@ -31,7 +31,7 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     admin
-    babies
+    children
     city
   ].freeze
 
@@ -40,7 +40,7 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     admin
-    babies
+    children
     city
     comments
     confirmation_token
@@ -58,7 +58,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     admin
-    babies
+    children
     city
     comments
     confirmation_token

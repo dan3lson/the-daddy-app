@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class BabyDashboard < Administrate::BaseDashboard
+class ChildDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -66,10 +66,10 @@ class BabyDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how babies are displayed
+  # Overwrite this method to customize how children are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(baby)
-  #   "Baby ##{baby.id}"
+  # def display_resource(child)
+  #   "Child ##{child.id}"
   # end
 end

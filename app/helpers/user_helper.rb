@@ -2,9 +2,9 @@
 
 module UserHelper
   def children_names(user)
-    names = user.babies.pluck(:first_name)
-    num_babies = names.size
-    case num_babies
+    names = user.children.pluck(:first_name)
+    num_children = names.count
+    case num_children
     when 0 then ""
     when 1 then	names.first
     when 2 then	names.join(" and ")

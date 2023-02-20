@@ -7,13 +7,13 @@ FactoryBot.define do
     password { "password" }
     sequence(:email) { |i| "email+#{i}@thedaddyapp.com" }
 
-    factory :daddy_with_babies do
+    factory :daddy_with_children do
       transient do
-        babies_count { 1 }
+        children_count { 1 }
       end
 
       after(:create) do |user, evaluator|
-        create_list(:baby, evaluator.babies_count, daddy: user)
+        create_list(:child, evaluator.children_count, daddy: user)
       end
     end
 

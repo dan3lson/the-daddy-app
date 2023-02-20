@@ -1,16 +1,16 @@
 <div class="registration-child-wrapper mb-4">
   <div class="form-floating mb-3">
-    <%= text_field_tag "registration[babies][0][first_name]", "", class: 'form-control', placeholder: "Child First Name", required: true %>
+    <%= text_field_tag "registration[children][0][first_name]", "", class: 'form-control', placeholder: "Child First Name", required: true %>
     <%= label_tag :gender, "First Name", for: "floatingInput" %>
   </div>
 
   <div class="form-floating mb-3">
-    <%= text_field_tag "registration[babies][0][gender]", "", class: 'form-control', placeholder: "Gender", required: true %>
+    <%= text_field_tag "registration[children][0][gender]", "", class: 'form-control', placeholder: "Gender", required: true %>
     <%= label_tag :gender, "Gender", for: "floatingInput" %>
   </div>
 
   <div class="form-floating mb-3">
-    <%= date_field_tag "registration[babies][0][birthdate]", "", class: 'form-control' %>
+    <%= date_field_tag "registration[children][0][birthdate]", "", class: 'form-control' %>
     <%= label_tag :birthdate, "Birthdate", for: "floatingSelect" %>
   </div>
 </div>
