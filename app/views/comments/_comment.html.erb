@@ -4,7 +4,7 @@
 -->
 <% return unless comment.persisted? %>
 
-<div class="card mb-4" data-comment-id="<%= comment.id %>">
+<div class="card mb-4" data-reactionable-id="<%= comment.id %>">
   <div class="card-body">
     <h5 class="card-title">
       <%= comment.user.first_name %>

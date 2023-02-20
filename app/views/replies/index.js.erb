@@ -1,7 +1,7 @@
 var numReplies = <%= @replies.count %>
 var replies = "<%= j render(partial: 'replies/index', locals: { replies: @replies }) %>";
 var rootID = "<%= @comment.id %>";
-var $rootCommentContainer = $("section.comments").find(`[data-comment-id='${rootID}']`);
+var $rootCommentContainer = $("section.comments").find(`[data-reactionable-id='${rootID}']`);
 var $rootCommentBody = $rootCommentContainer.find(".card-body").first();
 var $commentsLink = $rootCommentContainer.find('.comment-href');
 

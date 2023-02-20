@@ -1,18 +1,20 @@
 <% if current_user.liked_comment?(comment) %>
-  <%= link_to comment_reactions_path(comment),
-              method: :delete,
-              remote: true,
-              class: "card-link text-decoration-none bg-primary p-1 bg-opacity-10 rounded remove-reaction-link" do %>
-    👍 Like (<%= comment.likes.count %>)
-  <% end %>
+  <%= render "reactions/remove_reaction_link",
+              cta: "👍 Like",
+              reaction: current_user.reactions.find_by(reactionable: comment),
+              reaction_count: comment.likes_count,
+              reaction_count_method_name: :likes_count %>
 <% else %>
-  <%= link_to reactions_path(comment_id: comment.id),
-              method: :post,
-              remote: true,
-              class: "card-link text-decoration-none react-to-comment-link" do %>
-    👍 Like (<%= comment.likes.count %>)
-  <% end %>
+  <%= render "reactions/add_reaction_link",
+              cta: "👍 Like",
+              reactionable: comment,
+              reaction_count: comment.likes_count,
+              reaction_count_method_name: :likes_count,
+              emoji: "👍" %>
 <% end %>
+
+<!-- Needed since this is a form and not a regular .card-link. Could add margin instead :shrug: -->
+&nbsp;
 
 <% if comment.replies? %>
   <%= link_to "👀 Comments (#{comment.replies.size})",
@@ -25,11 +27,11 @@
               comment_flags_path(comment),
               method: :delete,
               remote: true,
-              class: "card-link text-decoration-none bg-primary p-1 bg-opacity-10 rounded remove-flag-comment-link" %>
+              class: "card-link link-danger text-decoration-none bg-danger p-1 bg-opacity-10 rounded remove-flag-comment-link" %>
 <% else %>
   <%= link_to "🚨 Report",
               comment_flags_path(comment),
               method: :post,
               remote: true,
-              class: "card-link text-decoration-none flag-comment-link" %>
+              class: "card-link link-danger text-decoration-none flag-comment-link" %>
 <% end %>

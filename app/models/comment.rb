@@ -27,6 +27,10 @@ class Comment < ApplicationRecord
   scope :root, -> { where(parent: nil) }
   scope :latest, -> { order(created_at: :desc) }
 
+  def likes_count
+    likes.count
+  end
+
   def liked?
     likes.any?
   end
