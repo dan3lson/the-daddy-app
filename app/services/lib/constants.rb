@@ -22,7 +22,6 @@ module Lib
     CREATE_COMMENT_LABEL_EXAMPLES = [
       "How's it going?",
       "What's on your mind?"
-      # "What's up with your little one(s)?"
     ].freeze
     public_constant :CREATE_COMMENT_EXAMPLES
   end
