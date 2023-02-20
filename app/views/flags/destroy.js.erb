@@ -1,5 +1,5 @@
-var commentID = "<%= @comment.id %>";
-var $comment = $(".comments").find(`[data-comment-id='${commentID}']`);
+var reactionableID = "<%= @comment.id %>";
+var $comment = $(".comments").find(`[data-reactionable-id='${reactionableID}']`);
 var $removeFlagCommentLink = $comment.find(".remove-flag-comment-link").first();
 
 $removeFlagCommentLink.replaceWith(flagCommentLink());
@@ -7,8 +7,8 @@ $removeFlagCommentLink.replaceWith(flagCommentLink());
 // Replace with partial to DRY this up from links in _link_actions.html.erb
 function flagCommentLink() {
   return $("<a/>")
-    .addClass("card-link text-decoration-none flag-comment-link")
-    .attr("href", "/comments/" + commentID + "/flags")
+    .addClass("card-link link-danger text-decoration-none flag-comment-link")
+    .attr("href", "/comments/" + reactionableID + "/flags")
     .attr("data-method", "post")
     .attr("data-remote", "true")
     .attr("rel", "nofollow")
