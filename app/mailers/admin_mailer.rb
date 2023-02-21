@@ -15,22 +15,4 @@ class AdminMailer < ApplicationMailer
 
     mail(to: ADMIN_EMAIL, subject: "New Alert [#{type}]")
   end
-
-  def waitlist_user_joined(email:, first_name:, referral_code:)
-    @email = email
-    @first_name = first_name
-    @referral_code = referral_code
-
-    mail(to: @email, subject: "You're On The Waitlist!")
-  end
-
-  def reply(comment_id)
-    comment = Comment.find(comment_id)
-    @daddy = comment.parent.user
-
-    mail(
-      to: @daddy.email,
-      subject: "Someone replied to your comment on The Daddy App"
-    )
-  end
 end
