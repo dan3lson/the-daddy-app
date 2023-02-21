@@ -12,10 +12,27 @@ function resetForms() {
 
   $invalidInputs.removeClass("is-invalid");
   $helpTexts.remove();
+
+  if (questionOfTheDayIsAnswered()) {
+    resetQuestionOfTheDay();
+  }
 }
 
 function resetInput($input) {
   return $input.val("");
+}
+
+function questionOfTheDayIsAnswered () {
+  return !$("#question-of-the-day-wrapper").find("a").length;
+}
+
+function resetQuestionOfTheDay() {
+  var questionLink = "<%= j render(partial: 'comments/question_of_the_day_link') %>";
+
+  $("#question-of-the-day-wrapper")
+    .empty()
+    .append(questionLink);
+  $form.attr("action", "/comments");
 }
 
 function renderSuccess() {

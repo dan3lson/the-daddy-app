@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :topic, optional: true
   belongs_to :parent, class_name: :Comment, optional: true
+  belongs_to :users_question_of_the_day, optional: true
   has_one_attached :image
   has_many :flags, dependent: :destroy
   has_many :replies,
@@ -14,7 +15,7 @@ class Comment < ApplicationRecord
   has_many :reactions, as: :reactionable, dependent: :destroy
   has_many :likes, -> { likes }, class_name: :Reaction, as: :reactionable, dependent: :destroy
 
-  validates :body, presence: true, length: {minimum: 3}
+  validates :body, presence: true, length: {minimum: 2}
   validates :status, presence: true
   validates :image,
     content_type: {

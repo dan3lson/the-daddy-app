@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_20_120945) do
+ActiveRecord::Schema.define(version: 2023_02_21_013325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -97,9 +97,11 @@ ActiveRecord::Schema.define(version: 2023_02_20_120945) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "topic_id"
+    t.uuid "users_question_of_the_day_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["topic_id"], name: "index_comments_on_topic_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["users_question_of_the_day_id"], name: "index_comments_on_users_question_of_the_day_id"
   end
 
   create_table "emojis", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -210,6 +212,7 @@ ActiveRecord::Schema.define(version: 2023_02_20_120945) do
   add_foreign_key "children", "users"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
+  add_foreign_key "comments", "users_question_of_the_days"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "flags", "comments"
   add_foreign_key "flags", "users"

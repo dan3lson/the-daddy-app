@@ -22,6 +22,12 @@ FactoryBot.define do
       end
     end
 
+    trait :with_qotd_response do
+      after(:create) do |user, _evaluator|
+        create(:users_question_of_the_day, user: user)
+      end
+    end
+
     trait :with_upvoted_feedback do
       after(:create) do |user, _evaluator|
         create(:reaction, :for_feedback, user: user)

@@ -41,6 +41,12 @@ class User < ApplicationRecord
     likes.pluck(:reactionable_id).include?(comment&.id)
   end
 
+  def question_of_the_day_response?(comment)
+    # TODO: create UsersQuestionOfTheDay.today scope to reduce the # of records
+    # loaded here.
+    users_question_of_the_days.include?(comment.users_question_of_the_day)
+  end
+
   def upvoted_feedback?(feedback)
     upvotes.pluck(:reactionable_id).include?(feedback&.id)
   end

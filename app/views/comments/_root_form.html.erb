@@ -2,11 +2,8 @@
   <%= Lib::Constants::CREATE_COMMENT_LABEL_EXAMPLES.sample %>
 </div>
 
-<p id="question-of-the-day-link-container">
-  <%= link_to "🗓 Question of the Day",
-              question_of_the_day_path,
-              remote: true,
-              class: "text-decoration-none" %>
+<p id="question-of-the-day-wrapper">
+  <%= render "comments/question_of_the_day_link" %>
 </p>
 
 <%= form_for comment, remote: true do |form| %>

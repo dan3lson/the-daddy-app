@@ -71,6 +71,31 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#question_of_the_day_response?" do
+    subject(:user) { create(:user, :with_qotd_response) }
+
+    it { is_expected.to be_question_of_the_day_response(Comment.first) }
+
+    context "with a general comment" do
+      subject(:user) { create(:user) }
+
+      it { is_expected.not_to be_question_of_the_day_response(create(:comment)) }
+    end
+
+    context "with a QOTD response by another user" do
+      subject(:user) { create(:user) }
+
+      it do
+        is_expected
+          .not_to be_question_of_the_day_response(
+            create(:users_question_of_the_day)
+              .comments
+              .first
+          )
+      end
+    end
+  end
+
   describe "#upvoted_feedback?" do
     subject(:user) { create(:user, :with_upvoted_feedback) }
 

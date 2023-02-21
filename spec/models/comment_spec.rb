@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe Comment, type: :model do
@@ -8,12 +10,13 @@ RSpec.describe Comment, type: :model do
     it { is_expected.to have_many(:likes).dependent(:destroy) }
     it { is_expected.to belong_to(:topic).optional }
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:users_question_of_the_day).optional }
   end
 
   describe "validations" do
     it { is_expected.to have_many(:replies).dependent(:destroy) }
     it { is_expected.to validate_presence_of(:body) }
-    it { is_expected.to validate_length_of(:body).is_at_least(3) }
+    it { is_expected.to validate_length_of(:body).is_at_least(2) }
     it { is_expected.to validate_presence_of(:status) }
     it { is_expected.to define_enum_for(:status).with_values(%i[active inactive]) }
     it do

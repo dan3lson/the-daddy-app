@@ -21,11 +21,13 @@ class CommentsController < ApplicationController
     #   )
     # end
 
-    if params[:question_of_the_day_id].present?
+    is_answering_qotd = params[:question_of_the_day_id].present?
+    if is_answering_qotd
       @question_of_the_day = QuestionOfTheDay.find(params[:question_of_the_day_id])
-      response = current_user.users_question_of_the_days.new(question_of_the_day: @question_of_the_day)
+      users_qotd =
+        current_user.users_question_of_the_days.new(question_of_the_day: @question_of_the_day)
 
-      unless response.save
+      unless users_qotd.save
         broadcast(
           :alert,
           OpenStruct.new(
@@ -34,7 +36,7 @@ class CommentsController < ApplicationController
               question_of_the_day_id: params[:question_of_the_day_id]
             },
             current_user_id: current_user.id,
-            message: response.errors.full_messages.join("; "),
+            message: users_qotd.errors.full_messages.join("; "),
             type: :error
           )
         )
@@ -42,6 +44,8 @@ class CommentsController < ApplicationController
     end
 
     @comment = current_user.comments.new(comment_params)
+    @comment.users_question_of_the_day = users_qotd if is_answering_qotd
+
     @saved = @comment.save
     @errors = @comment.errors.full_messages.join("; ").html_safe unless @saved
   end

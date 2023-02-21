@@ -10,13 +10,9 @@
       <%= comment.user.first_name %>
     </h5>
     <h6 class="card-subtitle mb-2 text-muted mb-3">
-      👶 <%= children_names(comment.user) %>
-      <br>
-      ⏱ <%= render "comments/meta", comment: comment %>
+      <%= render "comments/meta", comment: comment %>
     </h6>
-    <p class="card-text fs-5">
-      <%= comment.body %>
-    </p>
+    <p class="card-text fs-5"><%= comment.body %></p>
 
     <%= render "comments/link_actions", comment: comment %>
   </div>
