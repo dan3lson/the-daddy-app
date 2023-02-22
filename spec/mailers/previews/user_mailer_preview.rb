@@ -1,7 +1,7 @@
 # Preview all emails at http://localhost:3000/rails/mailers
 class UserMailerPreview < ActionMailer::Preview
   def welcome
-    UserMailer.welcome("danelson.rosa.sr@gmail.com")
+    UserMailer.welcome(User.first.id)
   end
 
   def invite
@@ -12,7 +12,7 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def reply
-    UserMailer.reply(Comment.first)
+    UserMailer.reply(Comment.first.id)
   end
 
   def waitlist_user_joined

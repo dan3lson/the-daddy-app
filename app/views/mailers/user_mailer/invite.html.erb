@@ -4,11 +4,11 @@
                   alt: "Special invitation to join The Daddy App" %>
     <p>Hey <%= @invitee_email %>,</p>
     <p>
-      A friend <%= "(#{@inviter_email})" if @inviter_email %> thought you
-      might want to join the conversations on The Daddy App!
+      A friend <%= "(#{@inviter_email})" if @inviter_email %> invited you to
+      join The Daddy App!
     </p>
     <p>
-      It's an online community where fathers meet over the ups and downs of
+      It's an online community where dads connect over the ups and downs of
       fatherhood.
     </p>
     <p>
@@ -16,11 +16,12 @@
       feeding, and more.
     </p>
     <p>
-      All the best with your little one(s) and don't forget to
+      All the best with your children and don't forget to
     </p>
-    <button>JOIN THE CONVERSATION</button>
     <p>
-      The Daddy App Team
+      <%= link_to "Join the conversation",
+                  sign_up_url(email: @invitee_email),
+                  class: "btn" %>
     </p>
   </div>
 </div>
