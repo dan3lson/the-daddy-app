@@ -11,13 +11,13 @@
   <div>
     <%= form.submit "Sign in", class: "w-100 btn btn-primary btn-lg text-uppercase" %>
 
-    <hr>
-
     <% if Clearance.configuration.allow_sign_up? %>
-      <p class="text-center">
-        <small>Don't have an account?</small>
-      </p>
-      <%= link_to "Join the Conversation", sign_up_path, role: "button", class: "btn btn-success btn-lg w-100 text-uppercase" %>
+      <hr>
+
+      <%= link_to "Create New Account",
+                  sign_up_path,
+                  role: "button",
+                  class: "btn btn-success btn-lg w-100 text-uppercase" %>
     <% end %>
   </div>
 <% end %>

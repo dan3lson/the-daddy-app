@@ -26,7 +26,7 @@
       </h1>
       <p class="lead">
         Have a question? Feel lost sometimes? Just want to chop it up with other
-        fathers? Get info and advice on topics like sleeping, money, feeding,
+        dads? Get info and advice on topics like sleeping, money, feeding,
         relationships, and more.
       </p>
     </div>
@@ -34,7 +34,7 @@
 
   <div class="row flex-lg-row align-items-center g-5 py-5">
     <div class="col-8 col-sm-8 col-lg-4">
-      <%= img('newborn_smile.svg', 'Smiling newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
+      <%= img('newborn_cry.svg', 'Smiling newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
     </div>
     <div class="col-lg-8">
       <h1 class="display-5 fw-bold lh-1 mb-3">Built By Us, For Us</h1>
@@ -51,15 +51,71 @@
 
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-8 col-sm-8 col-lg-4">
-      <%= img('newborn_cry.svg', 'Crying newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
+      <%= img('newborn_smile.svg', 'Crying newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
     </div>
     <div class="col-lg-8">
       <h1 class="display-5 fw-bold lh-1 mb-3">Rewards</h1>
       <p class="lead">
-        Join a conversation and automatically be entered in this month's
-        free raffle. We'll announce the lucky winners at the start of the next
-        month.
+        Based on your interactions with the app, you'll earn virtual raffle
+        tickets and be entered to win goodies in our ongoing free raffles.
       </p>
     </div>
   </div>
+
+  <div class="bg-light p-5 text-center">
+    <div class="row g-5">
+      <div class="col-md-4">
+        <figure>
+          <blockquote class="blockquote">
+            <p>
+              "...this is awesome! Was looking for anything like this before I
+              became a dad and there's not a bunch out there. Now I got 2 and
+              it's...still a struggle 😂."
+            </p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Kumar
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4">
+        <figure>
+          <blockquote class="blockquote">
+            <p>
+              "Yes. Love it man. Let's be better fathers and also help each
+              other!"
+            </p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Damian
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4">
+        <figure>
+          <blockquote class="blockquote">
+            <p>
+              "I'm in there. First time dad to my 5 month old girl. The struggle
+              is real"
+            </p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Javier
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <% if Clearance.configuration.allow_sign_up? %>
+    <div class="bg-success bg-opacity-10 p-5 text-center">
+      <p>
+        Ready to connect with other dads and talk about the daily ups and downs?
+      </p>
+      <%= link_to "Create new account",
+                  sign_up_path,
+                  role: "button",
+                  class: "btn btn-success btn-lg text-uppercase" %>
+    </div>
+  <% end %>
 </div>
