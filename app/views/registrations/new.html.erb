@@ -5,7 +5,7 @@
     <div class="col-md-9 col-lg-6">
       <%= form_for @registration, url: registrations_path do |form| %>
         <%= render "shared/form_errors", object: @registration %>
-        <%= render "daddy_fields", form: form %>
+        <%= render "daddy_fields", form: form, waitlist_user_signup: @waitlist_user_signup %>
         <%= render "children", form: form %>
       <% end %>
     </div>

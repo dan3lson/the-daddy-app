@@ -1,0 +1,20 @@
+<div class="content-container">
+  <div class="content">
+    <%= image_pack_tag "onboarding/chopping_it_up.png",
+                       alt: "We're live -- join the conversation" %>
+
+    <p>
+      We're really excited to announce The Daddy App is live!
+    </p>
+
+    <p>
+      Create your account now to join the conversations and connect with other dads:
+    </p>
+
+    <p>
+      <%= link_to "Create account",
+                  sign_up_url(email: @email, first_name: @first_name),
+                  class: "btn" %>
+    </p>
+  </div>
+</div>

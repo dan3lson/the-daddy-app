@@ -31,7 +31,15 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @daddy.email,
-      subject: "Someone replied to your comment on The Daddy App"
+
+  # One-offs
+  def alpha_release_now_live(email:, first_name:)
+    @email = email
+    @first_name = first_name
+
+    mail(
+      to: @email,
+      subject: "Now Live -- Join the Conversations!"
     )
   end
 end

@@ -3,6 +3,10 @@
 class RegistrationsController < ApplicationController
   def new
     @registration = Registration.new
+    @waitlist_user_signup = OpenStruct.new(
+      email: params[:email],
+      first_name: params[:first_name]
+    )
   end
 
   def create

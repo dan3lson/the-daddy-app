@@ -22,4 +22,11 @@ class UserMailerPreview < ActionMailer::Preview
       referral_code: "s0meCod3"
     )
   end
+
+  def alpha_release_now_live
+    UserMailer.alpha_release_now_live(
+      email: "danelson.rosa.sr@gmail.com",
+      first_name: "Danelson Sr."
+    )
+  end
 end
