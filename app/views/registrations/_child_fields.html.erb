@@ -1,0 +1,26 @@
+<div class="registration-child-wrapper mb-4">
+  <div class="form-floating mb-3">
+    <%= text_field_tag "registration[children][0][first_name]", "", class: 'form-control', placeholder: "Child First Name", required: true %>
+    <%= label_tag :first_name, "First Name", for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= select(:child, :gender,
+        options_for_select(Child.genders.keys.map { |gender| [gender, gender] }),
+        {include_blank: "Choose..."},
+        {
+          name: "registration[children][0][gender]",
+          class: "form-select form-select mb-3 form-control", "aria-label": ".form-select-lg",
+          required: true
+        }) %>
+    <label for="floatingInput">Gender</label>
+    <div class="invalid-feedback">
+      Please choose the gender at birth.
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= date_field_tag "registration[children][0][birthdate]", "", class: 'form-control' %>
+    <%= label_tag :birthdate, "Birthdate", for: "floatingSelect" %>
+  </div>
+</div>

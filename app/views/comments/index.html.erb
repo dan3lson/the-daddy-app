@@ -1,7 +1,7 @@
-<section id="create-comment" class="container has-background-grey-lighter">
-  <%= render "comments/create_form", comment: @comment %>
+<section id="create-comment" class="bg-dark bg-gradient bg-opacity-10 p-4 mb-4 rounded">
+  <%= render "comments/root_form", comment: @comment %>
 </section>
 
-<section class="comments container">
-  <%= render 'comments/root', root_comments: @root_comments %>
+<section class="comments reactionable-wrapper">
+  <%= render "comments/root_comments", root_comments: @root_comments, cached: true %>
 </section>

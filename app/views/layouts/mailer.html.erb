@@ -10,20 +10,40 @@
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-        font-size: 26px;
+        font-size: 23px;
+      }
 
-        img {
-          box-sizing: border-box;
-          height: auto;
-          width: 100%;
+      .btn {
+        color: #fff;
+        background-color: #343a40;
+        border-color: #343a40;
+        padding: 0.5rem 1rem;
+        font-size: 1.3rem;
+        line-height: 1.5;
+        border-radius: 0.3rem;
+        font-weight: 400;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        white-space: nowrap;
+        vertical-align: middle;
+
+        &:hover {
+          text-decoration: none;
         }
       }
 
+
+      img {
+        box-sizing: border-box;
+        height: auto;
+        max-width: 100%;
+      }
+
       .main {
-        background: #FFF;
-        width: 600px;
         margin: 0 auto;
         padding: 0 5rem 5rem;
+        width: 700px;
       }
 
       .content-container {
@@ -47,24 +67,6 @@
             &:hover {
               text-decoration: underline;
             }
-
-            &.btn {
-              color: #fff;
-              background-color: #343a40;
-              border-color: #343a40;
-              padding: 0.5rem 1rem;
-              font-size: 1rem;
-              line-height: 1.5;
-              border-radius: 0.3rem;
-              font-weight: 400;
-              text-align: center;
-              white-space: nowrap;
-              vertical-align: middle;
-
-              &:hover {
-                text-decoration: none;
-              }
-            }
           }
         }
       }
@@ -77,13 +79,17 @@
   <body>
     <div class="main">
       <%= yield %>
+
       <footer class="mt-4 text-center">
-        <small>
-          <%= mail_to "hello@thedaddyapp.com" %>
-          &middot;
-          &copy; <%= Date.today.year %>
-          The Daddy App
-        </small>
+        <p>
+            Have any questions or need help? Don't ever hesitate to reach out
+            via email at <%= mail_to "hello@thedaddyapp.com" %>.
+        </p>
+        <p>
+          Thanks; talk soon,
+          <br>
+          The Daddy App Team
+        </p>
       </footer>
     </div>
   </body>

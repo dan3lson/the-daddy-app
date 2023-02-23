@@ -1,0 +1,11 @@
+var question = "<%= @question_of_the_day.question %>";
+var questionID = "<%= @question_of_the_day.id %>";
+var $rootCommentLabel = $("#root-comment-label");
+var $questionOfTheDayWrapper = $("#question-of-the-day-wrapper");
+var questionOfTheDayText = "🗓 Question of the Day 👆";
+var $rootCommentForm = $("#create-comment").find("form");
+
+$rootCommentLabel.text(question);
+$rootCommentLabel.hide().fadeIn("slow");
+$questionOfTheDayWrapper.text(questionOfTheDayText);
+$rootCommentForm.attr("action", "/comments?question_of_the_day_id=" + questionID);

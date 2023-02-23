@@ -4,12 +4,6 @@
 class CreateReply
   include Wisper::Publisher
 
-  def post
-    create_reply
-  end
-
-  private
-
   attr_reader :user, :params
 
   def initialize(user, params)
@@ -17,13 +11,15 @@ class CreateReply
     @params = params
   end
 
-  def create_reply
+  def post
     reply = build_reply
 
     broadcast(:successful_reply, reply.id) if reply.save
 
     reply
   end
+
+  private
 
   def parent_comment
     @parent_comment ||= Comment.find(params[:parent_id])

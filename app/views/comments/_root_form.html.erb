@@ -1,0 +1,16 @@
+<div class="fs-2" id="root-comment-label">
+  <%= Lib::Constants::CREATE_COMMENT_LABEL_EXAMPLES.sample %>
+</div>
+
+<p id="question-of-the-day-wrapper">
+  <%= render "comments/question_of_the_day_link" %>
+</p>
+
+<%= form_for comment, remote: true do |form| %>
+  <div class="mb-2">
+    <%= form.text_area :body,
+                       class: "form-control form-control-lg",
+                       placeholder: Lib::Constants::CREATE_COMMENT_EXAMPLES.sample %>
+  </div>
+  <%= form.submit "Share", class: "btn btn-dark btn-lg text-uppercase w-100" %>
+<% end %>

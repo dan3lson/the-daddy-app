@@ -9,6 +9,20 @@ module Lib
       "The Adopter": "adopter",
       "The Fosterer": "fosterer",
       Other: "other"
-    }
+    }.freeze
+    public_constant :DADDY_TYPES
+
+    CREATE_COMMENT_EXAMPLES = [
+      "My little man just crawled!!",
+      "Just saying hello 👋",
+      "My 8/mo pooped in the bath...again 😩"
+    ].freeze
+    public_constant :CREATE_COMMENT_EXAMPLES
+
+    CREATE_COMMENT_LABEL_EXAMPLES = [
+      "How's it going?",
+      "What's on your mind?"
+    ].freeze
+    public_constant :CREATE_COMMENT_EXAMPLES
   end
 end

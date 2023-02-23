@@ -1,10 +1,13 @@
+👶 <%= children_names(comment.user) %>
+
+<% if current_user.question_of_the_day_response?(comment) %>
+  <br>
+  🗓 Question of the Day response
+<% elsif comment.reply? %>
+  <br>
+	🗣 replying to @<%= comment.parent.user.first_name %>
+<% end %>
+
 <br>
-<small>
-	<% if comment.reply? %>
-			replying to @<%= comment.parent.user.first_name %>
-			·
-			<%= time_ago_in_words(comment.created_at) %> ago
-	<% else %>
-		<%= time_ago_in_words(comment.created_at) %> ago
-	<% end %>
-</small>
+
+⏱ <%= time_ago_in_words(comment.created_at) %> ago

@@ -1,13 +1,13 @@
-<div id="clearance" class="sign-up">
-  <h3 class="title is-3"><%= t(".title") %></h3>
+<h1 class="mb-4"><%= t(".title") %></h1>
 
-  <%= form_for @registration, url: registrations_path do |form| %>
-    <%= render 'shared/form_errors', object: @registration %>
-    <%= render partial: 'registrations/form', object: form %>
-
-    <div class="buttons is-right">
-      <%= form.submit 'Sign up', class: 'button is-primary' %>
-      <%= link_to 'Sign in', sign_in_path, class: 'button is-primary is-outlined' %>
+<div id="clearance">
+  <div class="row">
+    <div class="col-md-9 col-lg-6">
+      <%= form_for @registration, url: registrations_path do |form| %>
+        <%= render "shared/form_errors", object: @registration %>
+        <%= render "daddy_fields", form: form, waitlist_user_signup: @waitlist_user_signup %>
+        <%= render "children", form: form %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

@@ -3,6 +3,10 @@
 class RegistrationsController < ApplicationController
   def new
     @registration = Registration.new
+    @waitlist_user_signup = OpenStruct.new(
+      email: params[:email],
+      first_name: params[:first_name]
+    )
   end
 
   def create
@@ -11,10 +15,12 @@ class RegistrationsController < ApplicationController
     @registration.subscribe(MailerListener.new)
     @registration.subscribe(InviteListener.new)
 
-    if @daddy = @registration.register
+    @daddy = @registration.register
+
+    if @daddy
       sign_in @daddy
 
-      redirect_to signed_in_root_path
+      redirect_to onboarding_path
     else
       render template: "registrations/new"
     end
@@ -27,8 +33,7 @@ class RegistrationsController < ApplicationController
       :email,
       :password,
       :first_name,
-      :city,
-      babies: [%i[first_name gender birthdate]]
+      children: [%i[first_name gender birthdate]]
     )
   end
 end

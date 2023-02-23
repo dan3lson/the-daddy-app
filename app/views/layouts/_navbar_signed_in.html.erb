@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand chewy" href="<%= root_path %>">The Daddy App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link <%= "active" if current_page?(action: "index", controller: "comments") %>"
+           href="<%= root_path %>">
+          🏠 Home
+        </a>
+        <a class="nav-link <%= "active" if current_page?(action: "support", controller: "pages") %>"
+           href="<%= support_path %>">
+          ✊ Support
+        </a>
+        <%= link_to "Sign Out", sign_out_path, method: :delete, class: "nav-link" %>
+      </div>
+    </div>
+  </div>
+</nav>

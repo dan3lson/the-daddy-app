@@ -1,0 +1,26 @@
+<div class="content-container">
+  <div class="content">
+    <p>Greetings,</p>
+    <p>There's a new alert &mdash; check out the details below:</p>
+    <ul>
+      <li>Type: <%= @type %></li>
+      <li>Message: <%= @message %></li>
+      <li>Current User (if any): <%= @current_user&.email %> (<%= @current_user&.id %>)</li>
+      <li>
+        Any additional data:
+        <ul>
+          <% @additional_data.each do |key, value| %>
+            <li><%= key %> => <%= value %></li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+    <p>Please respond accordingly.</p>
+    <p>Keep making progress; don't stop; you got this 🙌🏾💪🏾🙏🏾.</p>
+    <p>
+      To your success,
+      <br>
+      🤖 Rosey
+    </p>
+  </div>
+</div>

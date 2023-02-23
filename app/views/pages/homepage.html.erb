@@ -1,130 +1,121 @@
-  <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">The Daddy App</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-      </div>
+<div class="container px-4 py-5 top-of-fold">
+  <div class="row align-items-center g-lg-5 py-3">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="chewy display-1 fw-bold lh-1 mb-3">
+        The Daddy App
+      </h1>
+      <p class="fs-1 space-for-daddies-text">
+        A space for fathers to <mark>chat</mark>
+      </p>
     </div>
-  </div>
 
-<div class="container col-xxl-8 px-4 py-5">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-5">
-      <%= img('newborn-smile.svg', 'happy newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
-    </div>
-    <div class="col-lg-7">
-      <h1 class="display-5 fw-bold lh-1 mb-3">Responsive left-aligned hero with image</h1>
-      <p class="lead">Share in the journey and daily experiences of being a Daddy</p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
-      </div>
-    </div>
-  </div>
-  <div class="row flex-lg-row align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-5">
-      <%= img('newborn-smile.svg', 'happy newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
-    </div>
-    <div class="col-lg-7">
-      <h1 class="display-5 fw-bold lh-1 mb-3">Responsive left-aligned hero with image</h1>
-      <p class="lead">Share in the journey and daily experiences of being a Daddy</p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
-      </div>
-    </div>
-  </div>
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-5">
-      <%= img('newborn-smile.svg', 'happy newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
-    </div>
-    <div class="col-lg-7">
-      <h1 class="display-5 fw-bold lh-1 mb-3">Responsive left-aligned hero with image</h1>
-      <p class="lead">Share in the journey and daily experiences of being a Daddy</p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
-      </div>
+    <div class="col-md-10 mx-auto col-lg-5 p-4 p-md-4 border rounded-3 bg-light join-waitlist">
+      <%= render "sessions/form" %>
     </div>
   </div>
 </div>
 
-<section class="hero is-large is-info is-bold">
-  <div class="hero-body">
-    <div class="container">
-			<h1 class="display-1">
-				<div><strong>Chat</strong></div> with others like you
-			</h1>
-			<h2 class="subtitle is-3">
-				Share in the journey and daily experiences of being a Daddy
-			</h2>
-      <div class="mb-3">
-        <%# <label for="exampleFormControlInput1" class="form-label">Email address</label> %>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        <h4>Spread the word!</h4>
+<div class="container px-4 why-join">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-8 col-sm-8 col-lg-4">
+      <%= img('newborn_sleep.svg', 'Sleepy newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
+    </div>
+    <div class="col-lg-8">
+      <h1 class="display-5 fw-bold lh-1 mb-3">
+        You're Not Alone
+      </h1>
+      <p class="lead">
+        Have a question? Feel lost sometimes? Just want to chop it up with other
+        dads? Get info and advice on topics like sleeping, money, feeding,
+        relationships, and more.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-lg-row align-items-center g-5 py-5">
+    <div class="col-8 col-sm-8 col-lg-4">
+      <%= img('newborn_cry.svg', 'Smiling newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
+    </div>
+    <div class="col-lg-8">
+      <h1 class="display-5 fw-bold lh-1 mb-3">Built By Us, For Us</h1>
+      <p class="lead">
+        We're dads who developed this app to talk about the highs, lows, and
+        everything in between.
+
+        It's a community tailored to us: features to not only share our own
+        unique journey and experiences with other dads, but also find ways to
+        connect more with our minion(s).
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-8 col-sm-8 col-lg-4">
+      <%= img('newborn_smile.svg', 'Crying newborn', class: "d-block mx-lg-auto img-fluid", loading: "lazy") %>
+    </div>
+    <div class="col-lg-8">
+      <h1 class="display-5 fw-bold lh-1 mb-3">Rewards</h1>
+      <p class="lead">
+        Based on your interactions with the app, boost your chances to win
+        free goodies in our ongoing raffles.
+      </p>
+    </div>
+  </div>
+
+  <div class="bg-light p-5 text-center">
+    <div class="row g-5">
+      <div class="col-md-4">
+        <figure>
+          <blockquote class="blockquote">
+            <p>
+              "...this is awesome! Was looking for anything like this before I
+              became a dad and there's not a bunch out there. Now I got 2 and
+              it's...still a struggle 😂."
+            </p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Kumar
+          </figcaption>
+        </figure>
       </div>
-      <%= link_to 'JOIN THE CONVO',
+      <div class="col-md-4">
+        <figure>
+          <blockquote class="blockquote">
+            <p>
+              "Yes. Love it man. Let's be better fathers and also help each
+              other!"
+            </p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Damian
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4">
+        <figure>
+          <blockquote class="blockquote">
+            <p>
+              "I'm in there. First time dad to my 5 month old girl. The struggle
+              is real"
+            </p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Javier
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <% if Clearance.configuration.allow_sign_up? %>
+    <div class="bg-success bg-opacity-10 p-5 text-center">
+      <p>
+        Ready to connect with other dads and talk about the daily ups and downs?
+      </p>
+      <%= link_to "Create new account",
                   sign_up_path,
-                  class: 'button is-large is-info is-inverted is-rounded' %>
+                  role: "button",
+                  class: "btn btn-success btn-lg text-uppercase" %>
     </div>
-  </div>
-</section>
-
-<section class="section" id="benefits">
-	<div class="columns is-vcentered reverse-columns">
-    <div class="column">
-      <figure class="image is-3by2">
-        <%= img('newborn-sleep.svg', 'sleeping newborn') %>
-      </figure>
-    </div>
-    <div class="column">
-      <h4 class="subtitle is-4">
-        Get info and advice on topics like sleeping, money, feeding,
-        relationships, and more
-      </h4>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="columns is-vcentered">
-    <div class="column">
-      <figure class="image is-3by2">
-        <%= img('newborn-cry.svg', 'crying newborn') %>
-      </figure>
-    </div>
-    <div class="column">
-      <h4 class="subtitle is-4">
-        Talk to others about their experiences: the highs, lows, and everything
-        in between
-      </h4>
-    </div>
-  </div>
-
-  <hr>
-
-	<div class="columns is-vcentered">
-    <div class="column">
-      <h4 class="subtitle is-4">
-        Share your own unique journey and experiences
-      </h4>
-    </div>
-		<div class="column">
-			<figure class="image is-3by2">
-				<%= img('newborn-smile.svg', 'happy newborn') %>
-			</figure>
-		</div>
-	</div>
-</section>
-
-<section class="section" id="join">
-	<div class="level">
-	  <div class="level-item has-text-centered">
-			<button class="button is-large is-info is-rounded">
-				Join the Convo
-			</button>
-	  </div>
-	</div>
-</section>
+  <% end %>
+</div>

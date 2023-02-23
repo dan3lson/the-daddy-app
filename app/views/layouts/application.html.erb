@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <%= render "layouts/head" %>
+
   <body>
     <div class="container">
-      <%= render "layouts/navbar" %>
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <%= render "layouts/navbar_signed_out" %>
 
-      <%= render "layouts/alerts" %>
+          <%= render "layouts/alerts" %>
+
+          <%= yield %>
+        </div>
+
+        <%= render "layouts/footer" %>
+      </div>
     </div>
-
-    <%= yield %>
-
-    <%= render "layouts/footer" %>
   </body>
 </html>
