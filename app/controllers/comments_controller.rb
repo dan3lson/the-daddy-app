@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   before_action :subscribe_to_events
 
   def index
-    @root_comments = Comment.root.latest
+    @root_comments = Comment.root.active.latest
     @comment = Comment.new
   end
 
