@@ -10,16 +10,22 @@ def new_question
   Faker::Lorem.question
 end
 
-# == Daddies and Babies
+# == Questions of the Day
+#
+
+days = (Date.current - 2.weeks..Date.current.next_month).to_a
+days.each { |day| QuestionOfTheDay.create!(question: new_question, day: day) }
+
+# == Daddies and Children
 #
 User.destroy_all
 danelson_sr = User.create!(
+  admin: true,
   email: "danelson.rosa.sr@gmail.com",
   password: "password",
-  first_name: "Danelson",
-  city: "Bronx"
+  first_name: "Danelson"
 )
-_danelson_jr = Baby.create!(
+_danelson_jr = Child.create!(
   daddy:	danelson_sr,
   first_name: "Danelson",
   gender: :male,
@@ -29,12 +35,11 @@ _danelson_jr = Baby.create!(
   daddy = User.create!(
     email: Faker::Internet.unique.email,
     password: "password",
-    first_name: Faker::Name.first_name,
-    city: Faker::Address.city
+    first_name: Faker::Name.first_name
   )
-  num_babies = rand(10)
-  num_babies.times do
-    Baby.create!(
+  num_children = rand(10)
+  num_children.times do
+    Child.create!(
       daddy: daddy,
       first_name: Faker::Name.first_name,
       gender: %i[male female].sample,
@@ -43,15 +48,39 @@ _danelson_jr = Baby.create!(
   end
 end
 
+# == Emojis
+#
+EMOJIS = {
+  "➕" => "plus",
+  "❤️" => "red-heart",
+  "👍" => "thumbs-up-default"
+}.freeze
+EMOJIS.each { |emoji, name| Emoji.find_or_create_by!(emoji: emoji, name: name) }
+plus_emoji = Emoji.plus_emoji
+thumbs_up_emoji = Emoji.like_emoji
+
 # == Comments
 #
-User.count.times do
+users = User.all
+users.count.times do
   body = [new_sentence, new_question].sample
-  comment = Comment.create!(body: body, user: User.all.sample)
+  comment = Comment.create!(body: body, user: users.sample)
+  comment.reactions.create!(emoji: thumbs_up_emoji, user: users.sample) if [true, false].sample
   rand(10).times do
     comment.replies.create!(
       body: new_sentence,
-      user: User.all.sample
+      user: users.sample
     )
   end
+end
+
+# == Feedbacks
+#
+rand(10..20).times do |i|
+  feedback = Feedback.create!(
+    body: [new_sentence, new_question].sample,
+    kind: :feature_request,
+    user: users.sample
+  )
+  feedback.reactions.create!(emoji: plus_emoji, user: users.sample) if [true, false].sample
 end

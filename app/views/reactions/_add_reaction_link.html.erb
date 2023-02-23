@@ -1,0 +1,10 @@
+<%= form_with model: Reaction.new, local: false, html: {class: "d-inline-flex"} do |form| %>
+  <%= form.hidden_field :cta, value: cta %>
+  <%= form.hidden_field :reactionable_id, value: reactionable.id %>
+  <%= form.hidden_field :reactionable_type, value: reactionable.class.name %>
+  <%= form.hidden_field :reaction_count_method_name, value: reaction_count_method_name %>
+  <%= form.hidden_field :emoji, value: emoji %>
+
+  <%= form.submit "#{cta} (#{reaction_count})",
+                  class: "btn btn-link styled-btn-card-link p-0 card-link text-decoration-none add-reaction-link" %>
+<% end %>

@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :registration do
     first_name { "Danelson Sr." }
-    city { "Bronx" }
     password { "password" }
     sequence(:email) { |i| "email+#{i}@thedaddyapp.com" }
-    babies {
+    children {
       {
         "0" => {
           "first_name" => "Junior",
@@ -15,24 +16,23 @@ FactoryBot.define do
     }
 
     factory :invalid_daddy_registration do
-      city { "" }
-      email { nil }
+      email { "" }
     end
 
-    factory :invalid_baby_registration do
-      babies {
+    factory :invalid_child_registration do
+      children {
         {
           "0" => {
             "first_name" => "",
-            "gender" => nil,
+            "gender" => "",
             "birthdate" => "2019/07/21"
           }
         }
       }
     end
 
-    trait :multiple_babies do
-      babies {
+    trait :multiple_children do
+      children {
         {
           "0" => {
             "first_name" => "Junior",

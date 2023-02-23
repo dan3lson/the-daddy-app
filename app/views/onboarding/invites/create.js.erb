@@ -1,0 +1,16 @@
+const $onboardingContainer = $("#onboarding-container");
+const $referralSection = $("section[data-section-name='referrals']");
+
+$referralSection.addClass("d-none");
+$referralSection.next().removeClass("d-none");
+$referralSection.next().hide().fadeIn();
+
+updateProgress();
+
+function updateProgress() {
+  var currentValue = parseInt($("#onboarding-container .progress").attr("aria-valuenow"));
+  var newValue = currentValue + 16;
+
+  $("#onboarding-container .progress").attr("aria-valuenow", newValue)
+  $("#onboarding-container .progress-bar").css("width", newValue + "%");
+}

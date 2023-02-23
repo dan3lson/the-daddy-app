@@ -56,8 +56,8 @@ en:
       forgot_password: Forgot password?
       sign_up: Sign up
     new:
-      title: Sign in
+      title: Sign In
   registrations:
     new:
       sign_in: Sign in
-      title: Sign up
+      title: Sign Up

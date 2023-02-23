@@ -48,3 +48,5 @@ yarn-debug.log*
 dump.rdb
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+spec/examples.txt

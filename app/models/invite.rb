@@ -12,5 +12,13 @@ class Invite < ApplicationRecord
   }
   validates :status, presence: true
 
+  before_save :downcase_email
+
   enum status: {pending: 0, complete: 1}
+
+  private
+
+  def downcase_email
+    self.email = email.strip.downcase
+  end
 end

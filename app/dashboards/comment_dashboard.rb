@@ -12,6 +12,7 @@ class CommentDashboard < Administrate::BaseDashboard
     body: Field::Text,
     image_attachment: Field::HasOne,
     image_blob: Field::HasOne,
+    flags: Field::HasMany,
     parent: Field::BelongsTo,
     replies: Field::HasMany,
     status: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
@@ -29,8 +30,7 @@ class CommentDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     body
-    image_attachment
-    image_blob
+    flags
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -41,6 +41,7 @@ class CommentDashboard < Administrate::BaseDashboard
     image_attachment
     image_blob
     parent
+    flags
     replies
     status
     topic

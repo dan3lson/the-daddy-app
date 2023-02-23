@@ -2,8 +2,8 @@
 
 # MailerListener patiently waits to send email notifications.
 class MailerListener
-  def successful_registration(email)
-    UserMailer.welcome(email).deliver_later
+  def successful_registration(user_id)
+    UserMailer.welcome(user_id).deliver_later
   end
 
   def successful_reply(comment_id)
@@ -23,5 +23,9 @@ class MailerListener
       first_name: waitlist_user.first_name,
       referral_code: waitlist_user.referral_code
     ).deliver_later
+  end
+
+  def alert(alert)
+    AdminMailer.alert(alert.to_h).deliver_later
   end
 end

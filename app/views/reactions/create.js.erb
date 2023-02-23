@@ -1,0 +1,6 @@
+var reactionableID = "<%= @reactionable.id %>";
+var $reactionable = $(".reactionable-wrapper").find(`[data-reactionable-id='${reactionableID}']`);
+var $addReactionForm = $reactionable.find(".add-reaction-link").first().parent();
+var removeReactionFormPartial = "<%= j render(partial: "reactions/remove_reaction_link", locals: {reaction: @reaction, cta: @cta, reaction_count: @reaction_count, reaction_count_method_name: @reaction_count_method_name}) %>";
+
+$addReactionForm.replaceWith(removeReactionFormPartial);

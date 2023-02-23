@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_04_224350) do
+ActiveRecord::Schema.define(version: 2023_02_21_013325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -79,14 +79,14 @@ ActiveRecord::Schema.define(version: 2023_01_04_224350) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
-  create_table "babies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "children", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
     t.integer "gender", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "birthdate", null: false
-    t.index ["user_id"], name: "index_babies_on_user_id"
+    t.index ["user_id"], name: "index_children_on_user_id"
   end
 
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -97,9 +97,40 @@ ActiveRecord::Schema.define(version: 2023_01_04_224350) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "topic_id"
+    t.uuid "users_question_of_the_day_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["topic_id"], name: "index_comments_on_topic_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["users_question_of_the_day_id"], name: "index_comments_on_users_question_of_the_day_id"
+  end
+
+  create_table "emojis", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "emoji", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["emoji"], name: "index_emojis_on_emoji", unique: true
+    t.index ["name"], name: "index_emojis_on_name", unique: true
+  end
+
+  create_table "feedbacks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "body", null: false
+    t.string "kind", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["kind"], name: "index_feedbacks_on_kind"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "flags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "comment_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id", "user_id"], name: "index_flags_on_comment_id_and_user_id", unique: true
+    t.index ["comment_id"], name: "index_flags_on_comment_id"
+    t.index ["user_id"], name: "index_flags_on_user_id"
   end
 
   create_table "invites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -112,6 +143,28 @@ ActiveRecord::Schema.define(version: 2023_01_04_224350) do
     t.index ["user_id"], name: "index_invites_on_user_id"
   end
 
+  create_table "question_of_the_days", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "question", null: false
+    t.date "day", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["day"], name: "index_question_of_the_days_on_day"
+    t.index ["question"], name: "index_question_of_the_days_on_question"
+  end
+
+  create_table "reactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "emoji_id", null: false
+    t.string "reactionable_type", null: false
+    t.uuid "reactionable_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["emoji_id"], name: "index_reactions_on_emoji_id"
+    t.index ["reactionable_type", "reactionable_id"], name: "index_reactions_on_reactionable_type_and_reactionable_id"
+    t.index ["user_id", "reactionable_id", "reactionable_type"], name: "index_reactions_on_user_and_reactionable", unique: true
+    t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
   create_table "topics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -121,7 +174,6 @@ ActiveRecord::Schema.define(version: 2023_01_04_224350) do
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", null: false
     t.string "first_name", null: false
-    t.string "city", null: false
     t.boolean "admin", default: false, null: false
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
@@ -130,6 +182,16 @@ ActiveRecord::Schema.define(version: 2023_01_04_224350) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
+  end
+
+  create_table "users_question_of_the_days", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "question_of_the_day_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_of_the_day_id", "user_id"], name: "index_user_and_question_on_users_questions_of_the_day"
+    t.index ["question_of_the_day_id"], name: "index_users_question_of_the_days_on_question_of_the_day_id"
+    t.index ["user_id"], name: "index_users_question_of_the_days_on_user_id"
   end
 
   create_table "waitlist_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -147,8 +209,16 @@ ActiveRecord::Schema.define(version: 2023_01_04_224350) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "babies", "users"
+  add_foreign_key "children", "users"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
+  add_foreign_key "comments", "users_question_of_the_days"
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "flags", "comments"
+  add_foreign_key "flags", "users"
   add_foreign_key "invites", "users"
+  add_foreign_key "reactions", "emojis"
+  add_foreign_key "reactions", "users"
+  add_foreign_key "users_question_of_the_days", "question_of_the_days"
+  add_foreign_key "users_question_of_the_days", "users"
 end

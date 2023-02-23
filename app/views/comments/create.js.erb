@@ -1,36 +1,56 @@
-var $commentsDiv = $("#create-comment");
+var $form = $("#new_comment");
 var newCommentSaved = "<%= @saved %>" === "true";
-var $form = $commentsDiv.find("form");
-var $field = $form.find(".field");
-var $input = $field.find(".input");
+var $input = $form.find("#comment_body");
+var $comments = $(".comments");
 
 resetForms();
-
-newCommentSaved ? showSuccess() : showErrors();
-
-function resetInput($input) {
-    return $input.val("");
-}
+newCommentSaved ? renderSuccess() : renderErrors();
 
 function resetForms() {
-    var $inputs = $commentsDiv.find(".input");
-    var $helpTexts = $commentsDiv.find(".help");
+  var $invalidInputs = $form.find(".is-invalid");
+  var $helpTexts = $form.find(".invalid-feedback");
 
-    $inputs.removeClass("is-danger").removeClass("is-success");
-    $helpTexts.remove();
+  $invalidInputs.removeClass("is-invalid");
+  $helpTexts.remove();
+
+  if (questionOfTheDayIsAnswered()) {
+    resetQuestionOfTheDay();
+  }
 }
 
-function showSuccess() {
-    var $helpSuccess = $('<p/>', { "class": "help is-success" });
-    $helpSuccess.text("Thanks for your comment");
-    $helpSuccess.insertAfter($field);
-    resetInput($input);
+function resetInput($input) {
+  return $input.val("");
 }
 
-function showErrors() {
-    var errors = "<%= @errors %>";
-    var $helpDanger = $('<p/>', { "class": "help is-danger" });
-    $input.addClass("is-danger");
-    $helpDanger.text("Uh-oh: " + errors);
-    $helpDanger.insertAfter($field);
+function questionOfTheDayIsAnswered () {
+  return !$("#question-of-the-day-wrapper").find("a").length;
+}
+
+function resetQuestionOfTheDay() {
+  var questionLink = "<%= j render(partial: 'comments/question_of_the_day_link') %>";
+
+  $("#question-of-the-day-wrapper")
+    .empty()
+    .append(questionLink);
+  $form.attr("action", "/comments");
+}
+
+function renderSuccess() {
+  var comment = "<%= j render(partial: 'comments/comment', locals: { comment: @comment }) %>";
+  var commentID = "<%= @comment.id %>";
+  var $commentContainer = $comments.find(`[data-comment-id='${commentID}']`);
+
+  $comments.prepend(comment);
+  $commentContainer.hide().fadeIn("slow");
+  resetInput($input);
+}
+
+function renderErrors() {
+  var errors = "<%= @errors %>";
+  var $helpDanger = $('<div/>', { "class": "invalid-feedback" });
+
+  $input.addClass("is-invalid");
+  $helpDanger.text("Uh-oh: " + errors);
+  $helpDanger.insertAfter($input);
+  $helpDanger.hide().fadeIn("slow");
 }

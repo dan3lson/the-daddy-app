@@ -4,17 +4,17 @@ class UserMailer < ApplicationMailer
   layout "mailer"
   default template_path: "mailers/#{name.underscore}"
 
-  def welcome(email)
-    @daddy = User.find_by(email: email)
+  def welcome(user_id)
+    @daddy = User.find(user_id)
 
-    mail(to: @email, subject: "Congrats!, and Welcome to the Daddy App")
+    mail(to: @email, subject: "Congrats, and Welcome")
   end
 
   def invite(invitee_email:, inviter_email: nil)
     @inviter_email = inviter_email
     @invitee_email = invitee_email
 
-    mail(to: @invitee_email, subject: "You've Been Invited to The Daddy App!")
+    mail(to: @invitee_email, subject: "You've Been Invited")
   end
 
   def waitlist_user_joined(email:, first_name:, referral_code:)
@@ -31,7 +31,18 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @daddy.email,
-      subject: "Someone replied to your comment on The Daddy App"
+      subject: "You Have a Reply"
+    )
+  end
+
+  # One-offs
+  def alpha_release_now_live(email:, first_name:)
+    @email = email
+    @first_name = first_name
+
+    mail(
+      to: @email,
+      subject: "Now Live -- Join the Conversations!"
     )
   end
 

@@ -1,12 +1,16 @@
-<footer class="footer">
+<footer class="footer mt-5">
 	<div class="content text-center">
 		<p>
+			<%= link_to "About", about_path %>
+			&middot;
+			<%= link_to "Contact Us", contact_us_path %>
+
+			<br>
+
 			<strong>
 				&copy; <%= Date.today.year %>
 			  The Daddy App
 			</strong>
-			<br>
-			hello@theDaddyApp.com
 		</p>
 	</div>
 </footer>
