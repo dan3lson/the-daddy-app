@@ -16,7 +16,10 @@
           <%= link_to "Sign Out", sign_out_path, method: :delete, class: "nav-link" %>
         <% else %>
           <a class="nav-link" href="<%= sign_in_path %>">Sign In</a>
-          <a class="nav-link" href="<%= sign_up_path %>">Sign Up</a>
+
+          <% if Clearance.configuration.allow_sign_up? %>
+            <a class="nav-link" href="<%= sign_up_path %>">Sign Up</a>
+          <% end %>
         <% end %>
       </div>
     </div>
