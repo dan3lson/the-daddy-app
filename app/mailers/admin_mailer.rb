@@ -7,7 +7,7 @@ class AdminMailer < ApplicationMailer
   ADMIN_EMAIL = "admin@thedaddyapp.com"
   private_constant :ADMIN_EMAIL
 
-  def alert(current_user_id:, message:, additional_data:, type:)
+  def alert(current_user_id:, message:, type:, additional_data: {})
     @additional_data = additional_data
     @current_user = User.find_by(id: current_user_id)
     @message = message

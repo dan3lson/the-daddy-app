@@ -5,14 +5,29 @@
     <ul>
       <li>Type: <%= @type %></li>
       <li>Message: <%= @message %></li>
-      <li>Current User (if any): <%= @current_user&.email %> (<%= @current_user&.id %>)</li>
+      <li>
+        Current User:
+        <% if @current_user.present? %>
+          <ul>
+            <li>ID: <%= @current_user.id %></li>
+            <li>Email: <%= @current_user.email %></li>
+            <li>Name: <%= @current_user.first_name %></li>
+          </ul>
+        <% else %>
+          n/a
+        <% end %>
+      </li>
       <li>
         Any additional data:
-        <ul>
-          <% @additional_data.each do |key, value| %>
-            <li><%= key %> => <%= value %></li>
-          <% end %>
-        </ul>
+        <% if @additional_data.empty? %>
+          n/a
+        <% else %>
+          <ul>
+            <% @additional_data.each do |key, value| %>
+              <li><%= key %> => <%= value %></li>
+            <% end %>
+          </ul>
+        <% end %>
       </li>
     </ul>
     <p>Please respond accordingly.</p>

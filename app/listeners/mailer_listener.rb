@@ -4,6 +4,13 @@
 class MailerListener
   def successful_registration(user_id)
     UserMailer.welcome(user_id).deliver_later
+    AdminMailer
+      .alert(
+        current_user_id: user_id,
+        message: "A new user has signed up!",
+        type: :info
+      )
+      .deliver_later
   end
 
   def successful_reply(comment_id)
