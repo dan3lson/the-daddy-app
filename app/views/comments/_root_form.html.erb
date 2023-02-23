@@ -2,9 +2,11 @@
   <%= Lib::Constants::CREATE_COMMENT_LABEL_EXAMPLES.sample %>
 </div>
 
-<p id="question-of-the-day-wrapper">
-  <%= render "comments/question_of_the_day_link" %>
-</p>
+<% if QuestionOfTheDay.today? %>
+  <p id="question-of-the-day-wrapper">
+    <%= render "comments/question_of_the_day_link" %>
+  </p>
+<% end %>
 
 <%= form_for comment, remote: true do |form| %>
   <div class="mb-2">

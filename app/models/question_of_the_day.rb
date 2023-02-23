@@ -8,6 +8,10 @@ class QuestionOfTheDay < ApplicationRecord
   validates :question, presence: true
 
   def self.today
-    find_by(day: Date.current) || Lib::Constants::CREATE_COMMENT_LABEL_EXAMPLES.sample
+    find_by(day: Date.current)
+  end
+
+  def self.today?
+    today.present?
   end
 end
