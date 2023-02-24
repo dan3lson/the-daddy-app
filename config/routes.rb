@@ -78,6 +78,7 @@ Rails.application.routes.draw do
       resources :emojis
       resources :flags
       resources :invites
+      resources :question_of_the_days
       resources :reactions
       resources :topics
       resources :users
