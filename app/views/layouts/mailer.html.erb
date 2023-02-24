@@ -46,51 +46,39 @@
         width: 700px;
       }
 
-      .content-container {
-        .content {
+      .content-wrapper {
+        background: #FFF !important;
+        max-width: 800px;
+        margin: auto;
+        padding: 15px 30px;
+
+        p {
           background: #FFF;
-          max-width: 800px;
-          margin: auto;
-          padding: 15px 30px;
+          color: #555555;
+          line-height: 24px;
+          text-align: left;
+        }
 
-          p {
-            background: #FFF;
-            color: #555555;
-            line-height: 24px;
-            text-align: left;
-          }
+        a {
+          font-weight: 400;
+          text-decoration: none;
 
-          a {
-            font-weight: 400;
-            text-decoration: none;
-
-            &:hover {
-              text-decoration: underline;
-            }
+          &:hover {
+            text-decoration: underline;
           }
         }
       }
 
       footer {
-        margin-top: 1.4em;
+        margin-top: 2em;
       }
     </style>
   </head>
   <body>
     <div class="main">
-      <%= yield %>
-
-      <footer class="mt-4 text-center">
-        <p>
-            Have any questions or need help? Don't ever hesitate to reach out
-            via email at <%= mail_to "hello@thedaddyapp.com" %>.
-        </p>
-        <p>
-          Thanks; talk soon,
-          <br>
-          The Daddy App Team
-        </p>
-      </footer>
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

@@ -1,21 +1,20 @@
-<div class="content-container">
-  <div class="content">
-    <%= image_pack_tag "emails/banner.png",
-                  alt: "Congrats, and Welcome to the Daddy App" %>
-    <p>Hey <%= @daddy.first_name %>,</p>
-    <p>
-      As parents ourselves, it's great to have a place where dads can just talk
-      about the daily ups and downs of fatherhood.
-    </p>
-    <p>
-      Share your experiences and get advice on topics like money, relationships,
-      feeding, and more.
-    </p>
-    <p>
-      All the best with <%= @daddy.children_names %> and don't forget to
-    </p>
-    <p>
-      <%= link_to "Join the conversations", root_url, class: "btn" %>
-    </p>
-  </div>
-</div>
+<%= image_pack_tag "emails/banner.png",
+              alt: "Congrats, and Welcome to the Daddy App" %>
+
+<p>Hey <%= @daddy.first_name %>,</p>
+<p>
+  As parents ourselves, it's great to have a place where dads can just talk
+  about the daily ups and downs of fatherhood.
+</p>
+<p>
+  Share your experiences and get advice on topics like money, relationships,
+  feeding, and more.
+</p>
+<p>
+  All the best with <%= @daddy.children_names %> and don't forget to
+</p>
+<p>
+  <%= link_to "Join the conversations", root_url, class: "btn" %>
+</p>
+
+<%= render "mailers/footer" %>
