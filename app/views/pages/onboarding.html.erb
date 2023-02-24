@@ -32,8 +32,9 @@
 		</div>
 
     <p>
-		  The <b>🏠 Home</b> page is where all the action is: talk about all the
-			fatherhood ups, downs, and everything in between.
+		  Talk about all your fatherhood ups, downs, and everything in between on
+			the <b>🏠 Home</b> page. And don't miss out on every day's Question of the
+			Day.
 		</p>
 
 		<div class="d-grid justify-content-md-end">
@@ -95,8 +96,8 @@
 			</div>
 
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-				<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
 				<%= link_to "Skip", "#", role: "button", class: "btn btn-outline-primary btn-lg me-md-2 text-uppercase onboarding-next-btn" %>
+				<%= form.submit "Send Invites", class: "btn btn-primary btn-lg text-uppercase" %>
 			</div>
 		<% end %>
 	</section>
@@ -110,8 +111,8 @@
 		</div>
 
     <p>
-		  Check out the <b>Rewards</b> page for details on how to potentially
-		  win a little something-something every month.
+		  Check out the <b>Rewards</b> page for details on how to win a little
+			something-something every month.
 		</p>
 
 		<div class="d-grid justify-content-md-end">
@@ -127,28 +128,26 @@
 													 alt: "Welcome to The Daddy App" %>
 		</div>
     <p class="fs-4">
-      You: Take us to the app already!
-			<br>
-			Us: 😅 Okaaay. Before we do, introduce yourself:
+      <strong>You:</strong> Take us to the app already!
+		</p>
+    <p class="fs-4">
+			<b>Us:</b> 😅 Before we do, introduce yourself:
 		</p>
 
 		<%= form_with model: @comment, url: onboarding_comments_path, local: true do |form| %>
 			<div class="bg-light p-3 mb-3">
-				<div class="form-floating mb-3">
-					<%= form.text_field :body,
-															class: "form-control",
+				<div class="mb-3">
+					<%= form.text_area :body,
+															class: "form-control form-control-lg",
 															id: "floatingEmail",
-															placeholder: "Comment",
+															placeholder: "👋 Introduction",
 															required: false %>
-					<%= form.label :comment,
-					               "e.g. What's up everybody, my name is ___ and I'm from ___...",
-												 for: "floatingInput" %>
 				</div>
 			</div>
 
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-				<%= form.submit "Share first post!", class: "btn btn-primary btn-lg text-uppercase" %>
 				<%= link_to "Later", signed_in_root_path, role: "button", class: "btn btn-outline-primary btn-lg me-md-2 text-uppercase" %>
+				<%= form.submit "Share first post", class: "btn btn-primary btn-lg text-uppercase" %>
 			</div>
 		<% end %>
 	</section>
