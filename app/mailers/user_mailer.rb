@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   def welcome(user_id)
     @daddy = User.find(user_id)
 
-    mail(to: @email, subject: "Congrats, and Welcome")
+    mail(to: @daddy.email, subject: "Congrats, and Welcome")
   end
 
   def invite(invitee_email:, inviter_email: nil)
