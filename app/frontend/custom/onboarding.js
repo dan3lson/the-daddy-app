@@ -4,7 +4,6 @@ $(function() {
 		$section = $(this).parents("section");
 		$section.addClass("d-none");
 		$section.next().removeClass("d-none");
-		$section.next().hide().fadeIn();
 
 		updateProgress();
 	});
