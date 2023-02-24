@@ -42,7 +42,6 @@ Rails.application.routes.draw do
     get "/rewards" => "pages#rewards"
     get "/support" => "pages#support"
     get "/faq" => "pages#faq"
-    get "/feedback" => "pages#feedback"
 
     # Onboarding
     #
@@ -54,6 +53,10 @@ Rails.application.routes.draw do
     # Invites
     #
     resources :invites, only: %i[new create]
+
+    # Feedbacks
+    #
+    resources :feedbacks, only: %i[index create]
 
     # Comments
     #

@@ -37,14 +37,6 @@ class PagesController < ApplicationController
     render layout: "layouts/application_signed_in"
   end
 
-  # TODO: move this shit to the FeedbacksController#Index, tf
-  def feedback
-    @feedbacks = Feedback.latest
-    @emoji = Emoji.plus_emoji
-
-    render layout: "layouts/application_signed_in"
-  end
-
   def support
     render layout: "layouts/application_signed_in"
   end

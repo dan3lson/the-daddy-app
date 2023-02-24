@@ -19,6 +19,13 @@ module Lib
     ].freeze
     public_constant :CREATE_COMMENT_EXAMPLES
 
+    CREATE_FEEDBACK_EXAMPLES = [
+      "If I were to rate this app, I'd give it a...",
+      "It would be great if we could...",
+      "What I don't like is..."
+    ].freeze
+    public_constant :CREATE_FEEDBACK_EXAMPLES
+
     CREATE_COMMENT_LABEL_EXAMPLES = [
       "How's it going?",
       "What's on your mind?"
