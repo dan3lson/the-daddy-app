@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_21_013325) do
+ActiveRecord::Schema.define(version: 2023_02_24_101808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 2023_02_21_013325) do
     t.date "day", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["day"], name: "index_question_of_the_days_on_day"
+    t.index ["day"], name: "index_question_of_the_days_on_day", unique: true
     t.index ["question"], name: "index_question_of_the_days_on_question"
   end
 

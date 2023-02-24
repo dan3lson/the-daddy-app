@@ -4,7 +4,7 @@ class QuestionOfTheDay < ApplicationRecord
   has_many :users_question_of_the_days, dependent: :destroy
   has_many :users, through: :users_question_of_the_days
 
-  validates :day, presence: true
+  validates :day, presence: true, uniqueness: true
   validates :question, presence: true
 
   def self.today

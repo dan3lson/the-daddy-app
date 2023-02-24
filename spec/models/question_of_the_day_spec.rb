@@ -9,13 +9,16 @@ RSpec.describe QuestionOfTheDay, type: :model do
   end
 
   describe "validations" do
+    subject(:question_of_the_day) { create(:question_of_the_day) }
+
     it { is_expected.to validate_presence_of(:day) }
     it { is_expected.to validate_presence_of(:question) }
+    it { is_expected.to validate_uniqueness_of(:day) }
   end
 
   describe "class methods" do
     describe ".today" do
-      subject(:question_of_the_day) { described_class.today }
+      subject(:today) { described_class.today }
 
       let(:question) { create(:question_of_the_day) }
 
