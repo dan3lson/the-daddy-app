@@ -6,12 +6,14 @@
     <li class="breadcrumb-item">
 		  <%= link_to "Support", support_path, class: "text-decoration-none" %>
 		</li>
-    <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+    <li class="breadcrumb-item active" aria-current="page">🗣 Feedback</li>
   </ol>
 </nav>
 
 <section class="feedbacks-wrapper reactionable-wrapper">
-  <h1 class="mb-4">Feedback</h1>
+	<section class="text-bg-dark bg-gradient p-4 mb-4 rounded">
+		<%= render "feedbacks/form", feedback: @feedback %>
+	</section>
 
   <% @feedbacks.each do |feedback| %>
 		<div class="card mb-4" data-reactionable-id="<%= feedback.id %>">

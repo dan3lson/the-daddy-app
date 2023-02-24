@@ -1,0 +1,21 @@
+<div class="fs-2">
+  Share the good, the bad, and definitely the ugly.
+</div>
+
+<p>
+  For real though, we'd love to hear what you think. Have a feature request?
+  A general comment? Suggestion? Something you really don't like? We're all
+  ears and actively work to make this app the best space for fathers.
+</p>
+
+<%= form_for feedback do |form| %>
+  <!-- TODO: compare to the notifications partial -->
+  <%= render "shared/form_errors", object: feedback %>
+
+  <div class="mb-2">
+    <%= form.text_area :body,
+                       class: "form-control form-control-lg",
+                       placeholder: Lib::Constants::CREATE_FEEDBACK_EXAMPLES.sample %>
+  </div>
+  <%= form.submit "Share", class: "btn btn-secondary btn-lg text-uppercase w-100" %>
+<% end %>

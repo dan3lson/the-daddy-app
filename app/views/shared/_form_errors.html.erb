@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
-  <div class="notification is-danger">
-    <h2>Please fix the following <%= pluralize(object.errors.count, 'error') %>:</h2>
+  <div class="text-danger">
+    <p class="lead">Please fix the following <%= pluralize(object.errors.count, 'error') %>:</p>
 
     <ul>
       <% object.errors.full_messages.each do |message| %>
