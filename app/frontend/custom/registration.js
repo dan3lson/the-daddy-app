@@ -30,7 +30,10 @@ $(function() {
 					.append(
 						formFloatingDiv()
 							.append(
-								childInput("gender", "text", "Child Gender"), label("Gender")
+								childGenderSelector()
+							)
+							.append(
+								label("Gender")
 							)
 						)
 					.append(
@@ -91,7 +94,7 @@ $(function() {
 	}
 
 	function childInput(inputName, inputType, placeholder) {
-		return $('<input/>')
+		return $("<input/>")
 			.attr("id", "registration_children_" + childWrapperIndex() + "_" + inputName)
 			.attr("name", "registration[children][" + childWrapperIndex() + "][" + inputName + "]")
 			.attr("value", "")
@@ -99,6 +102,23 @@ $(function() {
 			.attr("placeholder", placeholder)
 			.attr("required", "required")
 			.addClass("form-control")
+	}
+
+	function childGenderSelector() {
+		var selector = $("<select/>")
+			.attr("id", "registration_children_" + childWrapperIndex() + "_gender")
+			.attr("aria-label", "Select gender dropdown")
+			.attr("name", "registration[children][" + childWrapperIndex() + "][gender]")
+			.attr("value", "")
+			.attr("required", "required")
+			.addClass("form-select mb-3 form-control");
+
+		selector
+		  .append($("<option/>").attr("value", "").text("Choose..."))
+		  .append($("<option/>").attr("value", "male").text("male"))
+		  .append($("<option/>").attr("value", "female").text("female"));
+
+		return selector;
 	}
 
 	function childWrapperIndex() {
