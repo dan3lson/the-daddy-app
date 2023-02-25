@@ -15,7 +15,7 @@ RSpec.describe Feedback, type: :model do
     it do
       is_expected
         .to define_enum_for(:kind)
-        .with_values(bug: "bug", feature_request: "feature_request")
+        .with_values(general: "general", bug: "bug", feature_request: "feature_request")
         .backed_by_column_of_type(:string)
     end
   end
