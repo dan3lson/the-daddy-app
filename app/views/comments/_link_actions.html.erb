@@ -17,7 +17,7 @@
 &nbsp;
 
 <% if comment.replies? %>
-  <%= link_to "👀 Comments (#{comment.replies.size})",
+  <%= link_to "🗣 Comments (#{comment.replies.size})",
               comment_replies_path(comment),
               class: "card-link text-decoration-none comment-href", remote: true %>
 <% end %>
