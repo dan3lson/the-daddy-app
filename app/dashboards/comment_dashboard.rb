@@ -18,6 +18,7 @@ class CommentDashboard < Administrate::BaseDashboard
     status: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     topic: Field::BelongsTo,
     user: Field::BelongsTo,
+    users_question_of_the_day: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -45,6 +46,7 @@ class CommentDashboard < Administrate::BaseDashboard
     status
     topic
     user
+    users_question_of_the_day
     created_at
     updated_at
   ].freeze
@@ -59,6 +61,7 @@ class CommentDashboard < Administrate::BaseDashboard
     status
     topic
     user
+    users_question_of_the_day
   ].freeze
 
   # COLLECTION_FILTERS
