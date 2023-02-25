@@ -84,7 +84,7 @@ Rails.application.routes.draw do
       resources :users
       resources :waitlist_users
 
-      root to: "waitlist_users#index"
+      root to: "comments#index"
 
       # Job Scheduler
       #

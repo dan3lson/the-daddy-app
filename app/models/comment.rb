@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   belongs_to :topic, optional: true
   belongs_to :parent, class_name: :Comment, optional: true
   belongs_to :users_question_of_the_day, optional: true
-  has_one_attached :image
+  # has_one_attached :image
   has_many :flags, dependent: :destroy
   has_many :replies,
     class_name: :Comment,
@@ -17,11 +17,11 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true, length: {minimum: 2}
   validates :status, presence: true
-  validates :image,
-    content_type: {
-      in: [:png, :jpg, :jpeg, :gif], message: "is an invalid file"
-    },
-    size: {less_than: 4.megabytes}
+  # validates :image,
+  #   content_type: {
+  #     in: [:png, :jpg, :jpeg, :gif], message: "is an invalid file"
+  #   },
+  #   size: {less_than: 4.megabytes}
 
   enum status: {active: 0, inactive: 1}
 
