@@ -82,6 +82,7 @@ Rails.application.routes.draw do
       resources :reactions
       resources :topics
       resources :users
+      resources :users_question_of_the_days
       resources :waitlist_users
 
       root to: "comments#index"
