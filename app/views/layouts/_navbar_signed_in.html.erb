@@ -14,6 +14,9 @@
            href="<%= support_path %>">
           ✊ Support
         </a>
+        <% if current_user.admin? %>
+          <%= link_to "🦾 Admin", admin_root_path, class: "nav-link" %>
+        <% end %>
         <%= link_to "Sign Out", sign_out_path, method: :delete, class: "nav-link" %>
       </div>
     </div>
