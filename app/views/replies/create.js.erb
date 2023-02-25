@@ -2,7 +2,7 @@ var parentCommentID = "<%= @parent_comment.id %>";
 var newCommentSaved = "<%= @saved %>" === "true";
 var $parentComment = $(".comments").find(`[data-reactionable-id='${parentCommentID}']`);
 var $replyForm = $parentComment.find(".card-footer form").last();
-var $input = $replyForm.find("input");
+var $input = $replyForm.find("textarea");
 
 resetForms($parentComment);
 
