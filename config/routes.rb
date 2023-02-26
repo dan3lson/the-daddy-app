@@ -76,6 +76,7 @@ Rails.application.routes.draw do
       resources :children
       resources :comments
       resources :emojis
+      resources :feedbacks
       resources :flags
       resources :invites
       resources :question_of_the_days
