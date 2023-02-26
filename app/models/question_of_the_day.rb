@@ -8,7 +8,7 @@ class QuestionOfTheDay < ApplicationRecord
   validates :question, presence: true
 
   def self.today
-    find_by(day: Date.current)
+    find_by(day: Time.current.in_time_zone(Lib::Constants::TIME_ZONES[:pacific]))
   end
 
   def self.today?

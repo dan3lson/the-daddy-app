@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :question_of_the_day do
-    day { Date.current }
+    day { Time.current.in_time_zone(Lib::Constants::TIME_ZONES[:pacific]) }
     question { Faker::Lorem.sentence }
   end
 end

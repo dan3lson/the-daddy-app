@@ -31,5 +31,10 @@ module Lib
       "What's on your mind?"
     ].freeze
     public_constant :CREATE_COMMENT_EXAMPLES
+
+    TIME_ZONES = {
+      pacific: "Pacific Time (US & Canada)"
+    }.freeze
+    public_constant :TIME_ZONES
   end
 end
