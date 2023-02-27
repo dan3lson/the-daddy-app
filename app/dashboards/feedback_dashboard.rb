@@ -11,11 +11,10 @@ class FeedbackDashboard < Administrate::BaseDashboard
     id: Field::String,
     body: Field::Text,
     kind: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
-    reactions: Field::HasMany,
-    upvotes: Field::HasMany,
     user: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    reactions: Field::HasMany
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,6 +24,7 @@ class FeedbackDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    user
     body
     kind
     reactions
@@ -36,9 +36,8 @@ class FeedbackDashboard < Administrate::BaseDashboard
     id
     body
     kind
-    reactions
-    upvotes
     user
+    reactions
     created_at
     updated_at
   ].freeze
@@ -49,8 +48,6 @@ class FeedbackDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     body
     kind
-    reactions
-    upvotes
     user
   ].freeze
 
