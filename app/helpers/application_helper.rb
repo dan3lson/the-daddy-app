@@ -10,8 +10,15 @@ module ApplicationHelper
     return kontroller if only_controller?(action: action, controller: controller)
   end
 
-  def img(filename, description, options = {})
+  def img(filename, description = "", options = {})
     image_pack_tag(filename, alt: description, title: description, **options)
+  end
+
+  def todays_date
+    Time
+      .current
+      .in_time_zone(Lib::Constants::TIME_ZONES[:pacific])
+      .strftime("%A, %B %d, %Y")
   end
 
   private

@@ -1,0 +1,26 @@
+<section>
+  <h1 class="mb-4">🗓 Question of the Day</h1>
+
+  <p class="lead"><%= todays_date %></p>
+
+  <div class="text-bg-dark bg-gradient p-4 mb-4 rounded fs-4">
+    <% if @question_of_the_day.present? %>
+      <div class="fs-2" id="root-comment-label">
+        <%= @question_of_the_day.question %>
+      </div>
+
+      <%= render "users_question_of_the_days/form",
+                  comment: @comment,
+                  question_of_the_day: @question_of_the_day,
+                  users_question_of_the_day: @users_question_of_the_day %>
+    <% else %>
+      <p>
+        No question for today! Check back tomorrow for one.
+      </p>
+      <p>
+        We're also all 👂s if you have any questions you want other dads to
+        answer &mdash; let us know with an email to hello@thedaddyapp.com.
+      </p>
+    <% end %>
+  </div>
+</section>

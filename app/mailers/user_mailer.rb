@@ -17,6 +17,14 @@ class UserMailer < ApplicationMailer
     mail(to: @invitee_email, subject: "You've Been Invited")
   end
 
+  def question_of_the_day_nudge(email:, first_name:)
+    @question = QuestionOfTheDay.today
+    @email = email
+    @first_name = first_name
+
+    mail(to: @email, subject: "Check out the Question of the Day")
+  end
+
   def waitlist_user_joined(email:, first_name:, referral_code:)
     @email = email
     @first_name = first_name

@@ -11,6 +11,13 @@ class UserMailerPreview < ActionMailer::Preview
     )
   end
 
+  def question_of_the_day_nudge
+    UserMailer.question_of_the_day_nudge(
+      email: "some@email.com",
+      first_name: "Alguien"
+    )
+  end
+
   def reply
     UserMailer.reply(Comment.first.id)
   end

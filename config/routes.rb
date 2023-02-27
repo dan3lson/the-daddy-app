@@ -64,7 +64,13 @@ Rails.application.routes.draw do
       resources :replies, only: %i[index create]
       resource :flags, only: %i[create destroy]
     end
-    resource :question_of_the_day, only: %i[show], controller: :question_of_the_day
+
+    # Question of the Day
+    #
+    resource :question_of_the_day, only: %i[show], controller: :question_of_the_day do
+      get "answer" => "users_question_of_the_days#new"
+      post "answer" => "users_question_of_the_days#create"
+    end
 
     # Reactions
     #
