@@ -1,0 +1,17 @@
+<%= image_pack_tag "emails/todays-question-of-the-day.png", alt: "Today's Question of the Day" %>
+
+<p>Hey <%= @first_name %>,</p>
+<p>
+  <strong><%= @question.question %></strong>
+</p>
+<p>
+  Take a minute or two to answer today's question and see responses from the
+  other dads:
+</p>
+<p>
+  <%= link_to "Answer the Question of the Day",
+              answer_question_of_the_day_url,
+              class: "btn" %>
+</p>
+
+<%= render "mailers/footer" %>
