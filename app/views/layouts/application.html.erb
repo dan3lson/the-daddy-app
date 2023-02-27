@@ -4,10 +4,10 @@
 
   <body>
     <div class="container">
+      <%= render "layouts/navbar_signed_out" %>
+
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
-          <%= render "layouts/navbar_signed_out" %>
-
           <%= render "layouts/alerts" %>
 
           <%= yield %>
