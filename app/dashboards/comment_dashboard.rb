@@ -14,6 +14,7 @@ class CommentDashboard < Administrate::BaseDashboard
     # image_blob: Field::HasOne,
     flags: Field::HasMany,
     parent: Field::BelongsTo,
+    reactions: Field::HasMany,
     replies: Field::HasMany,
     status: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     topic: Field::BelongsTo,
@@ -32,6 +33,7 @@ class CommentDashboard < Administrate::BaseDashboard
     id
     user
     body
+    reactions
     flags
   ].freeze
 
@@ -42,6 +44,7 @@ class CommentDashboard < Administrate::BaseDashboard
     body
     parent
     flags
+    reactions
     replies
     status
     topic
