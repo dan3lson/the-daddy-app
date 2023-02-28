@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
     @email = email
     @first_name = first_name
 
-    mail(to: @email, subject: "Check out the Question of the Day")
+    mail(to: @email, subject: "Today's Question of the Day")
   end
 
   def waitlist_user_joined(email:, first_name:, referral_code:)
