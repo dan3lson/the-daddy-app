@@ -25,14 +25,6 @@ class UserMailer < ApplicationMailer
     mail(to: @email, subject: "Today's Question of the Day")
   end
 
-  def waitlist_user_joined(email:, first_name:, referral_code:)
-    @email = email
-    @first_name = first_name
-    @referral_code = referral_code
-
-    mail(to: @email, subject: "You're On The Waitlist!")
-  end
-
   def reply(comment_id)
     comment = Comment.find(comment_id)
     @daddy = comment.parent.user
@@ -45,25 +37,4 @@ class UserMailer < ApplicationMailer
 
   # == One-off Emails
   #
-
-  # Sent: early February
-  def update_waitlist_users_before_alpha_launch(waitlist_user)
-    @waitlist_user = waitlist_user
-
-    mail(
-      to: @waitlist_user.email,
-      subject: "Days Away From the First Release!"
-    )
-  end
-
-  # Sent: February 23, 2023
-  def alpha_release_now_live(email:, first_name:)
-    @email = email
-    @first_name = first_name
-
-    mail(
-      to: @email,
-      subject: "Now Live -- Join the Conversations!"
-    )
-  end
 end

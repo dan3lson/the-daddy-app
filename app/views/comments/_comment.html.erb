@@ -12,7 +12,7 @@
     <h6 class="card-subtitle mb-2 text-muted mb-3">
       <%= render "comments/meta", comment: comment %>
     </h6>
-    <p class="card-text fs-5"><%= comment.body %></p>
+    <p class="card-text fs-5 textarea-pre-wrap"><%= comment.body %></p>
 
     <%= render "comments/link_actions", comment: comment %>
   </div>
