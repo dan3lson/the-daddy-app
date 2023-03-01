@@ -38,7 +38,6 @@ class ChildDashboard < Administrate::BaseDashboard
     daddy
     first_name
     gender
-    user_id
     created_at
     updated_at
   ].freeze
@@ -51,7 +50,6 @@ class ChildDashboard < Administrate::BaseDashboard
     daddy
     first_name
     gender
-    user_id
   ].freeze
 
   # COLLECTION_FILTERS
