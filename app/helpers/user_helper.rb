@@ -2,15 +2,14 @@
 
 module UserHelper
   def children_names(user)
-    names = user.children.pluck(:first_name)
-    num_children = names.count
-    case num_children
-    when 0 then ""
-    when 1 then	names.first
-    when 2 then	names.join(" and ")
-    else
-      names.to_sentence
-    end
+    user.children.pluck(:first_name).to_sentence
+  end
+
+  def children_names_with_ages(user)
+    user
+      .children
+      .map { |child| "#{child.first_name} (#{child.age})" }
+      .to_sentence
   end
 
   def first_initial(user)
