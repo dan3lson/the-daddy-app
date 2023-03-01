@@ -2,6 +2,12 @@
 
 module Lib
   module Constants
+    AVERAGE_DAYS_IN_MONTH = 30.4
+    public_constant :AVERAGE_DAYS_IN_MONTH
+
+    AVERAGE_WEEKS_IN_MONTH = 4.345
+    public_constant :AVERAGE_WEEKS_IN_MONTH
+
     DADDY_TYPES = {
       "The First-timer (one child)": "first_timer",
       "The Juggler (multiple children)": "juggler",
