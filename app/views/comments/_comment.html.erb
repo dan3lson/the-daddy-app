@@ -9,9 +9,18 @@
     <h5 class="card-title">
       <%= comment.user.first_name %>
     </h5>
+
     <h6 class="card-subtitle mb-2 text-muted mb-3">
       <%= render "comments/meta", comment: comment %>
     </h6>
+
+    <% if current_user.question_of_the_day_response?(comment) %>
+      <p class="card-text fs-5 text-muted mb-1">
+        <small>
+          <%= comment.users_question_of_the_day.question_of_the_day.question %>
+        </small>
+      </p>
+    <% end %>
     <p class="card-text fs-5 pre-wrap"><%= comment.body %></p>
 
     <%= render "comments/link_actions", comment: comment %>
